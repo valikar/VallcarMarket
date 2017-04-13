@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CmmApplication {
+public class CarMarketManagementApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CmmApplication.class, args);
+		SpringApplication.run(CarMarketManagementApplication.class, args);
 	}
 }
