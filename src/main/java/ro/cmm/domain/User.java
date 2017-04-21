@@ -1,6 +1,6 @@
 package ro.cmm.domain;
 
-import ro.cmm.domain.login.AccountType;
+import ro.cmm.domain.AccountType;
 
 /**
  * Created by Joseph Saturday, 15.04.2017 at 01:13.
