@@ -1,7 +1,7 @@
-package ro.cmm.domain.login;
+package ro.cmm.domain;
 
 import ro.cmm.domain.User;
-import ro.cmm.domain.car.Car;
+import ro.cmm.domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
