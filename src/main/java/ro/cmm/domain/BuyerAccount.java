@@ -1,4 +1,4 @@
-package ro.cmm.domain.login;
+package ro.cmm.domain;
 
 import ro.cmm.domain.User;
 
