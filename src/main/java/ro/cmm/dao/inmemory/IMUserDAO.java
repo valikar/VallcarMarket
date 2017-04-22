@@ -2,10 +2,9 @@ package ro.cmm.dao.inmemory;
 
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.UserDAO;
+import ro.cmm.domain.AccountType;
 import ro.cmm.domain.User;
-import ro.cmm.domain.login.AccountType;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
