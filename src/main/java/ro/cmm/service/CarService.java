@@ -35,58 +35,96 @@ public class CarService {
         return false;
     }
 
-    public Collection<Car> bigSearch(String manufacturer, String type, int fabricationYear) {
+    public Collection<Car> search(String manufacturer, String type, int fromYear,
+                                  int mileAge, int price, EngineType[] engineTypes,
+                                  TransmissionType[] transmissionTypes, String colour) {
+
         Collection<Car> allCars = dao.getAll();
-        allCars = filterByManufacturer(manufacturer, allCars);
-        allCars = filterByType(type, allCars);
-        allCars = filterByFabricationYear(fabricationYear,allCars);
+
+        if (manufacturer != null) {
+            allCars = filterByManufacturer(manufacturer, allCars);
+        }
+        if (type != null) {
+            allCars = filterByType(type, allCars);
+        }
+        if (fromYear != 0) {
+            allCars = filterByFabricationYear(fromYear, allCars);
+        }
+        if (mileAge != 0) {
+            allCars = filterByMileAge(mileAge, allCars);
+        }
+        if (price != 0) {
+            allCars = filterByPrice(price, allCars);
+        }
+        if (engineTypes.length != EngineType.values().length) {
+            allCars = filterByEngineType(engineTypes, allCars);
+        }
+        if (transmissionTypes.length != TransmissionType.values().length) {
+            allCars = filterByTransmissionType(transmissionTypes, allCars);
+        }
+        if (colour != null) {
+            allCars = filterByPrice(price, allCars);
+        }
 
         return allCars;
     }
 
     private Collection<Car> filterByManufacturer(String manufacturer, Collection<Car> cars) {
-        if (manufacturer.equalsIgnoreCase("all")) {
-            return cars;
-        }
-        Iterator<Car> it = cars.iterator();
-        while (it.hasNext()) {
-            Car currentCar = it.next();
-            if(!currentCar.getManufacturer().equalsIgnoreCase(manufacturer)) {
-                it.remove();
-            }
+
+        if(!manufacturer.equalsIgnoreCase("all")) {
+            cars.removeIf((Car car) -> !car.getManufacturer().equalsIgnoreCase(manufacturer));
         }
         return cars;
     }
 
     private Collection<Car> filterByType(String type, Collection<Car> cars) {
-        if (type.equalsIgnoreCase("all")) {
-            return cars;
-        }
-        Iterator<Car> it = cars.iterator();
-        while (it.hasNext()) {
-            Car currentCar = it.next();
-            if(!currentCar.getType().equalsIgnoreCase(type)) {
-                it.remove();
-            }
+        if(!type.equalsIgnoreCase("all")) {
+            cars.removeIf((Car car) -> !car.getType().equalsIgnoreCase(type));
         }
         return cars;
     }
 
-    private Collection<Car> filterByFabricationYear(int newerThanThisYear, Collection<Car> cars) {
-        // valoare default sa fie 0, caz in care vrem sa vedem
-        // toate masinile indiferent de varsta
-        if (newerThanThisYear == 0) {
-            return cars;
-        }
-        Iterator<Car> it = cars.iterator();
-        while (it.hasNext()) {
-            Car currentCar = it.next();
-            if(currentCar.getFabricationYear() < newerThanThisYear) {
-                it.remove();
-            }
+    private Collection<Car> filterByFabricationYear(int fromYear, Collection<Car> cars) {
+        cars.removeIf((Car car) -> car.getFabricationYear() < fromYear);
+
+        return cars;
+    }
+
+    private Collection<Car> filterByMileAge(int maxMileAge, Collection<Car> cars) {
+        cars.removeIf((Car car) -> car.getMileAge() > maxMileAge);
+
+        return cars;
+    }
+
+    private Collection<Car> filterByPrice(int price, Collection<Car> cars) {
+        cars.removeIf((Car car) -> car.getPrice() > price);
+
+        return cars;
+    }
+
+    private Collection<Car> filterByEngineType(EngineType[] engineTypes, Collection<Car> cars) {
+        List<EngineType> engineTypeList = Arrays.asList(engineTypes);
+
+        cars.removeIf((Car car) -> !engineTypeList.contains(car.getEngineType()));
+
+        return cars;
+    }
+
+    private Collection<Car> filterByTransmissionType(TransmissionType[] transmissionTypes, Collection<Car> cars) {
+        List<TransmissionType> transmissionTypeList = Arrays.asList(transmissionTypes);
+
+        cars.removeIf((Car car) -> !transmissionTypeList.contains(car.getTransmissionType()));
+
+        return cars;
+    }
+
+    private Collection<Car> filterByColour(String colour, Collection<Car> cars) {
+        if(!colour.equalsIgnoreCase("all")) {
+            cars.removeIf((Car car) -> !car.getColour().equalsIgnoreCase(colour));
         }
         return cars;
     }
+
 
     public void save(Car car) throws ValidationException {
         validate(car);
@@ -135,8 +173,9 @@ public class CarService {
             errors.add("Invalid transmission type");
         }
 
-        // Validare pentru color vom face mai tarziu cand ne hotaram
-        // cum sa fie input field-ul pentru culoare
+        if (car.getColour() == null) {
+            errors.add("The colour cannot be empty");
+        }
 
         if(car.getExtras() == null) {
             errors.add("Description is missing");
@@ -144,13 +183,21 @@ public class CarService {
 
         // validare foarte basic, mai tarziu putem modifica sa fie mai smecher
         // valoarea default pt CarLocation poate sa fie (0,0)
-        long carsLatitude = car.getLocation().getLatitude();
-        long carsLongitude = car.getLocation().getLongtitude();
-        if (carsLatitude < 0 || carsLatitude > 90) {
-            errors.add("Invalid latitude value for the cars coordinates");
+        if (car.getLocation() == null) {
+            errors.add("Car location does not exist");
+        } else {
+            long carsLatitude = car.getLocation().getLatitude();
+            long carsLongitude = car.getLocation().getLongtitude();
+            if (carsLatitude < 0 || carsLatitude > 90) {
+                errors.add("Invalid latitude value for the cars coordinates");
+            }
+            if (carsLongitude < 0 || carsLongitude > 180) {
+                errors.add("Invalid longitude value for the cars coordinates");
+            }
         }
-        if (carsLongitude < 0 || carsLongitude > 180) {
-            errors.add("Invalid longitude value for the cars coordinates");
+
+        if(car.getImgUrl() == null) {
+            errors.add("Img url is empty.");
         }
 
         // la isAvailable nu prea avem ce valida
