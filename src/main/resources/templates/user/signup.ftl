@@ -8,12 +8,8 @@
 <body>
 [#include '/macro/nav_login_bar.ftl']
 
-
-
-<div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">
-
 [#include '/macro/errors.ftl']
-
+<div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">
     <div class="panel-body">
 
 

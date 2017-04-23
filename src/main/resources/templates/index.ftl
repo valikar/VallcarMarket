@@ -8,7 +8,6 @@
 <body>
 
 [#include '/macro/nav_index_bar.ftl']
-
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:700px">
     <b>Users List:</b><br>
     ${users?size} user[s] registered
