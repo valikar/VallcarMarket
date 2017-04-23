@@ -1,6 +1,7 @@
 package ro.cmm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
@@ -12,6 +13,7 @@ import java.util.*;
 /**
  * Created by Tamas on 4/22/2017.
  */
+@Service
 public class CarService {
 
     @Autowired
@@ -88,6 +90,8 @@ public class CarService {
         return cars;
     }
 
+
+
     public void save(Car car) throws ValidationException {
         validate(car);
         dao.update(car);
@@ -144,6 +148,8 @@ public class CarService {
 
         // validare foarte basic, mai tarziu putem modifica sa fie mai smecher
         // valoarea default pt CarLocation poate sa fie (0,0)
+
+        /*
         long carsLatitude = car.getLocation().getLatitude();
         long carsLongitude = car.getLocation().getLongtitude();
         if (carsLatitude < 0 || carsLatitude > 90) {
@@ -152,6 +158,7 @@ public class CarService {
         if (carsLongitude < 0 || carsLongitude > 180) {
             errors.add("Invalid longitude value for the cars coordinates");
         }
+        */
 
         // la isAvailable nu prea avem ce valida
 
