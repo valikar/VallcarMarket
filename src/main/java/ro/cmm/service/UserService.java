@@ -46,6 +46,21 @@ public class UserService {
         return dao.searchByName(query);
     }
 
+    public User findByUsername(String userName) {
+        User user= dao.findByUsername(userName);
+        if (user!=null)
+        return user;
+        else
+        return null;
+    }
+
+    public boolean isRegistered(String userName, String password){
+        if (dao.isRegistered(userName,password))
+            return true;
+        else
+            return false;
+    }
+
     public Collection<User> listAll() {
         LOGGER.debug("Listing users ");
 
@@ -67,23 +82,23 @@ public class UserService {
         List<String> errors = new LinkedList<String>();
 
         if (StringUtils.isEmpty(user.getUserName())) {
-            errors.add("User Name is Empty");
+            errors.add("Empty Username");
         }
 
         if (StringUtils.isEmpty(user.getPassword())) {
-            errors.add("Password is Empty");
+            errors.add("Empty Password");
         }
 
         if (StringUtils.isEmpty(user.getLastName())) {
-            errors.add("Last Name is Empty");
+            errors.add("Empty First Name");
         }
 
         if (StringUtils.isEmpty(user.getLastName())) {
-            errors.add("Last Name is Empty");
+            errors.add("Empty Last Name");
         }
 
         if (StringUtils.isEmpty(user.getRole())) {
-            errors.add("Role is Empty");
+            errors.add("Empty Role");
         }
 
         if (!errors.isEmpty()) {

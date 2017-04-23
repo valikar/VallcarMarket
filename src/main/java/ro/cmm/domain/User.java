@@ -1,16 +1,14 @@
 package ro.cmm.domain;
 
-import ro.cmm.domain.AccountType;
-
 /**
  * Created by Joseph Saturday, 15.04.2017 at 01:13.
  */
-public abstract class User extends AbstractModel {
+public class User extends AbstractModel {
 
     private String userName;//email
     private String password;
 
-    private AccountType role;
+    private Role role;
 
     private String firstName;
     private String lastName;
@@ -33,11 +31,11 @@ public abstract class User extends AbstractModel {
         this.password = password;
     }
 
-    public AccountType getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(AccountType role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

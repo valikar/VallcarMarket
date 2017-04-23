@@ -1,8 +1,5 @@
 package ro.cmm.domain;
 
-import ro.cmm.domain.User;
-import ro.cmm.domain.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +11,7 @@ public class SellerAccount extends User {
     private List<Car> carList = new ArrayList<>();
 
     public SellerAccount() {
-        this.setRole(AccountType.SELLER);
+        this.setRole(Role.SELLER);
     }
 
     public List<Car> getCarList() {
