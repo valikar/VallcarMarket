@@ -1,5 +1,6 @@
 package ro.cmm.dao.inmemory;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 /**
  * @author Emanuel Pruker
  */
+@Component
 public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
 
     @Override

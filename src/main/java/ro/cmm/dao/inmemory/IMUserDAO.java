@@ -1,9 +1,10 @@
 package ro.cmm.dao.inmemory;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.UserDAO;
 import ro.cmm.domain.User;
-import ro.cmm.domain.login.AccountType;
+import ro.cmm.domain.AccountType;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,6 +14,7 @@ import java.util.LinkedList;
 /**
  * Created by Joseph Saturday, 15.04.2017 at 12:56.
  */
+@Component
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     @Override
