@@ -14,6 +14,8 @@ import java.util.*;
 @Component
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
+    private Role role;
+
     @Override
     public Collection<User> searchByName(String query) {
         if (StringUtils.isEmpty(query)) {
@@ -63,9 +65,14 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     public boolean isRegistered(String userName, String password){
         for (User user : getAll()){
             if (user.getUserName().equals(userName)&&user.getPassword().equals(password)){
-               return true;
+               role=user.getRole();
+                return true;
             }
         }
         return false;
+    }
+
+    public Role getRole() {
+        return role;
     }
 }

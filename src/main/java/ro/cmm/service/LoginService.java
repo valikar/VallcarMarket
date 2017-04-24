@@ -53,4 +53,8 @@ public class LoginService {
             throw new ValidationException(errors.toArray(new String[] {}));
         }
     }
+
+    public IMUserDAO getImUserDAO() {
+        return imUserDAO;
+    }
 }

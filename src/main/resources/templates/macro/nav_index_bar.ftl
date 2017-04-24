@@ -14,13 +14,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
             </ul>
 
 
             <ul class="nav navbar-nav navbar-right">
             <li>[#if currentUser??] <div style="float: right">
-                <li><a><span class="glyphicon glyphicon-user" aria-hidden="true"></span>  ${currentUser.userName}</a></li>
+                <li>[#if currentUser.role=='BUYER']
+                     <a href="/account/buyer">[#else] <a href="/account/seller">
+                [/#if] <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  ${currentUser.userName}</a></li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  LogOut</a></li>
             [#else]
                 <li><a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  LogIn</a></li>

@@ -6,6 +6,7 @@ package ro.cmm.domain;
 public class LoginUser {
     private String userName;
     private String password;
+    private Role role;
 
     public String getUserName() {
         return userName;
@@ -21,5 +22,13 @@ public class LoginUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
