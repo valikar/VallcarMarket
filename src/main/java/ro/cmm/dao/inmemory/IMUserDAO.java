@@ -15,6 +15,7 @@ import java.util.*;
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     private Role role;
+    private long id;
 
     @Override
     public Collection<User> searchByName(String query) {
@@ -66,6 +67,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
         for (User user : getAll()){
             if (user.getUserName().equals(userName)&&user.getPassword().equals(password)){
                role=user.getRole();
+               id=user.getId();
                 return true;
             }
         }
@@ -74,5 +76,9 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     public Role getRole() {
         return role;
+    }
+
+    public long getId() {
+        return id;
     }
 }

@@ -46,12 +46,13 @@ public class UserService {
         return dao.searchByName(query);
     }
 
-    public User findByUsername(String userName) {
+    public boolean verifyUsername(String userName) {
+        if (dao.findByUsername(userName)!=null){
         User user= dao.findByUsername(userName);
-        if (user!=null)
-        return user;
-        else
-        return null;
+        if (user.getUserName().equals(userName))
+        return false;
+        }
+        return true;
     }
 
     public boolean isRegistered(String userName, String password){

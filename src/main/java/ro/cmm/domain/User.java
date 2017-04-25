@@ -1,19 +1,28 @@
 package ro.cmm.domain;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Joseph Saturday, 15.04.2017 at 01:13.
  */
 public class User extends AbstractModel {
 
+    @NotNull
+    @Length(min = 6, max = 30)
     private String userName;//email
+    @NotNull
+    @Length(min = 6, max = 12)
     private String password;
 
+    @NotNull
     private Role role;
 
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
-
-    private boolean authenticated;
 
     public String getUserName() {
         return userName;
@@ -55,13 +64,6 @@ public class User extends AbstractModel {
         this.lastName = lastName;
     }
 
-    public boolean isAuthenticated() {
-        return authenticated;
-    }
-
-    public void setAuthenticated(boolean authenticated) {
-        this.authenticated = authenticated;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -70,7 +72,6 @@ public class User extends AbstractModel {
 
         User user = (User) o;
 
-        if (authenticated != user.authenticated) return false;
         if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (role != user.role) return false;
@@ -85,19 +86,17 @@ public class User extends AbstractModel {
         result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (authenticated ? 1 : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "User[" +
+        return "User{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", authenticated=" + authenticated +
-                ']';
+                '}';
     }
 }

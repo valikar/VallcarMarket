@@ -10,8 +10,9 @@
 [#include '/macro/nav_index_bar.ftl']
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:700px">
     <div class="panel-body">
-        <div class="row">
-        <div class="col-lg-4 button-holder">
+        <div class="row" >
+            <div class="row row-clr">
+            <div class="col-lg-4 button-holder">
             <label>Add a new car</label>
             <a class="btn btn-default" href="/car/add" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add car</a>
         </div>
@@ -19,12 +20,16 @@
             <label>View your car list</label>
             <a class="btn btn-default" href="#" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
         </div>
-        <div class="row">
             <div class="col-lg-4 button-holder">
                 <label>Make a search</label>
-                <a class="btn btn-default" href="index.html" role="button"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+                <a class="btn btn-default" href="index.html" role="button"><i class="fa fa-edit" aria-hidden="true"></i> Search</a>
             </div>
+                <div class="col-lg-4 button-holder">
+                    <label>Edit your account</label>
+                    <a class="btn btn-default" href="/account/edit?id=${currentUser.id?c}" role="button"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                </div>
             </div>
+        </div>
     </div>
 </div>
 

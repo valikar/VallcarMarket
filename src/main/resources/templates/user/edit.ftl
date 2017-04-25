@@ -13,49 +13,51 @@
     <div class="panel-body">
 
 
-        <form method="post" action="/signup/save" >
-            <input type="hidden" name="id" value="[#if user.id??]${user.id?c}[/#if]">
+        <form method="post" action="/account/save" >
+
             <div class="form-group">
                 <label for="firstName">First Name</label>
                 <input type="text"
                        class="form-control" id="firstName" name="firstName"
-                       placeHolder="Conor"autofocus="true" value="${user.firstName!''}"/>
+                       placeHolder="First Name"autofocus="true" value="${user.firstName!''}"/>
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
                 <input type="text"
                        class="form-control" id="lastName" name="lastName"
-                       placeHolder="McGregor"value="${user.lastName!''}"/>
+                       placeHolder="Last Name"value="${user.lastName!''}"/>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="background-color; grey;">
                 <label for="lastName">Username</label>
                 <input type="text"
                        class="form-control" id="userName" name="userName"
-                       placeHolder="conor.mcgregor@gmail.com"value="${user.userName!''}"/>
+                       placeHolder="Username"value="${user.userName!''}" readonly/>
             </div>
             <div class="form-group">
                 <label for="lastName">Password</label>
                 <input type="text"
                        class="form-control" id="password" name="password"
-                       placeHolder="password"value="${user.password!''}"/>
+                       placeHolder="Password"value="${user.password!''}"/>
             </div>
-            <div class="panel-body">
-                    <div class="btn-group-justified">
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                             <input type="radio" name="role" value="BUYER" [#if user.role?? && user.role == 'BUYER']checked[/#if]>BUYER</input>
-                                <input type="radio" name="role" value="SELLER" [#if user.role?? &&  user.role == 'SELLER']checked[/#if]>SELLER</input>
-                             </span>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group" style="background-color; grey;">
+                <label for="lastName">Role</label>
+                <input type="text"
+                       class="form-control" id="role" name="role"
+                       placeHolder="Role"value="${user.role!''}" readonly/>
+            </div>
+            </div>
+
+        [#if user.id??]
+            <input name="id" type="hidden" value="${user.id?c}"/>
+        [/#if]
 
             <div class="container-fluid">
                 <div class="col-lg-6 col-lg-offset-3 text-center">
                     <button type="submit" class="btn btn-default">SAVE</button>
                 </div>
             </div>
-        </form>
+
+    </form>
 
     </div>
 </div>
