@@ -176,4 +176,8 @@ public class CarService {
     public void setDao(CarDAO dao) {
         this.dao = dao;
     }
+
+    public Car getById(long id) {
+        return dao.findById(id);
+    }
 }

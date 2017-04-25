@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+import ro.cmm.domain.Car;
 import ro.cmm.domain.User;
+import ro.cmm.service.CarService;
 import ro.cmm.service.UserService;
 import ro.cmm.service.ValidationException;
 
@@ -23,6 +25,9 @@ public class AccountController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    private CarService carService;
 
     @RequestMapping("/seller")
     public ModelAndView seller() {
@@ -70,6 +75,15 @@ public class AccountController {
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.addObject("user", user);
         }
+        return modelAndView;
+    }
+
+    @RequestMapping("/car")
+    public ModelAndView display() {
+//        long id
+//        Car car = carService.getById(id);
+        ModelAndView modelAndView = new ModelAndView("/car/display");
+//        modelAndView.addObject("car", car);
         return modelAndView;
     }
 }
