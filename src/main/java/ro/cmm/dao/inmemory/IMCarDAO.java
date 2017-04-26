@@ -31,4 +31,13 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         }
         return all;
     }
+
+    @Override
+    public Car findBySellerId(long id) {
+        for (Car car : getAll()){
+            if (car.getSellerId()==id)
+                return car;
+        }
+        return null;
+    }
 }

@@ -19,7 +19,7 @@
 
 
 [#include '/macro/errors.ftl']
-<img src="[@spring.url '${car.imgUrl}'/]" style="float: right;margin-top: 30px;margin-right: 30px;" />
+
 
 <div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
@@ -95,7 +95,7 @@
                 <strong>Matriculated</strong>
             </div>
             <div class="g-col-6">
-                <strong>${car.isMatriculated}</strong>
+                <strong>Edit HERE</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -103,7 +103,7 @@
                 <strong>Available</strong>
             </div>
             <div class="g-col-6">
-                <strong>${car.available}</strong>
+                <strong>Edit HERE</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">

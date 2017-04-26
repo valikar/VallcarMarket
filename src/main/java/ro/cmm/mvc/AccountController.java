@@ -80,9 +80,15 @@ public class AccountController {
 
     @RequestMapping("/car")
     public ModelAndView display(long id) {
-        Car car = carService.getById(id);
         ModelAndView modelAndView = new ModelAndView("/car/display");
-        modelAndView.addObject("car", car);
+        if (carService.getBySellerId(id)!=null) {
+            Car car = carService.getBySellerId(id);
+
+            modelAndView.addObject("car", car);
+        }else {
+            //if seller have no car
+        modelAndView.addObject(new RedirectView("/"));
+        }
         return modelAndView;
     }
 }

@@ -180,4 +180,8 @@ public class CarService {
     public Car getById(long id) {
         return dao.findById(id);
     }
+
+    public Car getBySellerId(long id){
+        return dao.findBySellerId(id);
+    }
 }

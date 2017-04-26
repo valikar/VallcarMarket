@@ -10,5 +10,7 @@ import java.util.Collection;
 public interface CarDAO extends BaseDAO<Car>{
 
     Collection<Car> searchByName(String query);
+
+    Car findBySellerId(long id);
 }
 

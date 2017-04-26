@@ -1,72 +1,18 @@
 [#ftl]
-<html>
+[#import "/spring.ftl" as spring /]
+
+<html lang="en">
+<title>Add Car Page</title>
 <head>
-	<title>Car Management System</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="add.css">
+[#include '/macro/bootstrap_header.ftl']
+[#include '/macro/header.ftl']
+
 </head>
 <body>
-
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="index.html">Car Management System</a>
-	    </div>
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="index.html">Home</a></li>
-	        <li><a href="">About</a></li>
-	        <li><a href="">Contact</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="user.html"><i class="fa fa-user" aria-hidden="true"></i> User</a></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
+[#include '/macro/nav_index_bar.ftl']
+[#include '/macro/errors.ftl']
 
 	<div class="container">
-		<div class="jumbotron">
-			<h1><i class="fa fa-car" aria-hidden="true"></i> Car Management System</h1>
-			<p>Tomato tomato ching chong potato.</p>
-		</div>
-		<div>
-			<div class="row">
-
-			</div>
-			<div class="row">
-				<div class="col-lg-4 button-holder">
-					<label>Make a search</label>
-					<a class="btn btn-default" href="index.html" role="button"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-				</div>
-				<div class="col-lg-4 button-holder">
-					<label>Add a new car</label>
-					<a class="btn btn-default" href="addCar.html" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add car</a>
-				</div>
-				<div class="col-lg-4 button-holder">
-					<label>View your car list</label>
-					<a class="btn btn-default" href="#" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
-				</div>
-			</div>
-		</div>
-		<hr>
-		<div class="row">
-			<div class="col-lg-12">
-				<h2 align="center">Add a new car to the system</h2>
-			</div>
-		</div>
-		<hr>
 
 		<form method="post" action="/car/save">
 			<div class="row">
@@ -165,9 +111,7 @@
 	</div>
 
 
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script> -->
+[#include '/macro/bootstrap_footer.ftl']
 
 </body>
 </html>
