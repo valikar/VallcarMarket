@@ -18,7 +18,7 @@
         </div>
         <div class="col-lg-4 button-holder">
             <label>View your car</label>
-            <a class="btn btn-default" href="/account/car" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car</a>
+            <a class="btn btn-default" href="/account/car?id=${currentUser.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car</a>
         </div>
             <div class="col-lg-4 button-holder">
                 <label>Make a search</label>

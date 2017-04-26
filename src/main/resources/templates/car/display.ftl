@@ -11,14 +11,17 @@
 <body>
 [#include '/macro/nav_login_bar.ftl']
 
-<div class="text-center"><h1>Dacia Logan</h1></div>
-
+<div class="panel panel-default" style="margin-right: 10px; margin-left: 10px; margin-top: 15px;">
+    <div class="panel-heading">
+        <h2 class="panel-title" align="center">Offer Title</h2>
+    </div>
+    <div class="panel-body">
 
 
 [#include '/macro/errors.ftl']
-<img src="[@spring.url '/images/car.jpg'/]" style="float: right; margin-right: 50px;" />
+<img src="[@spring.url '${car.imgUrl}'/]" style="float: right;margin-top: 30px;margin-right: 30px;" />
 
-<div class="panel panel-default" style=" margin-left:20px;  width:500px">
+<div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
         <h3 class="panel-title">Technical data</h3>
     </div>
@@ -28,7 +31,7 @@
                 <strong>Manufacturer</strong>
             </div>
             <div class="g-col-6">
-                <strong>Dacia</strong>
+                <strong>${car.manufacturer}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -36,7 +39,7 @@
                 <strong>Type</strong>
             </div>
             <div class="g-col-6">
-                <strong>Logan</strong>
+                <strong>${car.type}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -44,7 +47,7 @@
                 <strong>Fabrication Year</strong>
             </div>
             <div class="g-col-6">
-                <strong>2014</strong>
+                <strong>${car.fabricationYear}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -52,7 +55,7 @@
                 <strong>Mileage</strong>
             </div>
             <div class="g-col-6">
-                <strong>103.200 Km</strong>
+                <strong>${car.mileAge} Km</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -60,7 +63,7 @@
                 <strong>Price</strong>
             </div>
             <div class="g-col-6">
-                <strong>500 $</strong>
+                <strong>${car.price} $</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -68,7 +71,7 @@
                 <strong>Engine Type</strong>
             </div>
             <div class="g-col-6">
-                <strong>DIESEL</strong>
+                <strong>${car.engineType}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -76,15 +79,7 @@
                 <strong>Transmission Type</strong>
             </div>
             <div class="g-col-6">
-                <strong>MANUAL</strong>
-            </div>
-        </div>
-        <div class="g-row u-margin-bottom-9">
-            <div class="g-col-6">
-                <strong>Manufacturer</strong>
-            </div>
-            <div class="g-col-6">
-                <strong>Dacia</strong>
+                <strong>${car.transmissionType}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -92,7 +87,7 @@
                 <strong>Colour</strong>
             </div>
             <div class="g-col-6">
-                <strong>Black</strong>
+                <strong>${car.colour}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -100,7 +95,7 @@
                 <strong>Matriculated</strong>
             </div>
             <div class="g-col-6">
-                <strong>Yes</strong>
+                <strong>${car.isMatriculated}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -108,26 +103,28 @@
                 <strong>Available</strong>
             </div>
             <div class="g-col-6">
-                <strong>Yes</strong>
+                <strong>${car.available}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
             <div class="g-col-6">
                 <strong>Extras</strong>
             </div>
-            <div class="g-col-6">
-                <strong>The Dacia Logan is a small family car produced jointly by the French
-                    manufacturer Renault and its Romanian subsidiary Dacia since 2004. It is
-                    currently in its second generation and has been manufactured at Dacia's
-                    automobile plant in Mioveni, Romania, and at Renault's plants in Morocco,
-                    Brazil, Argentina, Turkey, Russia, Colombia, Iran and India. It is also
-                    produced as a pick-up at Nissan's plant in Rosslyn, South Africa.</strong>
-            </div>
         </div>
-
+        <strong>${car.extras}</strong>
     </div>
     </div>
+    </div>
+</div>
 
+<div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:800px">
+    <div class="panel-heading">
+        <h3 class="panel-title" align="center" >Location of the car on map</h3>
+    </div>
+    <div class="panel-body" align="center">
+        <h1>MAP</h1>
+        </div>
+</div>
 
 
     [#include '/macro/bootstrap_footer.ftl']

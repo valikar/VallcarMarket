@@ -79,11 +79,10 @@ public class AccountController {
     }
 
     @RequestMapping("/car")
-    public ModelAndView display() {
-//        long id
-//        Car car = carService.getById(id);
+    public ModelAndView display(long id) {
+        Car car = carService.getById(id);
         ModelAndView modelAndView = new ModelAndView("/car/display");
-//        modelAndView.addObject("car", car);
+        modelAndView.addObject("car", car);
         return modelAndView;
     }
 }
