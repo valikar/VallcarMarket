@@ -5,9 +5,7 @@ import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author Emanuel Pruker
@@ -39,5 +37,17 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
                 return car;
         }
         return null;
+    }
+
+    @Override
+    public Collection<Car> getCarListOfSeller(long id) {
+        Collection<Car> cars = new LinkedList<>();
+
+        for (Car car : getAll()){
+            if (car.getSellerId()==id){
+                cars.add(car);
+            }
+        }
+        return cars;
     }
 }
