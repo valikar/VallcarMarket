@@ -11,12 +11,13 @@ import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.User;
 import ro.cmm.service.CarService;
+import ro.cmm.service.LoginService;
 import ro.cmm.service.UserService;
 import ro.cmm.service.ValidationException;
 
-import javax.jws.WebParam;
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.LinkedList;
 
 /**
  * Created by Joseph Monday, 24.04.2017 at 20:51.
@@ -25,11 +26,15 @@ import java.util.Collection;
 @RequestMapping("/account")
 public class AccountController {
 
+
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private CarService carService;
+
+    @Autowired
+    private LoginService loginService;
 
     @RequestMapping("/seller")
     public ModelAndView seller() {
@@ -88,10 +93,6 @@ public class AccountController {
 
             modelAndView.addObject("car", car);
         }
-//        else {
-//            //if seller have no car
-//        modelAndView.addObject(new RedirectView("/"));
-//        }
         return modelAndView;
     }
 
@@ -105,5 +106,35 @@ public class AccountController {
             modelAndView.addObject(new RedirectView("/"));
         }
         return modelAndView;
+    }
+
+    @RequestMapping("/bookmark/list")
+    public ModelAndView bookmarks(long id){
+        ModelAndView modelAndView = new ModelAndView("/car/bookmarks");
+        if (userService.getBookmarks(id)!=null){
+            Collection<Long> bookmarks = userService.getBookmarks(id);
+            Collection<Car> cars = new LinkedList<>();
+            for (Long l : bookmarks){
+                cars.add(carService.getById(l));
+            }
+            modelAndView.addObject("cars",cars);
+        }else {
+            Collection<Car> cars = new LinkedList<>();
+            modelAndView.addObject("cars",cars);
+            modelAndView.addObject(new RedirectView("/"));
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("/bookmark/delete")
+    public String deleteBookmark(long id){
+        userService.deleteBookmark(id);
+        return "redirect:/account/bookmark/list?id="+Long.toString(loginService.getImUserDAO().getId());
+    }
+
+    @RequestMapping("/bookmark")
+    public String bookmark(long id){
+    userService.addBookmark(id);
+    return "redirect:/account/list/car?id="+Long.toString(id);
     }
 }

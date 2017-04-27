@@ -80,22 +80,7 @@
 				</div>
 			</div>
 			<br>
-			<div class="row">
-				<div class="col-lg-12">
-					<label>Location</label>
-					<h2 align="center">Aici o sa vina location-ul</h2>
-				</div>
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="checkbox">
-						<label><input type="checkbox" value="available">Make this ad visible to others.</label>
-						<p class="help-block">If you not check this box the ad will appear ONLY in your personal car list. But you can also check it later.</p>
-					</div>
-				</div>
-			</div>
-			<br>
+
 			<div class="row">
 				<div class="col-lg-12 button-holder">
 		[#if car.id??]
@@ -105,7 +90,7 @@
 				</div>
 			</div>
 		</form>
-		<br><br>
+		<br>
 
 
 	</div>

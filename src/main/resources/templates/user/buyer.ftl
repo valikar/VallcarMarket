@@ -14,7 +14,7 @@
             <div class="row row-clr">
             <div class="col-lg-5 button-holder">
                 <label>View your bookmarks</label>
-                <a class="btn btn-default" href="#" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
+                <a class="btn btn-default" href="/account/bookmark/list?id=${currentUser.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
             </div>
             <div class="row">
                 <div class="col-lg-4 button-holder">

@@ -9,11 +9,14 @@
 
 </head>
 <body>
-[#include '/macro/nav_login_bar.ftl']
+[#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-right: 10px; margin-left: 10px; margin-top: 15px;">
     <div class="panel-heading">
-        <h2 class="panel-title" align="center">Offer Title</h2>
+        <h2 class="panel-title" align="right"><a href="/account/bookmark?id=${car.id?c}">Add to bookmarks
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+        </h2>
     </div>
     <div class="panel-body">
 

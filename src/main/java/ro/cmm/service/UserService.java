@@ -106,4 +106,15 @@ public class UserService {
             throw new ValidationException(errors.toArray(new String[]{}));
         }
     }
+
+    public void addBookmark(long id) {
+        dao.addBookmark(id);
+    }
+
+    public void deleteBookmark(long id){
+        dao.deleteBookmark(id);
+    }
+    public Collection<Long> getBookmarks(long id){
+        return dao.getBookmarkList(id);
+    }
 }
