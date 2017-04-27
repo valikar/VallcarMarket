@@ -184,4 +184,8 @@ public class CarService {
     public Car getBySellerId(long id){
         return dao.findBySellerId(id);
     }
+
+    public Collection<Car> getCarListOfSeller (long id){
+        return dao.getCarListOfSeller(id);
+    }
 }

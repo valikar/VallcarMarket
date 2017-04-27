@@ -53,6 +53,7 @@ ${cars?size} car[s] added
                 <th>Colour </th>
                 <th>Extras </th>
                 <th>Seller Id </th>
+                <th>Car Id </th>
             </tr>
 
         [#list cars as car]
@@ -67,6 +68,7 @@ ${cars?size} car[s] added
                 <td>${car.colour}</td>
                 <td>${car.extras}</td>
                 <td>${car.sellerId}</td>
+                <td>${car.id}</td>
             </tr>
         [/#list]
         </table>

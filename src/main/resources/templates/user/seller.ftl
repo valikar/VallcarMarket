@@ -17,8 +17,8 @@
             <a class="btn btn-default" href="/car/add" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add car</a>
         </div>
         <div class="col-lg-4 button-holder">
-            <label>View your car</label>
-            <a class="btn btn-default" href="/account/car?id=${currentUser.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car</a>
+            <label>View your car[s]</label>
+            <a class="btn btn-default" href="/account/list?id=${currentUser.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car[s]</a>
         </div>
             <div class="col-lg-4 button-holder">
                 <label>Make a search</label>

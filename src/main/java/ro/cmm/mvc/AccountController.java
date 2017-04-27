@@ -14,7 +14,9 @@ import ro.cmm.service.CarService;
 import ro.cmm.service.UserService;
 import ro.cmm.service.ValidationException;
 
+import javax.jws.WebParam;
 import javax.validation.Valid;
+import java.util.Collection;
 
 /**
  * Created by Joseph Monday, 24.04.2017 at 20:51.
@@ -78,16 +80,29 @@ public class AccountController {
         return modelAndView;
     }
 
-    @RequestMapping("/car")
+    @RequestMapping("/list/car")
     public ModelAndView display(long id) {
         ModelAndView modelAndView = new ModelAndView("/car/display");
-        if (carService.getBySellerId(id)!=null) {
-            Car car = carService.getBySellerId(id);
+        if (carService.getById(id)!=null) {
+            Car car = carService.getById(id);
 
             modelAndView.addObject("car", car);
+        }
+//        else {
+//            //if seller have no car
+//        modelAndView.addObject(new RedirectView("/"));
+//        }
+        return modelAndView;
+    }
+
+    @RequestMapping("/list")
+    public ModelAndView list(long id){
+        ModelAndView modelAndView = new ModelAndView("/car/list");
+        if (carService.getCarListOfSeller(id)!=null){
+            Collection<Car> cars = carService.getCarListOfSeller(id);
+            modelAndView.addObject("cars",cars);
         }else {
-            //if seller have no car
-        modelAndView.addObject(new RedirectView("/"));
+            modelAndView.addObject(new RedirectView("/"));
         }
         return modelAndView;
     }
