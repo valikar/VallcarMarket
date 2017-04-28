@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
+import ro.cmm.domain.CarLocation;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -93,7 +95,7 @@ public class CarService {
 
 
     public void save(Car car) throws ValidationException {
-        validate(car);
+        validate(car);car.setLocation(generateRandomLocationOnCarSave());//forced location set!
         dao.update(car);
     }
 
@@ -151,7 +153,7 @@ public class CarService {
 
         /*
         long carsLatitude = car.getLocation().getLatitude();
-        long carsLongitude = car.getLocation().getLongtitude();
+        long carsLongitude = car.getLocation().getLongitude();
         if (carsLatitude < 0 || carsLatitude > 90) {
             errors.add("Invalid latitude value for the cars coordinates");
         }
@@ -188,4 +190,53 @@ public class CarService {
     public Collection<Car> getCarListOfSeller (long id){
         return dao.getCarListOfSeller(id);
     }
+
+    private CarLocation generateRandomLocationOnCarSave(){
+        //car market boundaries;
+        Double NWLat = new Double(46.750770);
+        Double NWLng = new Double(23.425043);
+
+        Double SWLat = new Double(46.749651);
+        Double SWLng = new Double(23.424609);
+
+        Double NELat = new Double(46.750696);
+        Double NELng = new Double(23.430960);
+
+        Double SELat = new Double(46.749349);
+        Double SELng = new Double(23.430949);
+
+        //random car latitude and longitude in the market boundaries
+        Double safeWestLongitude = Double.max(NWLng,SWLng);
+        Double safeEastLongitude = Double.min(NELng,SELng);
+        Double randomCarLongitude = safeWestLongitude + (new Random().nextDouble() * (safeEastLongitude - safeWestLongitude));
+        randomCarLongitude = new BigDecimal(randomCarLongitude).setScale(6,BigDecimal.ROUND_DOWN).doubleValue();
+
+        if (randomCarLongitude > safeEastLongitude){
+            randomCarLongitude = safeEastLongitude;
+        }
+        if (randomCarLongitude < safeWestLongitude){
+            randomCarLongitude = safeWestLongitude;
+        }
+
+        Double safeNorthLatitude = Double.min(NWLat,NELat);
+        Double safeSouthLatitude = Double.max(SWLat,SELat);
+
+        Double randomCarLatitude = safeSouthLatitude + (new Random().nextDouble() * (safeNorthLatitude - safeSouthLatitude));
+        randomCarLatitude = new BigDecimal(randomCarLatitude).setScale(6,BigDecimal.ROUND_UP).doubleValue();
+
+        if (randomCarLatitude > safeNorthLatitude){
+            randomCarLatitude = safeNorthLatitude;
+        }
+        if (randomCarLatitude < safeSouthLatitude){
+            randomCarLatitude = safeSouthLatitude;
+        }
+
+        CarLocation result = new CarLocation();
+        result.setLatitude(randomCarLatitude);
+        result.setLongitude(randomCarLongitude);
+        return result;
+    }
+
+
+
 }

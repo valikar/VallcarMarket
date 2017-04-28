@@ -8,9 +8,8 @@
 [#include '/macro/header.ftl']
 
 </head>
-<body>
+<body onload="displayCarPosition(${car.location.latitude?c!''},${car.location.longitude?c!''});">
 [#include '/macro/nav_index_bar.ftl']
-
 <div class="panel panel-default" style="margin-right: 10px; margin-left: 10px; margin-top: 15px;">
     <div class="panel-heading">
         <h2 class="panel-title" align="right"><a href="/account/bookmark?id=${car.id?c}">Add to bookmarks
@@ -125,11 +124,17 @@
         <h3 class="panel-title" align="center" >Location of the car on map</h3>
     </div>
     <div class="panel-body" align="center">
-        <h1>MAP</h1>
+[#--        <div id="carMarketMapControls">
+            <button type="button" class="btn btn-default" onclick="displayUserPosition();">Display your Position</button>
+            <button type="button" class="btn btn-default" onclick="displayCarPosition(${car.location.latitude!''},${car.location.longitude!''});">Display car Position</button>
+            <button type="button" class="btn btn-default" onclick="displayRoute(${car.location.latitude!''},${car.location.longitude!''});">Display Route</button>
+        </div>--]
+        <div id="carMarketMap"></div>
         </div>
 </div>
 
 
-    [#include '/macro/bootstrap_footer.ftl']
+[#include '/macro/bootstrap_footer.ftl']
+[#include '/macro/footer-custom-scripts-for-display.ftl']
 </body>
 </html>
