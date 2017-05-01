@@ -5,22 +5,22 @@ package ro.cmm.domain;
  */
 public class CarLocation {
 
-    private long latitude;
-    private long longtitude;
+    private Double latitude;
+    private Double longitude;
 
-    public long getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(long latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public long getLongtitude() {
-        return longtitude;
+    public Double getLongitude() {
+        return longitude;
     }
 
-    public void setLongtitude(long longtitude) {
-        this.longtitude = longtitude;
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 }

@@ -1,0 +1,69 @@
+[#ftl]
+<html lang="en">
+<title>SignUp Page</title>
+<head>
+[#include '/macro/bootstrap_header.ftl']
+[#include '/macro/header.ftl']
+</head>
+<body>
+[#include '/macro/nav_login_bar.ftl']
+
+[#include '/macro/errors.ftl']
+<div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">
+    <div class="panel-body">
+
+
+        <form method="post" action="/account/save" >
+
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text"
+                       class="form-control" id="firstName" name="firstName"
+                       placeHolder="First Name"autofocus="true" value="${user.firstName!''}"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text"
+                       class="form-control" id="lastName" name="lastName"
+                       placeHolder="Last Name"value="${user.lastName!''}"/>
+            </div>
+            <div class="form-group" style="background-color; grey;">
+                <label for="lastName">Username</label>
+                <input type="text"
+                       class="form-control" id="userName" name="userName"
+                       placeHolder="Username"value="${user.userName!''}" readonly/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Password</label>
+                <input type="text"
+                       class="form-control" id="password" name="password"
+                       placeHolder="Password"value="${user.password!''}"/>
+            </div>
+            <div class="form-group" style="background-color; grey;">
+                <label for="lastName">Role</label>
+                <input type="text"
+                       class="form-control" id="role" name="role"
+                       placeHolder="Role"value="${user.role!''}" readonly/>
+            </div>
+            </div>
+
+        [#if user.id??]
+            <input name="id" type="hidden" value="${user.id?c}"/>
+        [/#if]
+
+            <div class="container-fluid">
+                <div class="col-lg-6 col-lg-offset-3 text-center">
+                    <button type="submit" class="btn btn-default">SAVE</button>
+                </div>
+            </div>
+        <br>
+    </form>
+
+    </div>
+</div>
+
+
+
+[#include '/macro/bootstrap_footer.ftl']
+</body>
+</html>

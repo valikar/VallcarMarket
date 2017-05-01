@@ -1,0 +1,22 @@
+element.style {
+}
+
+.u-margin-bottom-9 {
+    margin-bottom: 9px;
+}
+
+.g-row {
+    margin-left: -9px;
+    margin-right: -9px;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.g-col-6 {
+    width: 50%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+}

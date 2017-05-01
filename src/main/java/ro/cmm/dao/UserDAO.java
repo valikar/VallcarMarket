@@ -10,4 +10,9 @@ import java.util.Collection;
 public interface UserDAO extends BaseDAO<User> {
     Collection<User> searchByName(String query);
 
+    void addBookmark(long id);
+
+    void deleteBookmark(long id);
+
+    Collection<Long> getBookmarkList(long id);
 }

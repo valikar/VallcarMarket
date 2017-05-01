@@ -8,9 +8,7 @@ import ro.cmm.domain.CarLocation;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author Emanuel Pruker
@@ -20,8 +18,8 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
     // strict pentru testing, dupa ce vom trece la DB vom putea sterge constructorul de mai jos
     public IMCarDAO() {
         CarLocation location = new CarLocation();
-        location.setLatitude(45);
-        location.setLongtitude(25);
+        location.setLatitude(45d);
+        location.setLongitude(25d);
 
         Car car = new Car();
         car.setManufacturer("Audi");
@@ -90,5 +88,24 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         return all;
     }
 
+    @Override
+    public Car findBySellerId(long id) {
+        for (Car car : getAll()){
+            if (car.getSellerId()==id)
+                return car;
+        }
+        return null;
+    }
 
+    @Override
+    public Collection<Car> getCarListOfSeller(long id) {
+        Collection<Car> cars = new LinkedList<>();
+
+        for (Car car : getAll()){
+            if (car.getSellerId()==id){
+                cars.add(car);
+            }
+        }
+        return cars;
+    }
 }
