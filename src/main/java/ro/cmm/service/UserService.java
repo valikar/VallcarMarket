@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by Joseph Saturday, 15.04.2017 at 01:57.
  */
-
+@Service
 public class UserService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 

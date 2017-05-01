@@ -1,4 +1,4 @@
-package ro.cmm.controller;
+package ro.cmm.mvc;
 
 
 import org.slf4j.Logger;

@@ -124,8 +124,8 @@ public abstract class BaseCarServiceTest {
 
     @Before
     public void setValidCarLocation() {
-        location.setLatitude(45);
-        location.setLongtitude(25);
+        location.setLatitude(45d);
+        location.setLongitude(25d);
     }
 
     @After
@@ -409,8 +409,8 @@ public abstract class BaseCarServiceTest {
     public void test_add_latitude_too_big() throws ValidationException {
         Car car = new Car();
 
-        location.setLatitude(95);
-        location.setLongtitude(25);
+        location.setLatitude(95d);
+        location.setLongitude(25d);
 
         car.setManufacturer("Audi");
         car.setType("A5");
@@ -432,8 +432,8 @@ public abstract class BaseCarServiceTest {
     public void test_add_longitude_too_big() throws ValidationException {
         Car car = new Car();
 
-        location.setLatitude(45);
-        location.setLongtitude(185);
+        location.setLatitude(45d);
+        location.setLongitude(185d);
 
         car.setManufacturer("Audi");
         car.setType("A5");
@@ -455,8 +455,8 @@ public abstract class BaseCarServiceTest {
     public void test_add_img_url_null() throws ValidationException {
         Car car = new Car();
 
-        location.setLatitude(45);
-        location.setLongtitude(185);
+        location.setLatitude(45d);
+        location.setLongitude(185d);
 
         car.setManufacturer("Audi");
         car.setType("A5");
