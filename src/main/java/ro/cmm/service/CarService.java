@@ -1,17 +1,18 @@
 package ro.cmm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
-import ro.cmm.domain.Car;
-import ro.cmm.domain.EngineType;
-import ro.cmm.domain.TransmissionType;
+import ro.cmm.domain.*;
 
 import java.util.*;
+
 
 /**
  * Created by Tamas on 4/22/2017.
  */
+@Service
 public class CarService {
 
     @Autowired
@@ -20,10 +21,6 @@ public class CarService {
     public Collection<Car> listAll() {
         return dao.getAll();
     }
-
-//    public Collection<Car> search(String query) {
-//        return dao.searchByName(query);
-//    }
 
     public boolean delete(Long id) {
         Car car = dao.findById(id);
@@ -34,12 +31,26 @@ public class CarService {
 
         return false;
     }
+    public Collection<Car> search(SearchModel searchModel) {
+        String manufacturer = searchModel.getManufacturer();
+        String type = searchModel.getType();
+        int fromYear = searchModel.getFabricationYear();
+        int mileAge = searchModel.getMileAge();
+        int price = searchModel.getPrice();
+        List<EngineType> engineTypes = searchModel.getEngineType();
+        List<TransmissionType> transmissionTypes = searchModel.getTransmissionType();
+        String color = searchModel.getColour();
+        Collection<Car> cars = search(manufacturer, type, fromYear,
+                                    mileAge, price, engineTypes, transmissionTypes, color);
+        return cars;
+
+    }
 
     public Collection<Car> search(String manufacturer, String type, int fromYear,
-                                  int mileAge, int price, EngineType[] engineTypes,
-                                  TransmissionType[] transmissionTypes, String colour) {
+                                  int mileAge, int price, List<EngineType> engineTypes,
+                                  List<TransmissionType> transmissionTypes, String colour) {
 
-        Collection<Car> allCars = dao.getAll();
+        Collection<Car> allCars = new LinkedList<>(dao.getAll());
 
         if (manufacturer != null) {
             allCars = filterByManufacturer(manufacturer, allCars);
@@ -56,14 +67,14 @@ public class CarService {
         if (price != 0) {
             allCars = filterByPrice(price, allCars);
         }
-        if (engineTypes.length != EngineType.values().length) {
+        if (EngineType.values().length != engineTypes.size()) {
             allCars = filterByEngineType(engineTypes, allCars);
         }
-        if (transmissionTypes.length != TransmissionType.values().length) {
+        if (TransmissionType.values().length != transmissionTypes.size()) {
             allCars = filterByTransmissionType(transmissionTypes, allCars);
         }
         if (colour != null) {
-            allCars = filterByPrice(price, allCars);
+            allCars = filterByColour(colour, allCars);
         }
 
         return allCars;
@@ -71,14 +82,14 @@ public class CarService {
 
     private Collection<Car> filterByManufacturer(String manufacturer, Collection<Car> cars) {
 
-        if(!manufacturer.equalsIgnoreCase("all")) {
+        if(!manufacturer.equalsIgnoreCase("All")) {
             cars.removeIf((Car car) -> !car.getManufacturer().equalsIgnoreCase(manufacturer));
         }
         return cars;
     }
 
     private Collection<Car> filterByType(String type, Collection<Car> cars) {
-        if(!type.equalsIgnoreCase("all")) {
+        if(!type.equalsIgnoreCase("All")) {
             cars.removeIf((Car car) -> !car.getType().equalsIgnoreCase(type));
         }
         return cars;
@@ -102,18 +113,16 @@ public class CarService {
         return cars;
     }
 
-    private Collection<Car> filterByEngineType(EngineType[] engineTypes, Collection<Car> cars) {
-        List<EngineType> engineTypeList = Arrays.asList(engineTypes);
+    private Collection<Car> filterByEngineType(List<EngineType> engineTypes, Collection<Car> cars) {
 
-        cars.removeIf((Car car) -> !engineTypeList.contains(car.getEngineType()));
+        cars.removeIf((Car car) -> !engineTypes.contains(car.getEngineType()));
 
         return cars;
     }
 
-    private Collection<Car> filterByTransmissionType(TransmissionType[] transmissionTypes, Collection<Car> cars) {
-        List<TransmissionType> transmissionTypeList = Arrays.asList(transmissionTypes);
+    private Collection<Car> filterByTransmissionType(List<TransmissionType> transmissionTypes, Collection<Car> cars) {
 
-        cars.removeIf((Car car) -> !transmissionTypeList.contains(car.getTransmissionType()));
+        cars.removeIf((Car car) -> !transmissionTypes.contains(car.getTransmissionType()));
 
         return cars;
     }
@@ -215,5 +224,44 @@ public class CarService {
 
     public void setDao(CarDAO dao) {
         this.dao = dao;
+    }
+
+    // am folosit-o in ListAndSearchController pentru a incarca
+    // marcile si tipurile disponibile
+    // dupa ce trecem la DB real vom putea sterge/modifica metoda asta
+    public Map<String,Set<String>> getManufacturersAndTypes() {
+        Map<String,Set<String>> cars = new TreeMap<>();
+        Set<String> audis = new TreeSet<>();
+        audis.add("A4");
+        audis.add("A5");
+        Set<String> vw = new TreeSet<>();
+        vw.add("Golf");
+        vw.add("Polo");
+
+        Set<String> ferraris = new TreeSet<>();
+        ferraris.add("Laferrari");
+        ferraris.add("458 Italia");
+
+        Set<String> all = new TreeSet<>();
+        all.add("All");
+
+        cars.put("Audi",audis);
+        cars.put("Vw", vw);
+        cars.put("Ferrari", ferraris);
+        cars.put("All", all);
+
+        return cars;
+    }
+
+    // same shit as above
+    public List<String> getAllColors() {
+        List<String> colors = new LinkedList<>();
+        colors.add("All");
+        colors.add("Blue");
+        colors.add("Red");
+        colors.add("Green");
+        colors.add("White");
+
+        return colors;
     }
 }
