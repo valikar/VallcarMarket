@@ -14,7 +14,7 @@
 
 <div class="container">
 
-    <form method="post" action="/car/save">
+    <form method="post" action="/car/save" enctype="multipart/form-data">
         <div class="row">
             <div class="col-lg-6">
                 <label>Manufacturer</label>
@@ -105,7 +105,7 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label for="carPhoto">Car Image</label>
-                    <input type="file" id="carPhoto">
+                    <input type="file" id="carPhoto" name="file" accept="image/*">
                     <p class="help-block">Insert an image of the car here.</p>
                 </div>
             </div>
@@ -142,7 +142,7 @@
         <input type="submit" value="upload">
     </form>
 
-[#if filePath??]<img src="/ext-img/${filePath}"/>[/#if]
+[#--[#if filePath??]<img src="/ext-img/${filePath}"/>[/#if]--]
 //-->
 </div>
 

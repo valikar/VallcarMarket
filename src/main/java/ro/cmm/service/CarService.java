@@ -191,22 +191,22 @@ public class CarService {
 
         // validare foarte basic, mai tarziu putem modifica sa fie mai smecher
         // valoarea default pt CarLocation poate sa fie (0,0)
-        if (car.getLocation() == null) {
-            errors.add("Car location does not exist");
-        } else {
-            double carsLatitude = car.getLocation().getLatitude();
-            double carsLongitude = car.getLocation().getLongitude();
-            if (carsLatitude < 0 || carsLatitude > 90) {
-                errors.add("Invalid latitude value for the cars coordinates");
-            }
-            if (carsLongitude < 0 || carsLongitude > 180) {
-                errors.add("Invalid longitude value for the cars coordinates");
-            }
-        }
-
-        if(car.getImgUrl() == null) {
-            errors.add("Img url is empty.");
-        }
+//        if (car.getLocation() == null) {
+//            errors.add("Car location does not exist");
+//        } else {
+//            double carsLatitude = car.getLocation().getLatitude();
+//            double carsLongitude = car.getLocation().getLongitude();
+//            if (carsLatitude < 0 || carsLatitude > 90) {
+//                errors.add("Invalid latitude value for the cars coordinates");
+//            }
+//            if (carsLongitude < 0 || carsLongitude > 180) {
+//                errors.add("Invalid longitude value for the cars coordinates");
+//            }
+//        }
+//
+//        if(car.getImgUrl() == null) {
+//            errors.add("Img url is empty.");
+//        }
 
         // la isAvailable nu prea avem ce valida
 

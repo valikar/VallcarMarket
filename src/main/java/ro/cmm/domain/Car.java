@@ -134,4 +134,22 @@ public class Car extends AbstractModel {
     public void setMatriculated(boolean matriculated) {
         isMatriculated = matriculated;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "imgUrl='" + imgUrl + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", type='" + type + '\'' +
+                ", fabricationYear=" + fabricationYear +
+                ", mileAge=" + mileAge +
+                ", price=" + price +
+                ", engineType=" + engineType +
+                ", transmissionType=" + transmissionType +
+                ", colour='" + colour + '\'' +
+                ", extras='" + extras + '\'' +
+                ", location=" + location +
+                ", isMatriculated=" + isMatriculated +
+                '}';
+    }
 }
