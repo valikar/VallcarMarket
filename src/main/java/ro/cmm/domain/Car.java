@@ -21,7 +21,17 @@ public class Car extends AbstractModel {
     private boolean available;
     private boolean isMatriculated;
 
+    private int views;
     private long sellerId;
+
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
 
     public long getSellerId() {
         return sellerId;

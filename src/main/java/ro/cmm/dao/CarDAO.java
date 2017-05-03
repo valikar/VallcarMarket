@@ -15,5 +15,7 @@ public interface CarDAO extends BaseDAO<Car>{
     Car findBySellerId(long id);
 
     Collection<Car> getCarListOfSeller(long id);
+
+    void countViews(long id);
 }
 

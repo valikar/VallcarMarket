@@ -54,6 +54,7 @@ ${cars?size} car[s] added
                 <th>Extras </th>
                 <th>Seller Id </th>
                 <th>Car Id </th>
+                <th>Views </th>
             </tr>
 
         [#list cars as car]
@@ -69,12 +70,14 @@ ${cars?size} car[s] added
                 <td>${car.extras}</td>
                 <td>${car.sellerId}</td>
                 <td>${car.id}</td>
+                <td>${car.views}</td>
             </tr>
         [/#list]
         </table>
 
     </div>
 </div>
+
 
 [#include '/macro/bootstrap_footer.ftl']
 </body>

@@ -117,21 +117,24 @@
     </div>
     </div>
     </div>
+
+    <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:800px">
+        <div class="panel-heading">
+            <h3 class="panel-title" align="center" >Location of the car on map</h3>
+        </div>
+        <div class="panel-body" align="center">
+        [#--        <div id="carMarketMapControls">
+                    <button type="button" class="btn btn-default" onclick="displayUserPosition();">Display your Position</button>
+                    <button type="button" class="btn btn-default" onclick="displayCarPosition(${car.location.latitude!''},${car.location.longitude!''});">Display car Position</button>
+                    <button type="button" class="btn btn-default" onclick="displayRoute(${car.location.latitude!''},${car.location.longitude!''});">Display Route</button>
+                </div>--]
+            <div id="carMarketMap"></div>
+        </div>
+    </div>
+
+    <div class="panel-footer" align="center">Views: ${car.views}</div>
 </div>
 
-<div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:800px">
-    <div class="panel-heading">
-        <h3 class="panel-title" align="center" >Location of the car on map</h3>
-    </div>
-    <div class="panel-body" align="center">
-[#--        <div id="carMarketMapControls">
-            <button type="button" class="btn btn-default" onclick="displayUserPosition();">Display your Position</button>
-            <button type="button" class="btn btn-default" onclick="displayCarPosition(${car.location.latitude!''},${car.location.longitude!''});">Display car Position</button>
-            <button type="button" class="btn btn-default" onclick="displayRoute(${car.location.latitude!''},${car.location.longitude!''});">Display Route</button>
-        </div>--]
-        <div id="carMarketMap"></div>
-        </div>
-</div>
 
 
 [#include '/macro/bootstrap_footer.ftl']

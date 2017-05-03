@@ -90,7 +90,9 @@ public class AccountController {
         ModelAndView modelAndView = new ModelAndView("/car/display");
         if (carService.getById(id)!=null) {
             Car car = carService.getById(id);
-
+            if (carService.getById(id).getSellerId()!=loginService.getImUserDAO().getId()) {
+                carService.countViews(id);
+            }
             modelAndView.addObject("car", car);
         }
         return modelAndView;

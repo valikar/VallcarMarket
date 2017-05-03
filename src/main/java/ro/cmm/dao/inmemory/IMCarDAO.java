@@ -108,4 +108,11 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         }
         return cars;
     }
+
+    @Override
+    public void countViews(long id) {
+        Car car = findById(id);
+        car.setViews(car.getViews()+1);
+        update(car);
+    }
 }

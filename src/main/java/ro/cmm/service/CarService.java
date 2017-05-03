@@ -323,5 +323,7 @@ public class CarService {
     }
 
 
-
+    public void countViews(long id) {
+    dao.countViews(id);
+    }
 }
