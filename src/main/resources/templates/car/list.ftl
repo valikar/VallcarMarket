@@ -23,6 +23,7 @@ You have ${cars?size} car[s] in the system
                 <th></th>
                 <th>View </th>
                 <th>Edit </th>
+                <th>Views </th>
                 <th>Check In/Out</th>
                 <th>Checked In</th>
             </tr>
@@ -39,6 +40,7 @@ You have ${cars?size} car[s] in the system
                 <td> <a href="/account/list/car/edit?id=${car.id?c}">
                     <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
                 </td>
+                <td>${car.views}</td>
                 <td>
                     Aici vine un buton sau ceva
                 </td>
