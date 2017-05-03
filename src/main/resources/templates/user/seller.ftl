@@ -22,7 +22,7 @@
         </div>
             <div class="col-lg-4 button-holder">
                 <label>Make a search</label>
-                <a class="btn btn-default" href="index.html" role="button"><i class="fa fa-edit" aria-hidden="true"></i> Search</a>
+                <a class="btn btn-default" href="/search" role="button"><i class="fa fa-edit" aria-hidden="true"></i> Search</a>
             </div>
                 <div class="col-lg-4 button-holder">
                     <label>Edit your account</label>
