@@ -198,7 +198,8 @@
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="thumbnail">
-							<h3>Aici vine imageinea: "${car.imgUrl}"</h3>
+							[#if car.imgUrl??]<img src="/ext-img/${car.imgUrl}"/>[/#if]
+							[#--<h3>Aici vine imageinea: "{car.imgUrl}"</h3>--]
 							[#--<img src="http://cdn.bmwblog.com/wp-content/uploads/BMW-M3-GTS-Garching-03.jpg">--]
 						</div>
 					</div>

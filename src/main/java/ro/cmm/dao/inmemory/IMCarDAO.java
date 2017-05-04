@@ -1,6 +1,5 @@
 package ro.cmm.dao.inmemory;
 
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
@@ -8,12 +7,14 @@ import ro.cmm.domain.CarLocation;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
  * @author Emanuel Pruker
  */
-@Component
+
 public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
     // strict pentru testing, dupa ce vom trece la DB vom putea sterge constructorul de mai jos
     public IMCarDAO() {
