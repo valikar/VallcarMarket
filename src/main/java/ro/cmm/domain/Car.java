@@ -19,7 +19,7 @@ public class Car extends AbstractModel {
     private String extras;
     private CarLocation location;
     private boolean available;
-    private boolean isMatriculated;
+    private boolean Matriculated;
 
     private int views;
     private long sellerId;
@@ -138,11 +138,11 @@ public class Car extends AbstractModel {
     }
 
     public boolean isMatriculated() {
-        return isMatriculated;
+        return Matriculated;
     }
 
     public void setMatriculated(boolean matriculated) {
-        isMatriculated = matriculated;
+        Matriculated = matriculated;
     }
 
     @Override
@@ -159,7 +159,7 @@ public class Car extends AbstractModel {
                 ", colour='" + colour + '\'' +
                 ", extras='" + extras + '\'' +
                 ", location=" + location +
-                ", isMatriculated=" + isMatriculated +
+                ", isMatriculated=" + Matriculated +
                 '}';
     }
 }

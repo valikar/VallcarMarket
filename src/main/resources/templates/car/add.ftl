@@ -69,7 +69,7 @@
                                [#if car.transmissionType?? && car.transmissionType == 'MANUAL']checked[/#if]>Manual</input>
 					  </span>
                     <span class="input-group-addon">
-                          <input type="radio" name="engineType" value="AUTOMATIC"
+                          <input type="radio" name="transmissionType" value="AUTOMATIC"
                                  [#if car.transmissionType?? && car.transmissionType == 'AUTOMATIC']checked[/#if]>Automatic</input>
                       	</span>
                 </div>
@@ -85,12 +85,12 @@
                 <label>Matriculation status</label>
                 <div class="input-group">
                                 <span class="input-group-addon">
-									<input type="radio" name="isMatriculated"
-                                           value=1>Yes, the car is matriculated</input>
+									<input type="radio" name="Matriculated"
+                                           value="true">Yes, the car is matriculated</input>
                                 </span>
                     <span class="input-group-addon">
-                       				<input type="radio" name="isMatriculated"
-                                           value=0>No, the car isn't matriculated</input>
+                       				<input type="radio" name="Matriculated"
+                                           value="false">No, the car isn't matriculated</input>
 									 </span>
                 </div>
 
