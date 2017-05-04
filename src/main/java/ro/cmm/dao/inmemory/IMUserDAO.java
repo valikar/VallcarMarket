@@ -16,6 +16,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     private Role role;
     private long id;
+    private String fullName;
     private Map<Long,Collection<Long>> bookmarks = new HashMap<>();
 
     @Override
@@ -69,6 +70,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
             if (user.getUserName().equals(userName)&&user.getPassword().equals(password)){
                role=user.getRole();
                id=user.getId();
+               fullName = user.getFirstName() + " " +user.getLastName();
                 return true;
             }
         }
@@ -81,6 +83,10 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     public long getId() {
         return id;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
     @Override

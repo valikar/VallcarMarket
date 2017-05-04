@@ -10,18 +10,30 @@
 </head>
 <body onload="displayCarPosition(${car.location.latitude?c!''},${car.location.longitude?c!''});">
 [#include '/macro/nav_index_bar.ftl']
+
 <div class="panel panel-default" style="margin-right: 10px; margin-left: 10px; margin-top: 15px;">
     <div class="panel-heading">
-        <h2 class="panel-title" align="right"><a href="/account/bookmark?id=${car.id?c}">Add to bookmarks
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
-        </h2>
+        <div class="g-row u-margin-bottom-9">
+            <div class="g-col-6">
+                <strong align="center">${car.manufacturer} ${car.type}</strong>
+            </div>
+            <div class="g-col-6">
+                <h2 class="panel-title" align="right">
+                    <a href="/account/bookmark?id=${car.id?c}">Bookmark
+                        <span  class="glyphicon glyphicon-heart" aria-hidden="true" ></span></a>
+                    <a href="" style="margin-left: 15px; margin-right: 3px;">Contact
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true" style="margin-right: 5px;"></span>
+                    </a>
+                </h2>
+            </div>
+        </div>
+
     </div>
     <div class="panel-body">
 
 
 [#include '/macro/errors.ftl']
-
+    <img src="/ext-img/${car.imgUrl}" style="float: right;margin-top: 30px;margin-right: 30px;" />
 
 <div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
@@ -97,15 +109,7 @@
                 <strong>Matriculated</strong>
             </div>
             <div class="g-col-6">
-                <strong>Edit HERE</strong>
-            </div>
-        </div>
-        <div class="g-row u-margin-bottom-9">
-            <div class="g-col-6">
-                <strong>Available</strong>
-            </div>
-            <div class="g-col-6">
-                <strong>Edit HERE</strong>
+                <strong>${car.matriculated?string('Yes','No')}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">

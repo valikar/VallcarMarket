@@ -102,6 +102,10 @@ public class UserService {
             errors.add("Empty Role");
         }
 
+        if (!user.getPassword().equals(user.getPasswordValidation())){
+            errors.add("Passwords don`t match");
+        }
+
         if (!errors.isEmpty()) {
             throw new ValidationException(errors.toArray(new String[]{}));
         }
@@ -117,4 +121,5 @@ public class UserService {
     public Collection<Long> getBookmarks(long id){
         return dao.getBookmarkList(id);
     }
+
 }

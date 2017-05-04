@@ -35,9 +35,15 @@
             </div>
             <div class="form-group">
                 <label for="lastName">Password</label>
-                <input type="text"
+                <input type="password"
                        class="form-control" id="password" name="password"
                        placeHolder="password"value="${user.password!''}"/>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Password Validation</label>
+                <input type="password"
+                       class="form-control" id="password" name="password"
+                       placeHolder="password"value="${user.passwordValidation!''}"/>
             </div>
             <div class="panel-body">
                     <div class="btn-group-justified">
