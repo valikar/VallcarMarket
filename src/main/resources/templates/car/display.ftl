@@ -33,7 +33,7 @@
 
 
 [#include '/macro/errors.ftl']
-    <img src="/ext-img/${car.imgUrl}" style="float: right;margin-top: 30px;margin-right: 30px;" />
+    <img src="/ext-img/${car.imgUrl}" style="float: right;margin-top: 10px;margin-right: 10px; height: 400px;" />
 
 <div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
