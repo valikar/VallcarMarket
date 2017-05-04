@@ -85,11 +85,11 @@
                 <label>Matriculation status</label>
                 <div class="input-group">
                                 <span class="input-group-addon">
-									<input type="radio" name="Matriculated"
+									<input type="radio" name="matriculated"
                                            value="true">Yes, the car is matriculated</input>
                                 </span>
                     <span class="input-group-addon">
-                       				<input type="radio" name="Matriculated"
+                       				<input type="radio" name="matriculated"
                                            value="false">No, the car isn't matriculated</input>
 									 </span>
                 </div>
