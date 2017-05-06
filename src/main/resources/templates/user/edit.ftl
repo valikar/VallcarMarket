@@ -6,7 +6,7 @@
 [#include '/macro/header.ftl']
 </head>
 <body>
-[#include '/macro/nav_login_bar.ftl']
+[#include '/macro/nav_index_bar.ftl']
 
 [#include '/macro/errors.ftl']
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">

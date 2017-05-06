@@ -22,6 +22,7 @@
                 <th>Price</th>
                 <th></th>
                 <th>View </th>
+                <th>Contact </th>
                 <th>Delete </th>
             </tr>
 
@@ -33,6 +34,9 @@
                 <td></td>
                 <td><a href="/account/list/car?id=${car.id?c}">
                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                </td>
+                <td><a href="/account/list/car/conversation?id=${car.id?c}" style="margin-left: 15px; margin-right: 3px;">
+                        <span class="glyphicon glyphicon-comment" aria-hidden="true" style="margin-right: 5px;"></span></a>
                 </td>
                 <td><a href="/account/bookmark/delete?id=${car.id?c}">
                     <span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a>

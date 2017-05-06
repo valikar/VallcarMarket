@@ -8,14 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import ro.cmm.domain.Car;
-import ro.cmm.domain.User;
-import ro.cmm.service.CarService;
-import ro.cmm.service.LoginService;
-import ro.cmm.service.UserService;
-import ro.cmm.service.ValidationException;
+import ro.cmm.domain.*;
+import ro.cmm.service.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -35,6 +32,9 @@ public class AccountController {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private MessageService messageService;
 
     @RequestMapping("/seller")
     public ModelAndView seller() {
@@ -138,5 +138,111 @@ public class AccountController {
     public String bookmark(long id){
     userService.addBookmark(id);
     return "redirect:/account/list/car?id="+Long.toString(id);
+    }
+
+
+    @RequestMapping("/message/list")
+    public ModelAndView conversations(long id){
+        ModelAndView modelAndView = new ModelAndView("/message/list");
+        if (loginService.getImUserDAO().getRole().equals(Role.SELLER)) {
+            if (messageService.listAllConversationsByReceiver(id) != null) {
+                Collection<Conversation> conversations = messageService.listAllConversationsByReceiver(id);
+                modelAndView.addObject("conversations", conversations);
+            } else {
+                Collection<Conversation> conversations = new LinkedList<>();
+                modelAndView.addObject("conversations", conversations);
+            }
+        }else{
+            if (messageService.listAllConversationsBySender(id)!=null){
+                Collection<Conversation> conversations = messageService.listAllConversationsBySender(id);
+                modelAndView.addObject("conversations",conversations);
+            }else {
+                Collection<Conversation> conversations = new LinkedList<>();
+                modelAndView.addObject("conversations",conversations);
+            }
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("/message/list/conversation")
+    public ModelAndView conversation (long id){
+    ModelAndView modelAndView = new ModelAndView("/message/conversation");
+
+    Conversation conversation = messageService.getById(id);
+    Message message = new Message();
+
+    message.setConversationId(id);
+    message.setSenderId(conversation.getSenderId());
+    message.setReceiverId(conversation.getReceiverId());
+
+    modelAndView.addObject("conversation", conversation);
+    modelAndView.addObject("message", message);
+
+    Collection<Message> messages =messageService.listMessages(id);
+    modelAndView.addObject("messages",messages);
+
+    return modelAndView;
+    }
+
+
+    @RequestMapping("/list/car/conversation")
+    public ModelAndView newConversation(long id){
+        ModelAndView modelAndView = new ModelAndView();
+
+        Conversation conversation = new Conversation();
+        Message message = new Message();
+
+        conversation.setReceiverId(carService.getById(id).getSellerId());
+        conversation.setSenderId(loginService.getImUserDAO().getId());
+        conversation.setTitle(carService.getById(id).getManufacturer()+" "+carService.getById(id).getType());
+        conversation.setSenderName(userService.getById(conversation.getSenderId()).getFirstName()+
+                " "+userService.getById(conversation.getSenderId()).getLastName());
+        conversation.setReceiverName(userService.getById(conversation.getReceiverId()).getFirstName()+
+                " "+userService.getById(conversation.getReceiverId()).getLastName());
+
+        if (messageService.verifyConversation(conversation)) {
+             modelAndView.setViewName("/message/new");
+            messageService.newConversation(conversation);
+            message.setConversationId(conversation.getId());
+            message.setSenderId(conversation.getSenderId());
+            message.setReceiverId(conversation.getReceiverId());
+            modelAndView.addObject("conversation", conversation);
+            modelAndView.addObject("message", message);
+            System.out.println(conversation.getId());
+            System.out.println(message.getConversationId());
+        }else{
+            conversation.setId(messageService.getIdByConversation(conversation));
+            System.out.println(conversation.getId());
+            RedirectView redirectView = new RedirectView("/account/message/list/conversation?id=" + Long.toString(conversation.getId()));
+            modelAndView.setView(redirectView);
+        }
+        return modelAndView;
+    }
+
+//    @RequestMapping("/message/list/conversation/reply")
+//    public ModelAndView reply(@ModelAttribute("message") Message message){
+//        ModelAndView modelAndView = new ModelAndView();
+//        RedirectView redirectView = new RedirectView("/message/list/conversation?id="+Long.toString(message.getConversationId()));
+//        messageService.newMessage(message.getConversationId(),message);
+//        modelAndView.addObject(redirectView);
+//        return modelAndView;
+//    }
+
+//    @RequestMapping("/message/list/conversation/reply")
+//    public String reply(@ModelAttribute("message") Message message,
+//                        @ModelAttribute("conversation") Conversation conversation){
+//        System.out.println(conversation.getId()+"+-+-+-+-++-+-+-+");
+//
+//        messageService.newMessage(message.getConversationId(),message);
+//        return "redirect:/message/list/conversation?id="+Long.toString(conversation.getId());
+//    }
+
+    @RequestMapping("/message/list/conversation/reply")
+    public String reply(long id,@ModelAttribute("message") Message message){
+        message.setConversationId(id);
+        message.setReceiverId(messageService.getMessageId(id,loginService.getImUserDAO().getId()));
+        message.setSenderId(loginService.getImUserDAO().getId());
+        messageService.newMessage(id,message);
+        return "redirect:/account/message/list/conversation?id="+Long.toString(id);
     }
 }

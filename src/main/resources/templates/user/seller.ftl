@@ -21,7 +21,7 @@
             </div>
         <br>
             <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                <a class="btn btn-default" href="" role="button"><i class="fa fa-envelope" aria-hidden="true"></i>  View Your Messages</a>
+                <a class="btn btn-default" href="/account/message/list?id=${currentUser.id?c}" role="button"><i class="fa fa-envelope" aria-hidden="true"></i>  View Your Messages</a>
             </div>
         <br>
         <div class="btn-group btn-group-justified" role="group" aria-label="...">

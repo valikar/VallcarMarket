@@ -21,7 +21,7 @@
                 <h2 class="panel-title" align="right">
                     <a href="/account/bookmark?id=${car.id?c}">Bookmark
                         <span  class="glyphicon glyphicon-heart" aria-hidden="true" ></span></a>
-                    <a href="" style="margin-left: 15px; margin-right: 3px;">Contact
+                    <a href="/account/list/car/conversation?id=${car.id?c}" style="margin-left: 15px; margin-right: 3px;">Contact
                         <span class="glyphicon glyphicon-comment" aria-hidden="true" style="margin-right: 5px;"></span>
                     </a>
                 </h2>

@@ -136,7 +136,7 @@
     
     <!--
     am comentat sectiunea asta ca faceam teste, lasati momentan asa.
-[#if message??]${message}[/#if]
+[#if conversation??]${conversation}[/#if]
     <form action="file" method="post" enctype="multipart/form-data">
         <input type="file" name="file" accept="image/*">
         <input type="submit" value="upload">
