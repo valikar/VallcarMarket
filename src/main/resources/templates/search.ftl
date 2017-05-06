@@ -156,16 +156,16 @@
 											<label><input type="checkbox" name="engineType" [#if searchModel.engineType?seq_contains('DIESEL')]checked[/#if] value="DIESEL">diesel</label>
 										</div>
 						  			</div>
-						  			<div class="col-lg-3">
-						  				<div class="checkbox">
-											<label><input type="checkbox" name="engineType" [#if searchModel.engineType?seq_contains('HYBRID')]checked[/#if] value="HYBRID">hybrid</label>
-										</div>
-						  			</div>
                                     <div class="col-lg-3">
                                         <div class="checkbox">
                                             <label><input type="checkbox" name="engineType" [#if searchModel.engineType?seq_contains('ELECTRIC')]checked[/#if] value="ELECTRIC">electric</label>
                                         </div>
                                     </div>
+						  			<div class="col-lg-3">
+						  				<div class="checkbox">
+											<label><input type="checkbox" name="engineType" [#if searchModel.engineType?seq_contains('HYBRID')]checked[/#if] value="HYBRID">hybrid</label>
+										</div>
+						  			</div>
 						  		</div>
 						  	</div>
 						</div>
@@ -249,7 +249,7 @@
 						<br>
 						<div class="row">
 							<div class="col-lg-12 right-align">
-								<a class="btn btn-default" href="#" role="button"><i class="fa fa-eye" aria-hidden="true"></i> View Car</a>
+								<a class="btn btn-default" href="/list/car?id=${car.id?c}" role="button"><i class="fa fa-eye" aria-hidden="true"></i> View Car</a>
 							</div>
 						</div>
 					</div>

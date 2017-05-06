@@ -268,9 +268,9 @@ public class CarService {
         return dao.findById(id);
     }
 
-    public Car getBySellerId(long id){
-        return dao.findBySellerId(id);
-    }
+//    public Car getBySellerId(long id){
+//        return dao.findBySellerId(id);
+//    }
 
     public Collection<Car> getCarListOfSeller (long id){
         return dao.getCarListOfSeller(id);

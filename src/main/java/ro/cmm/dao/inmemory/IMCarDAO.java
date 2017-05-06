@@ -1,6 +1,5 @@
 package ro.cmm.dao.inmemory;
 
-import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.CarLocation;
@@ -8,7 +7,6 @@ import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -72,38 +70,38 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         update(car3);
     }
 
-    @Override
-    public Collection<Car> searchByName(String query) {
-        if (StringUtils.isEmpty(query)) {
-            return getAll();
-        }
+//    @Override
+//    public Collection<Car> searchByName(String query) {
+//        if (StringUtils.isEmpty(query)) {
+//            return getAll();
+//        }
+//
+//        Collection<Car> all = new LinkedList<Car>(getAll());
+//        for (Iterator<Car> it = all.iterator(); it.hasNext();) {
+//            Car car = it.next();
+//            String ss = car.getManufacturer() + " " + car.getType();
+//            if (!ss.toLowerCase().contains(query.toLowerCase())) {
+//                it.remove();
+//            }
+//        }
+//        return all;
+//    }
+//
+//    @Override
+//    public Car findBySellerId(long id) {
+//        for (Car car : getAll()){
+//            if (car.getSellerId()==id)
+//                return car;
+//        }
+//        return null;
+//    }
 
-        Collection<Car> all = new LinkedList<Car>(getAll());
-        for (Iterator<Car> it = all.iterator(); it.hasNext();) {
-            Car car = it.next();
-            String ss = car.getManufacturer() + " " + car.getType();
-            if (!ss.toLowerCase().contains(query.toLowerCase())) {
-                it.remove();
-            }
-        }
-        return all;
-    }
-
     @Override
-    public Car findBySellerId(long id) {
-        for (Car car : getAll()){
-            if (car.getSellerId()==id)
-                return car;
-        }
-        return null;
-    }
-
-    @Override
-    public Collection<Car> getCarListOfSeller(long id) {
+    public Collection<Car> getCarListOfSeller(long sellerId) {
         Collection<Car> cars = new LinkedList<>();
 
         for (Car car : getAll()){
-            if (car.getSellerId()==id){
+            if (car.getSellerId()== sellerId){
                 cars.add(car);
             }
         }

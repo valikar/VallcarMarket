@@ -3,6 +3,7 @@ package ro.cmm.dao.db;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.EngineType;
@@ -23,6 +24,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
     private JdbcTemplate jdbcTemplate;
 
     private String carDetailsForQuery = "Select c.id, " +
+                                        "c.seller_id, " +
                                         "cm.manufacturer_name, " +
                                         "ct.type_name, " +
                                         "c.price, " +
@@ -35,12 +37,14 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "c.matriculation_status, " +
                                         "cp.picture_src " +
 
+
                                         "from cars c join car_manufacturers cm on c.manufacturer_id = cm.id "+
                                         "join car_types ct on c.type_id = ct.id "+
                                         "join engine_types et on c.engine_type_id = et.id "+
                                         "join transmission_types tt on c.transmission_type_id = tt.id "+
                                         "join colours co on c.colour_id = co.id " +
                                         "join car_pictures cp on c.id = cp.car_id";
+
 
     public JdbcTemplateCarDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -54,36 +58,118 @@ public class JdbcTemplateCarDAO implements CarDAO {
     }
 
     @Override
-    public Collection<Car> searchByName(String query) {
-        return null;
-    }
-
-    @Override
     public Car findById(Long id) {
         String query = carDetailsForQuery +
-                "where id = ?";
-
-        return null;
+                " where id = ?";
+        Collection<Car> cars =  jdbcTemplate.query(query, new CarResultSetExtractor(), id);
+        Car result;
+        if (cars.size() != 1) {
+            result = null;
+        } else {
+            result = cars.iterator().next();
+        }
+        return result;
     }
 
     @Override
     public Car update(Car model) {
-        return null;
-    }
+        String sql = "";
+        Long newId = null;
+        if (model.getId() > 0) {
+            sql = "update cars set manufacturer_id=(SELECT id FROM car_manufacturers WHERE manufacturer_name =?)," +
+                                 " type_id=(SELECT id FROM car_types WHERE type_name =?)," +
+                                 " price=?," +
+                                 " mileage=?," +
+                                 " registration_year=?," +
+                                 " extras=?, " +
+                                 " engine_type_id=(SELECT id FROM engine_types WHERE engine_type =?)," +
+                                 " transmission_type_id=(SELECT id FROM transmission_types WHERE transmission_type =?)," +
+                                 " colour_id=(SELECT id FROM colours WHERE colour =?)," +
+                                 " matriculation_status = ? "
+                    + "where id = ? returning id";
+            newId = jdbcTemplate.queryForObject(sql, new Object[]{
+                    model.getManufacturer(),
+                    model.getType(),
+                    model.getPrice(),
+                    model.getMileAge(),
+                    model.getFabricationYear(),
+                    model.getExtras(),
+                    model.getEngineType().name(),
+                    model.getTransmissionType().name(),
+                    model.getColour(),
+                    model.isMatriculated(),
+                    model.getId()
 
-    @Override
-    public Car findBySellerId(long id) {
-        return null;
+                    }, new RowMapper<Long>() {
+                        public Long mapRow(ResultSet rs, int arg1) throws SQLException {
+                            return rs.getLong(1);
+                        }
+                    });
+
+            jdbcTemplate.update("UPDATE car_pictures SET picture_src = ?" +
+                                            " WHERE car_id=?",
+                    model.getImgUrl(),
+                    newId);
+
+        } else {
+            sql = "insert into cars (manufacturer_id, type_id, price, mileage, registration_year, extras, " +
+                                    "engine_type_id, transmission_type_id, colour_id, matriculation_status) "
+                    + "values ((SELECT id FROM car_manufacturers WHERE manufacturer_name =?)," +
+                             " (SELECT id FROM car_types WHERE type_name =?)," +
+                             " ?," +
+                             " ?," +
+                             " ?," +
+                             " ?," +
+                             " (SELECT id FROM engine_types WHERE engine_type =?)," +
+                             " (SELECT id FROM transmission_types WHERE transmission_type =?)," +
+                             " (SELECT id FROM colours WHERE colour =?)," +
+                             " ?" +
+                             ") returning id";
+
+            newId = jdbcTemplate.queryForObject(sql, new Object[]{
+                    model.getManufacturer(),
+                    model.getType(),
+                    model.getPrice(),
+                    model.getMileAge(),
+                    model.getFabricationYear(),
+                    model.getExtras(),
+                    model.getEngineType().name(),
+                    model.getTransmissionType().name(),
+                    model.getColour(),
+                    model.isMatriculated()
+
+            }, new RowMapper<Long>() {
+                public Long mapRow(ResultSet rs, int arg1) throws SQLException {
+                    return rs.getLong(1);
+                }
+            });
+
+            jdbcTemplate.update("INSERT INTO car_pictures(picture_src, car_id) VALUES(?, ?)",
+                                    model.getImgUrl(),
+                                    newId);
+        }
+        model.setId(newId);
+
+        return model;
+
     }
 
     @Override
     public boolean delete(Car model) {
-        return false;
+        boolean flag1 = jdbcTemplate.update("delete from cars where id=?", model.getId()) > 0;
+        boolean flag2 = jdbcTemplate.update("delete from car_pictures where car_id=?", model.getId()) > 0;
+        if(flag1 && flag2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public Collection<Car> getCarListOfSeller(long id) {
-        return null;
+    public Collection<Car> getCarListOfSeller(long sellerId) {
+        String query = carDetailsForQuery +
+                " where seller_id = ?";
+        return  jdbcTemplate.query(query, new CarResultSetExtractor(), sellerId);
     }
 
     @Override
@@ -113,6 +199,15 @@ public class JdbcTemplateCarDAO implements CarDAO {
 //        }
 //    }
 
+//    private static class CarRowMapper implements RowMapper<Car> {
+//        @Override
+//        public Car mapRow(ResultSet rs, int rowNum) throws SQLException {
+//            CarResultSetExtractor carResultSetExtractor = new CarResultSetExtractor();
+//            Collection<Car> cars = carResultSetExtractor.extractData(rs);
+//            return cars.iterator().next();
+//        }
+//    }
+
     private static class CarResultSetExtractor implements ResultSetExtractor<Collection<Car>> {
         @Override
         public Collection<Car> extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -127,6 +222,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
                 } else {
                     Car car = new Car();
                     car.setId(id);
+                    car.setSellerId(rs.getLong("seller_id"));
                     car.setManufacturer(rs.getString("manufacturer_name"));
                     car.setType(rs.getString("type_name"));
                     car.setPrice(rs.getInt("price"));
