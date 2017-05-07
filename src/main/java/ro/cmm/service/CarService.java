@@ -228,40 +228,33 @@ public class CarService {
     // am folosit-o in ListAndSearchController pentru a incarca
     // marcile si tipurile disponibile
     // dupa ce trecem la DB real vom putea sterge/modifica metoda asta
-    public Map<String,Set<String>> getManufacturersAndTypes() {
-        Map<String,Set<String>> cars = new TreeMap<>();
-        Set<String> audis = new TreeSet<>();
-        audis.add("A4");
-        audis.add("A5");
-        Set<String> vw = new TreeSet<>();
-        vw.add("Golf");
-        vw.add("Polo");
+    public Map<String, List<String>> getManufacturersAndTypes() {
+//        Map<String,List<String>> cars = new TreeMap<>();
+//        List<String> audis = new LinkedList<>();
+//        audis.add("A4");
+//        audis.add("A5");
+//        List<String> vw = new LinkedList<>();
+//        vw.add("Golf");
+//        vw.add("Polo");
+//
+//        List<String> ferraris = new LinkedList<>();
+//        ferraris.add("Laferrari");
+//        ferraris.add("458 Italia");
+//
+//        List<String> all = new LinkedList<>();
+//        all.add("All");
+//
+//        cars.put("Audi",audis);
+//        cars.put("Vw", vw);
+//        cars.put("Ferrari", ferraris);
+//        cars.put("All", all);
 
-        Set<String> ferraris = new TreeSet<>();
-        ferraris.add("Laferrari");
-        ferraris.add("458 Italia");
-
-        Set<String> all = new TreeSet<>();
-        all.add("All");
-
-        cars.put("Audi",audis);
-        cars.put("Vw", vw);
-        cars.put("Ferrari", ferraris);
-        cars.put("All", all);
-
-        return cars;
+        return dao.getCarManufacturersAndTypes();
     }
 
     // same shit as above
     public List<String> getAllColors() {
-        List<String> colors = new LinkedList<>();
-        colors.add("All");
-        colors.add("Blue");
-        colors.add("Red");
-        colors.add("Green");
-        colors.add("White");
-
-        return colors;
+        return dao.getAllColors();
     }
 
     public Car getById(long id) {

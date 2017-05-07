@@ -141,7 +141,17 @@ INSERT INTO car_types(type_name, manufacturer_id) VALUES
 	('525', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'BMW')),
 	('530', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'BMW'));
 
-INSERT INTO colours(colour) values('Red');
+INSERT INTO colours(colour) values('Black'),
+                                  ('Blue'),
+                                  ('Green'),
+                                  ('Grey'),
+                                  ('Orange'),
+                                  ('Purple'),
+                                  ('Red'),
+                                  ('Silver'),
+                                  ('White'),
+                                  ('Yellow');
+
 INSERT INTO engine_types(engine_type) values('PETROL');
 INSERT INTO transmission_types(transmission_type) values('MANUAL');
 INSERT INTO roles(role_name) VALUES('ADMIN'), ('BUYER'), ('SELLER');
@@ -151,10 +161,12 @@ INSERT INTO users(first_name, last_name, email, phone_number, role_id) VALUES('P
 INSERT INTO cars(manufacturer_id, seller_id, type_id, price, mileage,
 				registration_year, extras, engine_type_id,
 				transmission_type_id, colour_id, matriculation_status) values(1,1,1,5000,123456, 2005,
-				 'ceva', 1,	1, 1, TRUE);
+				 'ceva', 1,	1, 3, TRUE);
 
 INSERT INTO car_pictures(picture_src, car_id) VALUES('1493835101567_egoista.jpg', 1);
 
 -- SELECT manufacturer_name, type_name FROM car_manufacturers JOIN car_types ON car_manufacturers.id = car_types.manufacturer_id;
+
+Select manufacturer_name, type_name FROM car_manufacturers JOIN car_types ON car_types.manufacturer_id = car_manufacturers.id;
 
 

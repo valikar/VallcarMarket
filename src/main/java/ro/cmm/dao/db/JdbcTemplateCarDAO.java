@@ -12,9 +12,7 @@ import ro.cmm.domain.TransmissionType;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Tamas on 5/4/2017.
@@ -106,10 +104,22 @@ public class JdbcTemplateCarDAO implements CarDAO {
                         }
                     });
 
-            jdbcTemplate.update("UPDATE car_pictures SET picture_src = ?" +
-                                            " WHERE car_id=?",
-                    model.getImgUrl(),
-                    newId);
+//            cand vom avea mai multe poze la o masina va trebui sa facem update la ele in felul urmator
+//            List<Long> imageIds = jdbcTemplate.query("SELECT id from car_pictures WHERE car_id = ?",
+//                    new RowMapper<Long>() {
+//                        @Override
+//                        public Long mapRow(ResultSet rs, int rowNum) throws SQLException {
+//                            return rs.getLong(1);
+//                        }
+//                    });
+//            for (Long id : imageIds) {
+//                jdbcTemplate.update("UPDATE car_pictures SET picture_src = ? WHERE id=?",
+//                        model.getImgUrl(),
+//                        id);
+//            }
+            jdbcTemplate.update("UPDATE car_pictures SET picture_src = ? WHERE car_id=?",
+                                model.getImgUrl(),
+                                newId);
 
         } else {
             sql = "insert into cars (manufacturer_id, type_id, price, mileage, registration_year, extras, " +
@@ -173,6 +183,37 @@ public class JdbcTemplateCarDAO implements CarDAO {
     }
 
     @Override
+    public Map<String, List<String>> getCarManufacturersAndTypes() {
+        Map<String, List<String>> map = new LinkedHashMap<>();
+        List<String> all = new LinkedList<>();
+        all.add("All");
+        map.put("All",all);
+        map.putAll(
+                jdbcTemplate.query("Select manufacturer_name, type_name FROM car_types JOIN car_manufacturers" +
+                                " ON car_types.manufacturer_id = car_manufacturers.id;",
+                        new ResultSetExtractor<Map<String, List<String>>>() {
+                            @Override
+                            public Map<String, List<String>> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                                Map<String, List<String>> manufacturersAndTypes = new LinkedHashMap<>();
+                                while (rs.next()) {
+                                    String manufacturerName = rs.getString("manufacturer_name");
+                                    String typeName = rs.getString("type_name");
+
+                                    if (!manufacturersAndTypes.keySet().contains(manufacturerName)) {
+                                        manufacturersAndTypes.put(manufacturerName, new LinkedList<>());
+                                    }
+                                    manufacturersAndTypes.get(manufacturerName).add(typeName);
+                                }
+                                return manufacturersAndTypes;
+                            }
+                        })
+        );
+        return map;
+    }
+
+//    SELECT type_name from car_types where manufacturer_id = (SELECT id FROM car_manufacturers WHERE manufacturer_name = ?)
+
+    @Override
     public void countViews(long id) {
 
     }
@@ -207,6 +248,23 @@ public class JdbcTemplateCarDAO implements CarDAO {
 //            return cars.iterator().next();
 //        }
 //    }
+
+
+    @Override
+    public List<String> getAllColors() {
+        List<String> allColours = new LinkedList<>();
+        allColours.add("All");
+        allColours.addAll(
+                jdbcTemplate.query("SELECT colour FROM colours", new RowMapper<String>() {
+                    @Override
+                    public String mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        return rs.getString("colour");
+                    }
+                })
+        );
+        allColours.add("Other");
+        return allColours;
+    }
 
     private static class CarResultSetExtractor implements ResultSetExtractor<Collection<Car>> {
         @Override

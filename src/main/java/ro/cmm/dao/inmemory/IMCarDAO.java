@@ -6,8 +6,7 @@ import ro.cmm.domain.CarLocation;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.*;
 
 /**
  * @author Emanuel Pruker
@@ -113,5 +112,15 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         Car car = findById(id);
         car.setViews(car.getViews()+1);
         update(car);
+    }
+
+    @Override
+    public Map<String, List<String>> getCarManufacturersAndTypes() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllColors() {
+        return null;
     }
 }
