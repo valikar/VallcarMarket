@@ -85,6 +85,7 @@ public class IMMessageDAO implements MessageDAO {
             return null;
     }
 
+    @Override
     public long getIdByConversation(Conversation conversation) {
         for (Conversation c : messagesList.keySet()){
             if (c.equals(conversation)){
@@ -92,5 +93,14 @@ public class IMMessageDAO implements MessageDAO {
             }
         }
         return 0;
+    }
+
+    @Override
+    public Collection<List<Message>> getAll() {
+        return messagesList.values();
+    }
+
+    public void clearMemory(){
+        messagesList.clear();
     }
 }

@@ -21,8 +21,12 @@ public interface MessageDAO {
 
     Collection<Conversation> getAllConversationsByReceiver(long id);
 
+    long getIdByConversation(Conversation conversation);
+
     List<Message> getMessages(long id);
 
     Conversation getById(long id);
+
+    Collection<List<Message>> getAll();
 
 }

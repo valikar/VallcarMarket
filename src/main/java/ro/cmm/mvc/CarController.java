@@ -52,7 +52,7 @@ public class CarController {
 
         if (!bindingResult.hasErrors()) {
                 try {
-                    car.setSellerId(userLoginService.getImUserDAO().getId());
+                    car.setSellerId(userLoginService.getDao().getId());
 
                     //saving the file and setting the cars imgUrl field
                     File localFile = new File(localFilesDir, System.currentTimeMillis() +"_" + file.getOriginalFilename());
