@@ -24,7 +24,7 @@ You have ${cars?size} car[s] in the system
                 <th>View </th>
                 <th>Edit </th>
                 <th>Views </th>
-                <th>Check In/Out</th>
+                <th>Confirm car location</th>
                 <th>Checked In</th>
             </tr>
 
@@ -42,7 +42,7 @@ You have ${cars?size} car[s] in the system
                 </td>
                 <td>${car.views}</td>
                 <td>
-                    Aici vine un buton sau ceva
+                    <input type="checkbox"  onclick="generateRandomCarLocation();" [#if car.location??]unchecked[#else ]checked[/#if]/>
                 </td>
                 <td>
                     <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available==false]unchecked[#else ]checked[/#if]/>
@@ -54,5 +54,6 @@ You have ${cars?size} car[s] in the system
 </div>
 
 [#include '/macro/bootstrap_footer.ftl']
+[#include '/macro/footer-custom-scripts-for-list.ftl']
 </body>
 </html>
