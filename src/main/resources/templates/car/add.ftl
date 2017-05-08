@@ -123,8 +123,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <label for="extras">Description</label>
-                <textarea id="extras"  type="text" value="[#if car.extras??]${car.extras}[/#if]" class="form-control" rows="3" cols="4" name="extras"
-                          placeholder="Description"></textarea>
+                <textarea id="extras"  type="text" class="form-control" rows="3" cols="4" name="extras"
+                          placeholder="Description">[#if car.extras??]${car.extras}[/#if]</textarea>
             </div>
         </div>
         <br>
@@ -134,7 +134,8 @@
             [#if car.id??]
                 <input name="id" type="hidden" value="${car.id?c}"/>
             [/#if]
-                <input class="btn btn-default btn-lg" value="Add car" type="submit"/>
+                <input class="btn btn-default btn-lg" value="[#if car.id > 0]Save changes[#else]Add car[/#if]"
+                       type="submit"/>
             </div>
         </div>
     </form>
@@ -146,10 +147,6 @@
 
 
 [#include '/macro/bootstrap_footer.ftl']
-<script>
-    function add() {
-        document.getElementById("extras").value = "[#if car.extras??]${car.extras}[/#if]";
-    }
-</script>
+
 </body>
 </html>
