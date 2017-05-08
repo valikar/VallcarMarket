@@ -17,6 +17,8 @@ import ro.cmm.service.ValidationException;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Emanuel Pruker
@@ -34,10 +36,20 @@ public class CarController {
     @Autowired
     private LoginService userLoginService;
 
+    private final Map<Long, String> carToLastImgURL = new HashMap<>();
+
     @RequestMapping("/add")
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("car/add");
         modelAndView.addObject("car", new Car());
+        return modelAndView;
+    }
+
+    @RequestMapping("/edit")
+    public ModelAndView edit(long id) {
+        Car car = carService.getById(id);
+        ModelAndView modelAndView = new ModelAndView("car/add");
+        modelAndView.addObject("car", car);
         return modelAndView;
     }
 
@@ -55,9 +67,18 @@ public class CarController {
                     car.setSellerId(userLoginService.getDao().getId());
 
                     //saving the file and setting the cars imgUrl field
-                    File localFile = new File(localFilesDir, System.currentTimeMillis() +"_" + file.getOriginalFilename());
-                    file.transferTo(localFile);
-                    car.setImgUrl(localFile.getName());
+                    long id = car.getId();
+                    if(file != null && !file.getOriginalFilename().isEmpty()) {
+                        File localFile = new File(localFilesDir, System.currentTimeMillis() +"_" + file.getOriginalFilename());
+                        file.transferTo(localFile);
+                        String imgUrl = localFile.getName();
+                        car.setImgUrl(imgUrl);
+
+                        carToLastImgURL.put(id,imgUrl);
+                    } else if (carToLastImgURL.containsKey(id)){
+
+                        car.setImgUrl(carToLastImgURL.get(id));
+                    }
 
                     carService.save(car);
 

@@ -37,7 +37,7 @@ You have ${cars?size} car[s] in the system
                 <td><a href="/account/list/car?id=${car.id?c}">
                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
                 </td>
-                <td> <a href="/account/list/car/edit?id=${car.id?c}">
+                <td> <a href="/car/edit?id=${car.id?c}">
                     <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
                 </td>
                 <td>${car.views}</td>
@@ -45,7 +45,7 @@ You have ${cars?size} car[s] in the system
                     Aici vine un buton sau ceva
                 </td>
                 <td>
-                    <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available==false]unchecked[#else ]checked[/#if]/>
+                    <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available?? && car.available==false]unchecked[#else ]checked[/#if]/>
                 </td>
             </tr>
         [/#list]

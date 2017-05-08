@@ -18,8 +18,8 @@ public class Car extends AbstractModel {
     private String colour;
     private String extras;
     private CarLocation location;
-    private boolean available;
-    private boolean matriculated;
+    private Boolean available;
+    private Boolean matriculated;
 
     private int views;
     private long sellerId;
@@ -129,19 +129,19 @@ public class Car extends AbstractModel {
         this.location = location;
     }
 
-    public boolean isAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
-    public boolean isMatriculated() {
+    public Boolean getMatriculated() {
         return matriculated;
     }
 
-    public void setMatriculated(boolean matriculated) {
+    public void setMatriculated(Boolean matriculated) {
         this.matriculated = matriculated;
     }
 
