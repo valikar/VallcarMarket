@@ -31,11 +31,11 @@
             <div class="col-lg-6">
                 <label>Fabrication Year</label>
                 <input name="fabricationYear" type="input" value="${car.fabricationYear!''}" class="form-control"
-                       placeholder="1900">
+                       placeholder="From 1900 to present">
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input name="mileAge" type="input" value="${car.mileAge!''}" class="form-control" placeholder="120000">
+                <input name="mileAge" type="input" value="${car.mileAge!''}" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
@@ -78,19 +78,19 @@
         <br>
         <div class="row">
             <div class="col-lg-6">
-                <label>Color</label>
-                <input name="colour" type="input" value="${car.color!''}" class="form-control" placeholder="Color">
+                <label>Colour</label>
+                <input name="colour" type="input" value="${car.colour!''}" class="form-control" placeholder="Color">
             </div>
             <div class="col-lg-6">
                 <label>Matriculation status</label>
                 <div class="input-group">
                                 <span class="input-group-addon">
 									<input type="radio" name="matriculated"
-                                           value="true">Yes, the car is matriculated</input>
+                                           value="true"[#if car.matriculated?? && car.matriculated == true]checked[/#if]>Yes, the car is matriculated</input>
                                 </span>
                     <span class="input-group-addon">
                        				<input type="radio" name="matriculated"
-                                           value="false">No, the car isn't matriculated</input>
+                                           value="false"[#if car.matriculated?? && car.matriculated == false]checked[/#if]>No, the car isn't matriculated</input>
 									 </span>
                 </div>
 
@@ -103,21 +103,27 @@
                 <input name="price" type="input" value="${car.price!''}" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
+                [#if car.imgUrl??]
                 <div class="form-group">
-                    <label for="carPhoto">Car Image</label>
+                    <label>Car Image</label> <br>
+                    <img src="/ext-img/${car.imgUrl}"/> <br>
+                    <label for="carPhoto">Choose another image</label>
                     <input type="file" id="carPhoto" name="file" accept="image/*">
-                    <p class="help-block">Insert an image of the car here.</p>
                 </div>
+                    [#else]
+                        <div class="form-group">
+                            <label for="carPhoto">Car Image</label>
+                            <input type="file" id="carPhoto" name="file" accept="image/*">
+                            <p class="help-block">Insert an image of the car here.</p>
+                        </div>
+                [/#if]
             </div>
         </div>
-
-
         <br>
         <div class="row">
             <div class="col-lg-12">
-                <label>Description</label>
-
-                <textarea name="extras" type="input" value="${car.extras!''}" class="form-control" rows="3"
+                <label for="extras">Description</label>
+                <textarea id="extras"  type="text" value="${car.extras!''}" class="form-control" rows="3" cols="4" name="extras"
                           placeholder="Description"></textarea>
             </div>
         </div>
@@ -133,17 +139,9 @@
         </div>
     </form>
     <br>
-    
-    <!--
-    am comentat sectiunea asta ca faceam teste, lasati momentan asa.
-[#if conversation??]${conversation}[/#if]
-    <form action="file" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="upload">
-    </form>
 
-[#--[#if filePath??]<img src="/ext-img/${filePath}"/>[/#if]--]
-//-->
+[#if message??]${message}[/#if]
+
 </div>
 
 

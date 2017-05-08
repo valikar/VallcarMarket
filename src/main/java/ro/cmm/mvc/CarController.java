@@ -41,6 +41,14 @@ public class CarController {
         return modelAndView;
     }
 
+    @RequestMapping("/edit")
+    public ModelAndView edit(long id) {
+        Car car = carService.getById(id);
+        ModelAndView modelAndView = new ModelAndView("car/add");
+        modelAndView.addObject("car", car);
+        return modelAndView;
+    }
+
     @RequestMapping("/save")
     public ModelAndView save(@Valid  Car car,
                              BindingResult bindingResult,

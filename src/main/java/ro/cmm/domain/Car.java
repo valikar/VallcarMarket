@@ -10,16 +10,16 @@ public class Car extends AbstractModel {
     private String imgUrl;
     private String manufacturer;
     private String type;
-    private int fabricationYear;
-    private int mileAge;
-    private int price;
+    private Integer fabricationYear;
+    private Integer mileAge;
+    private Integer price;
     private EngineType engineType;
     private TransmissionType transmissionType;
     private String colour;
     private String extras;
     private CarLocation location;
-    private boolean available;
-    private boolean matriculated;
+    private Boolean available;
+    private Boolean matriculated;
 
     private int views;
     private long sellerId;
@@ -65,27 +65,27 @@ public class Car extends AbstractModel {
         this.imgUrl = imgUrl;
     }
 
-    public int getFabricationYear() {
+    public Integer getFabricationYear() {
         return fabricationYear;
     }
 
-    public void setFabricationYear(int fabricationYear) {
+    public void setFabricationYear(Integer fabricationYear) {
         this.fabricationYear = fabricationYear;
     }
 
-    public int getMileAge() {
+    public Integer getMileAge() {
         return mileAge;
     }
 
-    public void setMileAge(int mileAge) {
+    public void setMileAge(Integer mileAge) {
         this.mileAge = mileAge;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -129,19 +129,19 @@ public class Car extends AbstractModel {
         this.location = location;
     }
 
-    public boolean isAvailable() {
+    public Boolean isAvailable() {
         return available;
     }
 
-    public void setAvailable(boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
-    public boolean isMatriculated() {
+    public Boolean isMatriculated() {
         return matriculated;
     }
 
-    public void setMatriculated(boolean matriculated) {
+    public void setMatriculated(Boolean matriculated) {
         this.matriculated = matriculated;
     }
 
