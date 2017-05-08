@@ -75,4 +75,13 @@ public class Conversation extends AbstractModel{
         result = 31 * result + (title != null ? title.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Conversation{" +
+                "senderId=" + senderId +
+                ", receiverId=" + receiverId +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }

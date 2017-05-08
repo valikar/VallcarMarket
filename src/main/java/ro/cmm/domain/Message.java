@@ -64,4 +64,15 @@ public class Message {
     public void setConversationId(long conversationId) {
         this.conversationId = conversationId;
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "conversationId=" + conversationId +
+                ", senderId=" + senderId +
+                ", receiverId=" + receiverId +
+                ", message='" + message + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }

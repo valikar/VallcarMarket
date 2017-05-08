@@ -19,19 +19,23 @@ public class LoginService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginService.class);
 
     @Autowired
-    private IMUserDAO imUserDAO;
+    private IMUserDAO dao;
 
     public boolean isRegistered(LoginUser loginUser){
     LOGGER.debug(loginUser.getUserName()+" tries to authenticate");
     boolean isRegistered = false;
-    if (imUserDAO.isRegistered(loginUser.getUserName(),loginUser.getPassword())){
+    if (dao.isRegistered(loginUser.getUserName(),loginUser.getPassword())){
         isRegistered=true;
         LOGGER.debug(loginUser.getUserName()+" is registered");
+    }
+    if (!isRegistered){
+        LOGGER.debug(loginUser.getUserName()+" is not registered");
     }
     return isRegistered;
     }
 
     public void save(LoginUser loginUser) throws ValidationException{
+        LOGGER.debug("Validating user in login page");
         validate(loginUser.getUserName(),loginUser.getPassword());
     }
 
@@ -45,7 +49,7 @@ public class LoginService {
             errors.add("Empty Password");
         }
 
-        if(!imUserDAO.isRegistered(userName, password)) {
+        if(!dao.isRegistered(userName, password)) {
             errors.add("Invalid Credentials");
         }
 
@@ -54,7 +58,11 @@ public class LoginService {
         }
     }
 
-    public IMUserDAO getImUserDAO() {
-        return imUserDAO;
+    public void setDao(IMUserDAO dao) {
+        this.dao = dao;
+    }
+
+    public IMUserDAO getDao() {
+        return dao;
     }
 }

@@ -54,9 +54,9 @@ public class LoginController {
                 userLoginService.save(user);
                 if (userLoginService.isRegistered(user)) {
                     request.getSession().setAttribute("currentUser", user);
-                    user.setRole(userLoginService.getImUserDAO().getRole());
-                    user.setId(userLoginService.getImUserDAO().getId());
-                    user.setFullName(userLoginService.getImUserDAO().getFullName());
+                    user.setRole(userLoginService.getDao().getRole());
+                    user.setId(userLoginService.getDao().getId());
+                    user.setFullName(userLoginService.getDao().getFullName());
                     modelAndView.setView(new RedirectView("/"));
                 }
                 return modelAndView;
