@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/myList.css">
 </head>
-<body onload="autoEnable()">
+<body onload="autoEnable();brandChanged();onLoad();">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	  <div class="container">
 	    <!-- Brand and toggle get grouped for better mobile display -->
@@ -63,7 +63,7 @@
 						<div class="row">
 							<div class="form-group col-lg-6">
                                 <label>Manufacturer</label>
-                                <select name="manufacturer" id="manufacturer" onchange="submitForm()" class="form-control">
+                                <select name="manufacturer" id="manufacturer" onchange="autoEnable();brandChanged();" class="form-control">
                                     <optgroup label="Manufacturer">
                                        	[#list map?keys as manufacturer]
                                        	    <option value="${manufacturer}" [#if searchModel.manufacturer == manufacturer]selected[/#if]>${manufacturer}</option>
@@ -83,10 +83,10 @@
 								  <optgroup label="Type">
 									  <option value="All" [#if searchModel.type?? && searchModel.type == 'All']selected[/#if] >All</option>
 
-									  [#assign types = map[searchModel.manufacturer]]
-									      [#list types as type]
-                                              <option value="${type}" [#if searchModel.type?? && searchModel.type == type]selected[/#if]>${type}</option>
-									      [/#list]
+									  [#--[#assign types = map[searchModel.manufacturer]]--]
+									      [#--[#list types as type]--]
+                                              [#--<option value="${type}" [#if searchModel.type?? && searchModel.type == type]selected[/#if]>${type}</option>--]
+									      [#--[/#list]--]
 								  </optgroup>
 								</select>
 						  	</div>
@@ -261,6 +261,38 @@
 
 	</div>
 
+    <script>
+		[#assign car_manufacuters = map?keys]
+        var DATA = {
+		[#list car_manufacuters as car_manufacturer]
+            '${car_manufacturer}' : [ 'All', [#list map[car_manufacturer] as type]'${type}',[/#list] ],
+		[/#list]
+        };
+
+        function brandChanged() {
+            var manufacturers = document.getElementById('manufacturer');
+            var brand = manufacturers.options[manufacturers.selectedIndex].value;
+            var models = DATA[brand];
+            var modelSelect = document.getElementById('type');
+            modelSelect.style.display = 'block';
+            modelSelect.innerHTML = '';
+
+            for (var i = 0; i < models.length; i++) {
+                var model = models[i];
+                var opt = document.createElement('option');
+                opt.value = model;
+                opt.innerHTML = model;
+                modelSelect.appendChild(opt);
+            }
+
+        }
+        function onLoad() {
+            var manufacturer = document.getElementById('manufacturer').value;
+            if(manufacturer != "All") {
+                document.getElementById('type').value = "${searchModel.type}";
+            }
+        }
+    </script>
 	<script src="/js/search.js"></script>
 <!-- <script type="text/javascript" src="index.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
