@@ -45,7 +45,7 @@ You have ${cars?size} car[s] in the system
                     Aici vine un buton sau ceva
                 </td>
                 <td>
-                    <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available==false]unchecked[#else ]checked[/#if]/>
+                    <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available?? && car.available==false]unchecked[#else ]checked[/#if]/>
                 </td>
             </tr>
         [/#list]

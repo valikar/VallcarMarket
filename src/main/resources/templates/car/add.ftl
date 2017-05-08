@@ -8,7 +8,7 @@
 [#include '/macro/header.ftl']
 
 </head>
-<body>
+<body onload="add()">
 [#include '/macro/nav_index_bar.ftl']
 [#include '/macro/errors.ftl']
 
@@ -30,12 +30,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Fabrication Year</label>
-                <input name="fabricationYear" type="input" value="${car.fabricationYear!''}" class="form-control"
+                <input name="fabricationYear" type="input" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
                        placeholder="From 1900 to present">
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input name="mileAge" type="input" value="${car.mileAge!''}" class="form-control" placeholder="In Kilometers">
+                <input name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0000"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input name="price" type="input" value="${car.price!''}" class="form-control" placeholder="Price">
+                <input name="price" type="input" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
                 [#if car.imgUrl??]
@@ -123,7 +123,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <label for="extras">Description</label>
-                <textarea id="extras"  type="text" value="${car.extras!''}" class="form-control" rows="3" cols="4" name="extras"
+                <textarea id="extras"  type="text" value="[#if car.extras??]${car.extras}[/#if]" class="form-control" rows="3" cols="4" name="extras"
                           placeholder="Description"></textarea>
             </div>
         </div>
@@ -146,6 +146,10 @@
 
 
 [#include '/macro/bootstrap_footer.ftl']
-
+<script>
+    function add() {
+        document.getElementById("extras").value = "[#if car.extras??]${car.extras}[/#if]";
+    }
+</script>
 </body>
 </html>

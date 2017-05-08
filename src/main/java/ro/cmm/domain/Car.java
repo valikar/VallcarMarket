@@ -10,9 +10,9 @@ public class Car extends AbstractModel {
     private String imgUrl;
     private String manufacturer;
     private String type;
-    private Integer fabricationYear;
-    private Integer mileAge;
-    private Integer price;
+    private int fabricationYear;
+    private int mileAge;
+    private int price;
     private EngineType engineType;
     private TransmissionType transmissionType;
     private String colour;
@@ -65,27 +65,27 @@ public class Car extends AbstractModel {
         this.imgUrl = imgUrl;
     }
 
-    public Integer getFabricationYear() {
+    public int getFabricationYear() {
         return fabricationYear;
     }
 
-    public void setFabricationYear(Integer fabricationYear) {
+    public void setFabricationYear(int fabricationYear) {
         this.fabricationYear = fabricationYear;
     }
 
-    public Integer getMileAge() {
+    public int getMileAge() {
         return mileAge;
     }
 
-    public void setMileAge(Integer mileAge) {
+    public void setMileAge(int mileAge) {
         this.mileAge = mileAge;
     }
 
-    public Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -129,7 +129,7 @@ public class Car extends AbstractModel {
         this.location = location;
     }
 
-    public Boolean isAvailable() {
+    public Boolean getAvailable() {
         return available;
     }
 
@@ -137,7 +137,7 @@ public class Car extends AbstractModel {
         this.available = available;
     }
 
-    public Boolean isMatriculated() {
+    public Boolean getMatriculated() {
         return matriculated;
     }
 
