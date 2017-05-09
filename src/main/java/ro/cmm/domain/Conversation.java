@@ -13,6 +13,8 @@ public class Conversation extends AbstractModel{
     private String senderName;
     private String receiverName;
 
+    private String lastMessage;
+
 
     public long getSenderId() {
         return senderId;
@@ -55,6 +57,13 @@ public class Conversation extends AbstractModel{
         this.receiverName = receiverName;
     }
 
+    public String getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(String lastMessage) {
+        this.lastMessage = lastMessage;
+    }
 
     @Override
     public boolean equals(Object o) {

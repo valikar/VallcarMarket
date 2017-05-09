@@ -8,7 +8,11 @@
 [#include '/macro/header.ftl']
 
 </head>
+[#if (car.location.latitude)??]
 <body onload="displayCarPosition(${car.location.latitude?c!''},${car.location.longitude?c!''});">
+[#else ]
+<body onload="displayCarPosition(0,0);">
+[/#if]
 [#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-right: 10px; margin-left: 10px; margin-top: 15px;">

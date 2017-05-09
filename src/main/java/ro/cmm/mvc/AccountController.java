@@ -222,11 +222,8 @@ public class AccountController {
             message.setReceiverId(conversation.getReceiverId());
             modelAndView.addObject("conversation", conversation);
             modelAndView.addObject("message", message);
-            System.out.println(conversation.getId());
-            System.out.println(message.getConversationId());
         }else{
             conversation.setId(messageService.getIdByConversation(conversation));
-            System.out.println(conversation.getId());
             RedirectView redirectView = new RedirectView("/account/message/list/conversation?id=" + Long.toString(conversation.getId()));
             modelAndView.setView(redirectView);
         }
@@ -239,6 +236,7 @@ public class AccountController {
         message.setReceiverId(messageService.getMessageId(id,loginService.getDao().getId()));
         message.setSenderId(loginService.getDao().getId());
         messageService.newMessage(id,message);
+        messageService.getById(id).setLastMessage(message.getTime());
         return "redirect:/account/message/list/conversation?id="+Long.toString(id);
     }
 }

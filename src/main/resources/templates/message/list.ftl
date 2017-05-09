@@ -21,6 +21,7 @@
                 <th>Sender</th>
                 <th></th>
                 <th>Conversation </th>
+                <th>Last Message At </th>
             </tr>
 
         [#list conversations as conversation]
@@ -31,6 +32,7 @@
                 <td><a href="/account/message/list/conversation?id=${conversation.id?c}">
                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a>
                 </td>
+                <td>${conversation.lastMessage}</td>
             </tr>
         [/#list]
         </table>
