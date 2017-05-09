@@ -97,6 +97,21 @@ public class AccountController {
         return modelAndView;
     }
 
+
+    @RequestMapping("/list/car/checkIn")
+    public String checkIn(long id) throws ValidationException {
+        Car car = carService.getById(id);
+
+        if (!car.isAvailable()) {
+            car.setAvailable(true);
+            car.setLocation(carService.generateRandomLocationOnCarSave());
+        }else {
+            car.setAvailable(false);
+        }
+        carService.save(car);
+        return "redirect:/account/list?id="+Long.toString(car.getSellerId());
+    }
+
     @RequestMapping("/list")
     public ModelAndView list(long id){
         ModelAndView modelAndView = new ModelAndView("/car/list");
@@ -104,7 +119,7 @@ public class AccountController {
             Collection<Car> cars = carService.getCarListOfSeller(id);
             modelAndView.addObject("cars",cars);
         }else {
-            modelAndView.addObject(new RedirectView("/"));
+            modelAndView.addObject(new RedirectView("/account/list?id="+Long.toString(loginService.getDao().getId())));
         }
         return modelAndView;
     }
