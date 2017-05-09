@@ -24,6 +24,9 @@ public class Car extends AbstractModel {
     private int views;
     private long sellerId;
 
+    public Car(){
+        this.available=false;
+    }
 
     public int getViews() {
         return views;

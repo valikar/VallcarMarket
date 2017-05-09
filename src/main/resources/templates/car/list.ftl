@@ -12,8 +12,7 @@
 [#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:1000px">
-    <div class="panel-heading" ><b>You have ${cars?size} car[s] in the system</b><br>
-    </div>
+    <div class="panel-heading" ><b>You have ${cars?size} car[s] in the system</b><br></div>
     <div class="panel-body">
         <table class="table">
             <tr>

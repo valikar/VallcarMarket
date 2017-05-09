@@ -12,8 +12,8 @@
 [#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:1000px">
-    <b>Conversations List:</b><br>
-    You have ${conversations?size} conversation[s]
+    <div class="panel-heading" ><b>You have ${conversations?size} conversation[s]</b></div>
+
     <div class="panel-body">
         <table class="table">
             <tr>

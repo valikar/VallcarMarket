@@ -102,7 +102,7 @@ public class AccountController {
     public String checkIn(long id) throws ValidationException {
         Car car = carService.getById(id);
 
-        if (!car.isAvailable()) {
+        if (!car.getAvailable()) {
             car.setAvailable(true);
             car.setLocation(carService.generateRandomLocationOnCarSave());
         }else {

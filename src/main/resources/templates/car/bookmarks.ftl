@@ -12,8 +12,8 @@
 [#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:1000px">
-    <b>Cars List:</b><br>
-    You have ${cars?size} car[s] bookmarked
+    <div class="panel-heading" ><b>You have ${cars?size} car[s] bookmarked</b><br></div>
+
     <div class="panel-body">
         <table class="table">
             <tr>
