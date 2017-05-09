@@ -2,7 +2,7 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Add Car Page</title>
+<title>[#if car.id > 0]Edit car page[#else]Add car page[/#if]</title>
 <head>
 [#include '/macro/bootstrap_header.ftl']
 [#include '/macro/header.ftl']

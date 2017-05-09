@@ -134,10 +134,10 @@ public class CarService {
         return cars;
     }
 
+    public Car save(Car car) throws ValidationException {
+        validate(car);car.setLocation(generateRandomLocationOnCarSave());//forced location set!
+        return dao.update(car);
 
-    public void save(Car car) throws ValidationException {
-        validate(car);
-        dao.update(car);
     }
 
     // nu include validare pentru imgURL !!!!!!!!!!!!!!!!!!!!!!!!!
