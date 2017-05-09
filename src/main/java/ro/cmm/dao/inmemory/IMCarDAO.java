@@ -1,7 +1,5 @@
 package ro.cmm.dao.inmemory;
 
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.CarLocation;
@@ -13,7 +11,7 @@ import java.util.*;
 /**
  * @author Emanuel Pruker
  */
-@Component
+
 public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
     // strict pentru testing, dupa ce vom trece la DB vom putea sterge constructorul de mai jos
     public IMCarDAO() {
@@ -71,38 +69,38 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         update(car3);
     }
 
-    @Override
-    public Collection<Car> searchByName(String query) {
-        if (StringUtils.isEmpty(query)) {
-            return getAll();
-        }
+//    @Override
+//    public Collection<Car> searchByName(String query) {
+//        if (StringUtils.isEmpty(query)) {
+//            return getAll();
+//        }
+//
+//        Collection<Car> all = new LinkedList<Car>(getAll());
+//        for (Iterator<Car> it = all.iterator(); it.hasNext();) {
+//            Car car = it.next();
+//            String ss = car.getManufacturer() + " " + car.getType();
+//            if (!ss.toLowerCase().contains(query.toLowerCase())) {
+//                it.remove();
+//            }
+//        }
+//        return all;
+//    }
+//
+//    @Override
+//    public Car findBySellerId(long id) {
+//        for (Car car : getAll()){
+//            if (car.getSellerId()==id)
+//                return car;
+//        }
+//        return null;
+//    }
 
-        Collection<Car> all = new LinkedList<Car>(getAll());
-        for (Iterator<Car> it = all.iterator(); it.hasNext();) {
-            Car car = it.next();
-            String ss = car.getManufacturer() + " " + car.getType();
-            if (!ss.toLowerCase().contains(query.toLowerCase())) {
-                it.remove();
-            }
-        }
-        return all;
-    }
-
     @Override
-    public Car findBySellerId(long id) {
-        for (Car car : getAll()){
-            if (car.getSellerId()==id)
-                return car;
-        }
-        return null;
-    }
-
-    @Override
-    public Collection<Car> getCarListOfSeller(long id) {
+    public Collection<Car> getCarListOfSeller(long sellerId) {
         Collection<Car> cars = new LinkedList<>();
 
         for (Car car : getAll()){
-            if (car.getSellerId()==id){
+            if (car.getSellerId()== sellerId){
                 cars.add(car);
             }
         }
@@ -114,5 +112,15 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
         Car car = findById(id);
         car.setViews(car.getViews()+1);
         update(car);
+    }
+
+    @Override
+    public Map<String, List<String>> getCarManufacturersAndTypes() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllColors() {
+        return null;
     }
 }

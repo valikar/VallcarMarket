@@ -68,19 +68,22 @@ public class CarController {
 
                     //saving the file and setting the cars imgUrl field
                     long id = car.getId();
+                    String imgUrl = null;
                     if(file != null && !file.getOriginalFilename().isEmpty()) {
                         File localFile = new File(localFilesDir, System.currentTimeMillis() +"_" + file.getOriginalFilename());
                         file.transferTo(localFile);
-                        String imgUrl = localFile.getName();
+                        imgUrl = localFile.getName();
                         car.setImgUrl(imgUrl);
 
-                        carToLastImgURL.put(id,imgUrl);
                     } else if (carToLastImgURL.containsKey(id)){
 
                         car.setImgUrl(carToLastImgURL.get(id));
                     }
 
-                    carService.save(car);
+                    car = carService.save(car);
+                    if (id == 0) {
+                        carToLastImgURL.put(car.getId(),imgUrl);
+                    }
 
                     RedirectView redirectView = new RedirectView("/");
                     modelAndView.setView(redirectView);

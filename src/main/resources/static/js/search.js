@@ -14,6 +14,3 @@ function disable() {
 function enable() {
     document.getElementById("type").disabled=false;
 }
-function submitForm() {
-	document.getElementById("forSearch").submit();
-}	

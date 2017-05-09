@@ -2,7 +2,7 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Add Car Page</title>
+<title>[#if car.id > 0]Edit car page[#else]Add car page[/#if]</title>
 <head>
 [#include '/macro/bootstrap_header.ftl']
 [#include '/macro/header.ftl']
@@ -35,7 +35,7 @@
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0000"]}[/#if]" class="form-control" placeholder="In Kilometers">
+                <input name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>

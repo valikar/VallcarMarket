@@ -15,8 +15,8 @@ import ro.cmm.domain.TransmissionType;
 import ro.cmm.service.CarService;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Tamas on 4/24/2017.
@@ -33,7 +33,7 @@ public class ListAndSearchController {
     @RequestMapping("/search")
     public ModelAndView showSearch(SearchModel searchModel, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("search");
-        Map<String,Set<String>> map = carService.getManufacturersAndTypes();
+        Map<String,List<String>> map = carService.getManufacturersAndTypes();
 
         if (searchModel.getManufacturer() == null) {
             searchModel.setManufacturer("All");
@@ -64,7 +64,7 @@ public class ListAndSearchController {
         String searchModelManufacturer = searchModel.getManufacturer();
         String searchModelType = searchModel.getType();
 
-        Set<String> typeListForManufacturer = map.get(searchModelManufacturer);
+        List<String> typeListForManufacturer = map.get(searchModelManufacturer);
 
         if(!typeListForManufacturer.contains(searchModelType)) {
             searchModel.setType("All");

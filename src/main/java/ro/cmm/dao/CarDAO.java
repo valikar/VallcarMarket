@@ -4,17 +4,22 @@ import ro.cmm.domain.Car;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Emanuel Pruker
  */
 public interface CarDAO extends BaseDAO<Car>{
 
-    Collection<Car> searchByName(String query);
+//    Collection<Car> searchByName(String query);
+//
+//    Car findBySellerId(long id);
 
-    Car findBySellerId(long id);
+    Map<String, List<String>> getCarManufacturersAndTypes();
 
-    Collection<Car> getCarListOfSeller(long id);
+    List<String> getAllColors();
+
+    Collection<Car> getCarListOfSeller(long sellerId);
 
     void countViews(long id);
 }
