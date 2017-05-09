@@ -136,7 +136,7 @@ public class CarService {
 
 
     public void save(Car car) throws ValidationException {
-        validate(car);car.setLocation(generateRandomLocationOnCarSave());//forced location set!
+        validate(car);
         dao.update(car);
     }
 
@@ -276,7 +276,7 @@ public class CarService {
         return dao.getCarListOfSeller(id);
     }
 
-    private CarLocation generateRandomLocationOnCarSave(){
+    public CarLocation generateRandomLocationOnCarSave(){
         //car market boundaries;
         Double NWLat = new Double(46.750770);
         Double NWLng = new Double(23.425043);
