@@ -1,4 +1,15 @@
 
+function checkPass() {
+    var pass1 = document.getElementById('password');
+    var pass2 = document.getElementById('passwordValidation');
+    var matchingColor = "#e6ffe6";
+    var notMatchingColor = "#ffe6e6";
+    if(pass1.value == pass2.value){
+        pass2.style.backgroundColor = matchingColor;
+    }else{
+        pass2.style.backgroundColor = notMatchingColor;
+    }
+}
 
 // set constraint values for input fields
 $(document).ready(function() {
@@ -21,6 +32,10 @@ $(document).ready(function() {
     $("#password").attr('required', true);
     $("#password").attr('pattern', "^.{6,30}$");
     $("#password").attr('title', "Password should be 6 - 30 characters long (any character)");
+
+    //passwords must match
+    $("#passwordValidation").attr('required', true);
+    $("#passwordValidation").attr('title', "Passwords must match");
 
     //at least one button checked
     $("#radioBUYER").attr('required', true);

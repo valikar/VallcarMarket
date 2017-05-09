@@ -6,7 +6,7 @@
 [#include '/macro/header.ftl']
 </head>
 <body>
-[#include '/macro/nav_login_bar.ftl']
+[#include '/macro/nav_index_bar.ftl']
 
 [#include '/macro/errors.ftl']
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">
@@ -28,16 +28,22 @@
                        placeHolder="Last Name"value="${user.lastName!''}"/>
             </div>
             <div class="form-group" style="background-color; grey;">
-                <label for="lastName">Username</label>
+                <label for="username">Username</label>
                 <input type="text"
                        class="form-control" id="userName" name="userName"
                        placeHolder="Username"value="${user.userName!''}" readonly/>
             </div>
             <div class="form-group">
-                <label for="lastName">Password</label>
-                <input type="text"
+                <label for="password">Password</label>
+                <input type="password"
                        class="form-control" id="password" name="password"
                        placeHolder="Password"value="${user.password!''}"/>
+            </div>
+            <div class="form-group">
+                <label for="passwordValidation">Password Validation</label>
+                <input type="password"
+                       class="form-control" id="passwordValidation" name="passwordValidation"
+                       placeHolder="Password Validation"value="${user.passwordValidation!''}"/>
             </div>
             <div class="form-group" style="background-color; grey;">
                 <label for="lastName">Role</label>
