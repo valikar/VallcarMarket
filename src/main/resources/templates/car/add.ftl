@@ -2,13 +2,13 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Add Car Page</title>
+<title>[#if car.id > 0]Edit car page[#else]Add car page[/#if]</title>
 <head>
 [#include '/macro/bootstrap_header.ftl']
 [#include '/macro/header.ftl']
 
 </head>
-<body>
+<body onload="add()">
 [#include '/macro/nav_index_bar.ftl']
 [#include '/macro/errors.ftl']
 
@@ -30,12 +30,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Fabrication Year</label>
-                <input name="fabricationYear" type="input" value="${car.fabricationYear!''}" class="form-control"
-                       placeholder="1900">
+                <input name="fabricationYear" type="input" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
+                       placeholder="From 1900 to present">
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input name="mileAge" type="input" value="${car.mileAge!''}" class="form-control" placeholder="120000">
+                <input name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
@@ -69,7 +69,7 @@
                                [#if car.transmissionType?? && car.transmissionType == 'MANUAL']checked[/#if]>Manual</input>
 					  </span>
                     <span class="input-group-addon">
-                          <input type="radio" name="engineType" value="AUTOMATIC"
+                          <input type="radio" name="transmissionType" value="AUTOMATIC"
                                  [#if car.transmissionType?? && car.transmissionType == 'AUTOMATIC']checked[/#if]>Automatic</input>
                       	</span>
                 </div>
@@ -78,19 +78,19 @@
         <br>
         <div class="row">
             <div class="col-lg-6">
-                <label>Color</label>
-                <input name="colour" type="input" value="${car.color!''}" class="form-control" placeholder="Color">
+                <label>Colour</label>
+                <input name="colour" type="input" value="${car.colour!''}" class="form-control" placeholder="Color">
             </div>
             <div class="col-lg-6">
                 <label>Matriculation status</label>
                 <div class="input-group">
                                 <span class="input-group-addon">
-									<input type="radio" name="isMatriculated"
-                                           value=1>Yes, the car is matriculated</input>
+									<input type="radio" name="matriculated"
+                                           value="true"[#if car.matriculated?? && car.matriculated == true]checked[/#if]>Yes, the car is matriculated</input>
                                 </span>
                     <span class="input-group-addon">
-                       				<input type="radio" name="isMatriculated"
-                                           value=0>No, the car isn't matriculated</input>
+                       				<input type="radio" name="matriculated"
+                                           value="false"[#if car.matriculated?? && car.matriculated == false]checked[/#if]>No, the car isn't matriculated</input>
 									 </span>
                 </div>
 
@@ -100,25 +100,31 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input name="price" type="input" value="${car.price!''}" class="form-control" placeholder="Price">
+                <input name="price" type="input" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
+                [#if car.imgUrl??]
                 <div class="form-group">
-                    <label for="carPhoto">Car Image</label>
+                    <label>Car Image</label> <br>
+                    <img src="/ext-img/${car.imgUrl}"/> <br>
+                    <label for="carPhoto">Choose another image</label>
                     <input type="file" id="carPhoto" name="file" accept="image/*">
-                    <p class="help-block">Insert an image of the car here.</p>
                 </div>
+                    [#else]
+                        <div class="form-group">
+                            <label for="carPhoto">Car Image</label>
+                            <input type="file" id="carPhoto" name="file" accept="image/*">
+                            <p class="help-block">Insert an image of the car here.</p>
+                        </div>
+                [/#if]
             </div>
         </div>
-
-
         <br>
         <div class="row">
             <div class="col-lg-12">
-                <label>Description</label>
-
-                <textarea name="extras" type="input" value="${car.extras!''}" class="form-control" rows="3"
-                          placeholder="Description"></textarea>
+                <label for="extras">Description</label>
+                <textarea id="extras"  type="text" class="form-control" rows="3" cols="4" name="extras"
+                          placeholder="Description">[#if car.extras??]${car.extras}[/#if]</textarea>
             </div>
         </div>
         <br>
@@ -128,22 +134,15 @@
             [#if car.id??]
                 <input name="id" type="hidden" value="${car.id?c}"/>
             [/#if]
-                <input class="btn btn-default btn-lg" value="Add car" type="submit"/>
+                <input class="btn btn-default btn-lg" value="[#if car.id > 0]Save changes[#else]Add car[/#if]"
+                       type="submit"/>
             </div>
         </div>
     </form>
     <br>
-    
-    <!--
-    am comentat sectiunea asta ca faceam teste, lasati momentan asa.
-[#if message??]${message}[/#if]
-    <form action="file" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="upload">
-    </form>
 
-[#--[#if filePath??]<img src="/ext-img/${filePath}"/>[/#if]--]
-//-->
+[#if message??]${message}[/#if]
+
 </div>
 
 

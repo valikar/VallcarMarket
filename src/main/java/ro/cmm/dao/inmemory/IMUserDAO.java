@@ -16,6 +16,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     private Role role;
     private long id;
+    private String fullName;
     private Map<Long,Collection<Long>> bookmarks = new HashMap<>();
 
     @Override
@@ -35,6 +36,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
         return all;
     }
 
+    @Override
     public Collection<User> getAllSellers(){
         Collection<User> sellers = new LinkedList<>();
         for (User user : getAll()){
@@ -45,6 +47,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
         return sellers;
     }
 
+    @Override
     public Collection<User> getAllBuyers(){
         Collection<User> buyers = new LinkedList<>();
         for (User user : getAll()){
@@ -55,6 +58,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
         return buyers;
     }
 
+    @Override
     public User findByUsername(String userName){
         for (User user : getAll()){
             if (user.getUserName().equals(userName)){
@@ -64,23 +68,32 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
         return null;
     }
 
+    @Override
     public boolean isRegistered(String userName, String password){
         for (User user : getAll()){
             if (user.getUserName().equals(userName)&&user.getPassword().equals(password)){
                role=user.getRole();
                id=user.getId();
+               fullName = user.getFirstName() + " " +user.getLastName();
                 return true;
             }
         }
         return false;
     }
 
+    @Override
     public Role getRole() {
         return role;
     }
 
+    @Override
     public long getId() {
         return id;
+    }
+
+    @Override
+    public String getFullName() {
+        return fullName;
     }
 
     @Override

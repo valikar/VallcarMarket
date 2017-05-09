@@ -266,6 +266,3 @@ function fitToBoundariesForRoute(map, carLatitude, carLongitude, userLatitude, u
 
 
 
-
-
-

@@ -8,6 +8,8 @@ public class LoginUser extends AbstractModel {
     private String password;
     private Role role;
 
+    private String fullName;
+
     public String getUserName() {
         return userName;
     }
@@ -30,5 +32,13 @@ public class LoginUser extends AbstractModel {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

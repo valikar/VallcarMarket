@@ -134,10 +134,10 @@ public class CarService {
         return cars;
     }
 
-
-    public void save(Car car) throws ValidationException {
+    public Car save(Car car) throws ValidationException {
         validate(car);car.setLocation(generateRandomLocationOnCarSave());//forced location set!
-        dao.update(car);
+        return dao.update(car);
+
     }
 
     // nu include validare pentru imgURL !!!!!!!!!!!!!!!!!!!!!!!!!
@@ -269,7 +269,7 @@ public class CarService {
         return dao.getCarListOfSeller(id);
     }
 
-    private CarLocation generateRandomLocationOnCarSave(){
+    public CarLocation generateRandomLocationOnCarSave(){
         //car market boundaries;
         Double NWLat = new Double(46.750770);
         Double NWLng = new Double(23.425043);

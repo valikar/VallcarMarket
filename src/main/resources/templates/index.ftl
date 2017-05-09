@@ -45,32 +45,20 @@ ${cars?size} car[s] added
             <tr>
                 <th>Manufacturer   </th>
                 <th>Type   </th>
-                <th>Fabrication Year   </th>
-                <th>Mileage   </th>
-                <th>Price   </th>
-                <th>Engine Type </th>
-                <th>Transmission Type </th>
-                <th>Colour </th>
-                <th>Extras </th>
                 <th>Seller Id </th>
                 <th>Car Id </th>
                 <th>Views </th>
+                <th>Available </th>
             </tr>
 
         [#list cars as car]
             <tr>
                 <td>${car.manufacturer}</td>
                 <td>${car.type}</td>
-                <td>${car.fabricationYear}</td>
-                <td>${car.mileAge}</td>
-                <td>${car.price}</td>
-                <td>${car.engineType}</td>
-                <td>${car.transmissionType}</td>
-                <td>${car.colour}</td>
-                <td>${car.extras}</td>
                 <td>${car.sellerId}</td>
                 <td>${car.id}</td>
                 <td>${car.views}</td>
+                <td>${car.available?string('Yes', 'No')}</td>
             </tr>
         [/#list]
         </table>

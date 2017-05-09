@@ -28,23 +28,29 @@
                        placeHolder="McGregor"value="${user.lastName!''}"/>
             </div>
             <div class="form-group">
-                <label for="lastName">Username</label>
+                <label for="userName">Username</label>
                 <input type="text"
                        class="form-control" id="userName" name="userName"
                        placeHolder="conor.mcgregor@gmail.com"value="${user.userName!''}"/>
             </div>
             <div class="form-group">
-                <label for="lastName">Password</label>
-                <input type="text"
+                <label for="password">Password</label>
+                <input type="password"
                        class="form-control" id="password" name="password"
                        placeHolder="password"value="${user.password!''}"/>
+            </div>
+            <div class="form-group">
+                <label for="passwordValidation">Password Validation</label>
+                <input type="password"
+                       class="form-control" id="passwordValidation" name="passwordValidation"
+                       placeHolder="password" value="${user.passwordValidation!''}" onkeyup="checkPass(); return false;"/>
             </div>
             <div class="panel-body">
                     <div class="btn-group-justified">
                         <div class="input-group">
                             <span class="input-group-addon">
-                             <input type="radio" name="role" value="BUYER" [#if user.role?? && user.role == 'BUYER']checked[/#if]>BUYER</input>
-                                <input type="radio" name="role" value="SELLER" [#if user.role?? &&  user.role == 'SELLER']checked[/#if]>SELLER</input>
+                             <input type="radio" id="radioBUYER" name="role" value="BUYER" [#if user.role?? && user.role == 'BUYER']checked[/#if]>BUYER</input>
+                                <input type="radio" id="radioSELLER" name="role" value="SELLER" [#if user.role?? &&  user.role == 'SELLER']checked[/#if]>SELLER</input>
                              </span>
                         </div>
                     </div>

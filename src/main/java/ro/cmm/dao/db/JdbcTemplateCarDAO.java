@@ -58,7 +58,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
     @Override
     public Car findById(Long id) {
         String query = carDetailsForQuery +
-                " where id = ?";
+                " where c.id = ?";
         Collection<Car> cars =  jdbcTemplate.query(query, new CarResultSetExtractor(), id);
         Car result;
         if (cars.size() != 1) {
@@ -95,7 +95,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getEngineType().name(),
                     model.getTransmissionType().name(),
                     model.getColour(),
-                    model.isMatriculated(),
+                    model.getMatriculated(),
                     model.getId()
 
                     }, new RowMapper<Long>() {
@@ -146,7 +146,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getEngineType().name(),
                     model.getTransmissionType().name(),
                     model.getColour(),
-                    model.isMatriculated()
+                    model.getMatriculated()
 
             }, new RowMapper<Long>() {
                 public Long mapRow(ResultSet rs, int arg1) throws SQLException {
