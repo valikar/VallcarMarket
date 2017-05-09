@@ -178,7 +178,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
     @Override
     public Collection<Car> getCarListOfSeller(long sellerId) {
         String query = carDetailsForQuery +
-                " where seller_id = ?";
+                " where c.seller_id = ?";
         return  jdbcTemplate.query(query, new CarResultSetExtractor(), sellerId);
     }
 
