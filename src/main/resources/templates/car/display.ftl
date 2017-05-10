@@ -128,7 +128,7 @@
 
     <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:800px">
         <div class="panel-heading">
-            <h3 class="panel-title" align="center" >Location of the car on map</h3>
+            <h3 id="carLocationText" class="panel-title" align="center" >Location of the car on map</h3>
         </div>
         <div class="panel-body" align="center">
         [#--        <div id="carMarketMapControls">

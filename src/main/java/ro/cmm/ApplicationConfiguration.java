@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.dao.db.JdbcTemplateCarDAO;
+import ro.cmm.dao.inmemory.IMCarDAO;
 
 import javax.sql.DataSource;
 
@@ -26,10 +27,10 @@ public class ApplicationConfiguration {
     private String dbName;
 
 
-//	@Bean
-//	public EmployeeDAO employeeDAO() {
-//		return new IMEmployeeDAO();
-//	}
+/*	@Bean
+	public CarDAO carDAO() {
+		return new IMCarDAO();
+	}*/
 
 //	@Bean
 //   public EmployeeDAO employeeDAO() {
@@ -39,7 +40,6 @@ public class ApplicationConfiguration {
 //				"sebi" ,
 //				"sebi");
 //   }
-
 	@Bean
    public CarDAO carDAO() {
 
