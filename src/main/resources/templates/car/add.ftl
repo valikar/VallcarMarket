@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input id="price" name="price" type="number" step="any" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
+                <input id="price" name="price" type="number" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
                 [#if car.imgUrl??]
