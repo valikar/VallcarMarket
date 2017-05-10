@@ -1,52 +1,64 @@
 
-function checkPass() {
-    var pass1 = document.getElementById('password');
-    var pass2 = document.getElementById('passwordValidation');
-    var matchingColor = "#e6ffe6";
-    var notMatchingColor = "#ffe6e6";
-    if(pass1.value == pass2.value){
-        pass2.style.backgroundColor = matchingColor;
-    }else{
-        pass2.style.backgroundColor = notMatchingColor;
-    }
-}
-
 // set constraint values for input fields
 $(document).ready(function() {
-    //lastName required and must have 1 - 30 characters from alphabet (a-z)
-    $("#firstName").attr('required', true);
-    $("#firstName").attr('pattern', "[a-zA-Z ]{3,30}");
-    $("#firstName").attr('title', "First name must have alphabet letters (A-Z or a-z) and must be of 3 - 30 characters long");
+    //manufacturer required
+    $("#manufacturer").attr('required', true);
+    $("#manufacturer").attr('title', "required field");
 
-    //lastName required and must have 1 - 30 characters from alphabet (a-z)
-    $("#lastName").attr('required', true);
-    $("#lastName").attr('pattern', "[a-zA-Z ]{1,30}");
-    $("#lastName").attr('title', "Last name must have alphabet letters (A-Z or a-z) and must be of 3 - 30 characters long");
+    //type required
+    $("#type").attr('required', true);
+    $("#type").attr('title', "required field");
+
+    //fabricationYear required
+    $("#fabricationYear").attr('required', true);
+    $("#fabricationYear").attr('title', "required field");
+
+    //mileage required
+    $("#mileAge").attr('required', true);
+    $("#mileAge").attr('title', "required field");
+
+    //engine type required
+    $("#radioDIESEL").attr('required', true);
+    $("#radioDIESEL").attr('title', "required field");
+
+    //engine type required
+    $("#radioDIESEL").attr('required', true);
+    $("#radioDIESEL").attr('title', "required field");
+
+    //transmision type required
+    $("#radioHYBRID").attr('required', true);
+    $("#radioHYBRID").attr('title', "required field");
+
+    //transmision type required
+    $("#radioELECTRIC").attr('required', true);
+    $("#radioELECTRIC").attr('title', "required field");
+
+    //transmision type required
+    $("#radioMANUAL").attr('required', true);
+    $("#radioMANUAL").attr('title', "required field");
 
     //userName required and must respect an email pattern
-    $("#userName").attr('required', true);
-    $("#userName").attr('pattern', "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$");
-    $("#userName").attr('title', "User name must be your email address");
+    $("#radioAUTOMATIC").attr('required', true);
+    $("#radioAUTOMATIC").attr('title', "required field");
 
-    //password required and must be 6 - 30 long any character
-    $("#password").attr('required', true);
-    $("#password").attr('pattern', "^.{6,30}$");
-    $("#password").attr('title', "Password should be 6 - 30 characters long (any character)");
+    //colour required
+    $("#colour").attr('required', true);
+    $("#colour").attr('title', "required field");
 
-    //passwords must match
-    $("#passwordValidation").attr('required', true);
-    $("#passwordValidation").attr('title', "Passwords must match");
+    //matriculation status required
+    $("#radioMATRICULATIONtrue").attr('required', true);
+    $("#radioMATRICULATIONtrue").attr('title', "required field");
 
-    //at least one button checked
-    $("#radioBUYER").attr('required', true);
-    $("#radioSELLER").attr('required', true);
+    //matriculation status required
+    $("#radioMATRICULATIONfalse").attr('required', true);
+    $("#radioMATRICULATIONfalse").attr('title', "required field");
 
+    //price required
+    $("#price").attr('required', true);
+    $("#price").attr('title', "required field");
 
-    //add interacted class to inputs after user interaction
-    var inputs = document.querySelectorAll('input');
-    for (var i = 0; i < inputs.length; i++) {
-        inputs[i].addEventListener('blur', function(event) {
-            event.target.classList.add('interacted');
-        }, false);
-    }
+    //carPhoto required
+    $("#carPhoto").attr('required', true);
+    $("#carPhoto").attr('title', "required field");
+
 });
