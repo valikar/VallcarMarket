@@ -30,12 +30,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Fabrication Year</label>
-                <input id="fabricationYear" name="fabricationYear" type="input" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
+                <input id="fabricationYear" name="fabricationYear" type="number" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
                        placeholder="From 1900 to present">
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input id="mileAge" name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
+                <input id="mileAge" name="mileAge" type="number" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
@@ -44,7 +44,7 @@
                 <label>Engine Type</label>
                 <div class="input-group">
                       <span class="input-group-addon">
-                        <input type="radio" name="engineType" value="PETROL"
+                        <input id="radioPETROL" type="radio" name="engineType" value="PETROL"
                                [#if car.engineType?? && car.engineType == 'PETROL']checked[/#if]>Petrol</input>
 					  </span>
                     <span class="input-group-addon">
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input id="price" name="price" type="input" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
+                <input id="price" name="price" type="number" step="any" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
                 [#if car.imgUrl??]
@@ -108,13 +108,13 @@
                     <label>Car Image</label> <br>
                     <img src="/ext-img/${car.imgUrl}"/> <br>
                     <label for="carPhoto">Choose another image</label>
-                    <input type="file" id="carPhoto" name="file" accept="image/*">
+                    <input type="file" id="carPhotoEdit" name="file" accept="image/*">
                 </div>
                     [#else]
                         <div class="form-group">
                             <label for="carPhoto">Car Image</label>
-                            <input type="file" id="carPhoto" name="file" accept="image/*">
-                            <p class="help-block">Insert an image of the car here.</p>
+                            <input type="file" id="carPhotoSave" name="file" accept="image/*">
+                            <p id="insertParagraph" class="help-block">Insert an image of the car here.</p>
                         </div>
                 [/#if]
             </div>
@@ -134,8 +134,8 @@
             [#if car.id??]
                 <input name="id" type="hidden" value="${car.id?c}"/>
             [/#if]
-                <input class="btn btn-default btn-lg" value="[#if car.id > 0]Save changes[#else]Add car[/#if]"
-                       type="submit"/>
+                <button class="btn btn-default btn-lg"
+                        type="submit">[#if car.id > 0]Save changes[#else]Add car[/#if]</button>
             </div>
         </div>
     </form>

@@ -11,6 +11,10 @@ $(document).ready(function() {
 
     //fabricationYear required
     $("#fabricationYear").attr('required', true);
+    $("#fabricationYear").attr('min', 1900);
+    var now = new Date();
+    currentYear = now.getFullYear();
+    $("#fabricationYear").attr('max', currentYear);
     $("#fabricationYear").attr('title', "required field");
 
     //mileage required
@@ -18,8 +22,8 @@ $(document).ready(function() {
     $("#mileAge").attr('title', "required field");
 
     //engine type required
-    $("#radioDIESEL").attr('required', true);
-    $("#radioDIESEL").attr('title', "required field");
+    $("#radioPETROL").attr('required', true);
+    $("#radioPETROL").attr('title', "required field");
 
     //engine type required
     $("#radioDIESEL").attr('required', true);
@@ -58,7 +62,14 @@ $(document).ready(function() {
     $("#price").attr('title', "required field");
 
     //carPhoto required
-    $("#carPhoto").attr('required', true);
-    $("#carPhoto").attr('title', "required field");
+    $("#carPhotoSave").attr('required', true);
+    $("#carPhotoSave").attr('title', "required field");
 
+    //add interacted class to inputs after user interaction
+    var inputs = document.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].addEventListener('blur', function(event) {
+            event.target.classList.add('interacted');
+        }, false);
+    }
 });
