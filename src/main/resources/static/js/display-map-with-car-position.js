@@ -154,6 +154,7 @@ function displayCarPosition(carLatitude, carLongitude){
     $('#carLocationText').one('click',function(){
         displayRoute(carLatitude,carLongitude);
         carInfoWindow.setContent("car: (" + Math.round(distanceOfRoute)+")m");
+        h3.innerHTML = "Route to the car.";
     })
 }
 /*------------------------------------------------------------------------------------------------------------*/
