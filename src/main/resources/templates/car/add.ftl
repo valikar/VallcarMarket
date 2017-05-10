@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <label for="carPhoto">Car Image</label>
                             <input type="file" id="carPhotoSave" name="file" accept="image/*">
-                            <p id="insertParagraph" class="help-block">Insert an image of the car here.</p>
+                            <p class="help-block">Insert an image of the car here.</p>
                         </div>
                 [/#if]
             </div>
