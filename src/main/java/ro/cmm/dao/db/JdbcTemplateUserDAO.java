@@ -258,7 +258,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     user.setRole(Role.valueOf(resultSet.getString("role_name")));
                     user.setPassword(resultSet.getString("password"));
                     user.setPasswordValidation(resultSet.getString("password_validation"));
-                    
+
                     users.put(user.getId(), user);
                 }
             }

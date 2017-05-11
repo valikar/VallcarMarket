@@ -18,24 +18,24 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Manufacturer</label>
-                <input name="manufacturer" type="input" value="${car.manufacturer!''}" class="form-control"
+                <input id="manufacturer" name="manufacturer" type="input" value="${car.manufacturer!''}" class="form-control"
                        placeholder="Manufacturer">
             </div>
             <div class="col-lg-6">
                 <label>Type</label>
-                <input name="type" type="input" value="${car.type!''}" class="form-control" placeholder="Type">
+                <input id="type" name="type" type="input" value="${car.type!''}" class="form-control" placeholder="Type">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-lg-6">
                 <label>Fabrication Year</label>
-                <input name="fabricationYear" type="input" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
+                <input id="fabricationYear" name="fabricationYear" type="number" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
                        placeholder="From 1900 to present">
             </div>
             <div class="col-lg-6">
                 <label>Mileage</label>
-                <input name="mileAge" type="input" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
+                <input id="mileAge" name="mileAge" type="number" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
@@ -44,19 +44,19 @@
                 <label>Engine Type</label>
                 <div class="input-group">
                       <span class="input-group-addon">
-                        <input type="radio" name="engineType" value="PETROL"
+                        <input id="radioPETROL" type="radio" name="engineType" value="PETROL"
                                [#if car.engineType?? && car.engineType == 'PETROL']checked[/#if]>Petrol</input>
 					  </span>
                     <span class="input-group-addon">
-                          <input type="radio" name="engineType" value="DIESEL"
+                          <input id="radioDIESEL" type="radio" name="engineType" value="DIESEL"
                                  [#if car.engineType?? && car.engineType == 'DIESEL']checked[/#if]>Diesel</input>
                       	</span>
                     <span class="input-group-addon">
-                         	 <input type="radio" name="engineType" value="HYBRID"
+                         	 <input id="radioHYBRID" type="radio" name="engineType" value="HYBRID"
                                     [#if car.engineType?? && car.engineType == 'HYBRID']checked[/#if]>Hybrid</input>
                       		</span>
                     <span class="input-group-addon">
-                      		 	   <input type="radio" name="engineType" value="ELECTRIC"
+                      		 	   <input id="radioELECTRIC" type="radio" name="engineType" value="ELECTRIC"
                                           [#if car.engineType?? && car.engineType == 'ELECTRIC']checked[/#if]>Electric</input>
 								</span>
                 </div>
@@ -65,11 +65,11 @@
                 <label>Transmission Type</label>
                 <div class="input-group">
                       <span class="input-group-addon">
-                        <input type="radio" name="transmissionType" value="MANUAL"
+                        <input id="radioMANUAL" type="radio" name="transmissionType" value="MANUAL"
                                [#if car.transmissionType?? && car.transmissionType == 'MANUAL']checked[/#if]>Manual</input>
 					  </span>
                     <span class="input-group-addon">
-                          <input type="radio" name="transmissionType" value="AUTOMATIC"
+                          <input id="radioAUTOMATIC" type="radio" name="transmissionType" value="AUTOMATIC"
                                  [#if car.transmissionType?? && car.transmissionType == 'AUTOMATIC']checked[/#if]>Automatic</input>
                       	</span>
                 </div>
@@ -79,17 +79,17 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Colour</label>
-                <input name="colour" type="input" value="${car.colour!''}" class="form-control" placeholder="Color">
+                <input id="colour" name="colour" type="input" value="${car.colour!''}" class="form-control" placeholder="Color">
             </div>
             <div class="col-lg-6">
                 <label>Matriculation status</label>
                 <div class="input-group">
                                 <span class="input-group-addon">
-									<input type="radio" name="matriculated"
+									<input id="radioMATRICULATIONtrue" type="radio" name="matriculated"
                                            value="true"[#if car.matriculated?? && car.matriculated == true]checked[/#if]>Yes, the car is matriculated</input>
                                 </span>
                     <span class="input-group-addon">
-                       				<input type="radio" name="matriculated"
+                       				<input id="radioMATRICULATIONfalse" type="radio" name="matriculated"
                                            value="false"[#if car.matriculated?? && car.matriculated == false]checked[/#if]>No, the car isn't matriculated</input>
 									 </span>
                 </div>
@@ -100,7 +100,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input name="price" type="input" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
+                <input id="price" name="price" type="number" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
                 [#if car.imgUrl??]
@@ -108,12 +108,12 @@
                     <label>Car Image</label> <br>
                     <img src="/ext-img/${car.imgUrl}"/> <br>
                     <label for="carPhoto">Choose another image</label>
-                    <input type="file" id="carPhoto" name="file" accept="image/*">
+                    <input type="file" id="carPhotoEdit" name="file" accept="image/*">
                 </div>
                     [#else]
                         <div class="form-group">
                             <label for="carPhoto">Car Image</label>
-                            <input type="file" id="carPhoto" name="file" accept="image/*">
+                            <input type="file" id="carPhotoSave" name="file" accept="image/*">
                             <p class="help-block">Insert an image of the car here.</p>
                         </div>
                 [/#if]
@@ -134,8 +134,8 @@
             [#if car.id??]
                 <input name="id" type="hidden" value="${car.id?c}"/>
             [/#if]
-                <input class="btn btn-default btn-lg" value="[#if car.id > 0]Save changes[#else]Add car[/#if]"
-                       type="submit"/>
+                <button class="btn btn-default btn-lg"
+                        type="submit">[#if car.id > 0]Save changes[#else]Add car[/#if]</button>
             </div>
         </div>
     </form>
@@ -147,6 +147,7 @@
 
 
 [#include '/macro/bootstrap_footer.ftl']
+[#include '/macro/footer-custom-scripts-for-add-car.ftl']
 
 </body>
 </html>

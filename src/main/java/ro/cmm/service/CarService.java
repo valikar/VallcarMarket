@@ -135,7 +135,7 @@ public class CarService {
     }
 
     public Car save(Car car) throws ValidationException {
-        validate(car);car.setLocation(generateRandomLocationOnCarSave());//forced location set!
+        validate(car);
         return dao.update(car);
 
     }

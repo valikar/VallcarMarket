@@ -5,11 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import ro.cmm.dao.CarDAO;
-import ro.cmm.dao.MessageDAO;
-import ro.cmm.dao.UserDAO;
 import ro.cmm.dao.db.JdbcTemplateCarDAO;
-import ro.cmm.dao.db.JdbcTemplateMessageDAO;
-import ro.cmm.dao.db.JdbcTemplateUserDAO;
+import ro.cmm.dao.inmemory.IMCarDAO;
 
 import javax.sql.DataSource;
 
@@ -17,7 +14,7 @@ import javax.sql.DataSource;
 public class ApplicationConfiguration {
 
     @Value("${db.host}")
-	private String dbHost;
+    private String dbHost;
 
     @Value("${db.password}")
     private String dbPassword;
@@ -30,12 +27,12 @@ public class ApplicationConfiguration {
     private String dbName;
 
 
-//	@Bean
-//	public EmployeeDAO employeeDAO() {
-//		return new IMEmployeeDAO();
-//	}
+/*	@Bean
+	public CarDAO carDAO() {
+		return new IMCarDAO();
+	}*/
 
-//	@Bean
+    //	@Bean
 //   public EmployeeDAO employeeDAO() {
 //		return new JDBCEmployeeDAO("localhost",
 //				"5432",
@@ -43,25 +40,14 @@ public class ApplicationConfiguration {
 //				"sebi" ,
 //				"sebi");
 //   }
+    @Bean
+    public CarDAO carDAO() {
 
-	@Bean
-   public CarDAO carDAO() {
-
-		return new JdbcTemplateCarDAO(dataSource());
-	}
-
-	@Bean
-    public UserDAO userDAO(){
-	    return new JdbcTemplateUserDAO(dataSource());
+        return new JdbcTemplateCarDAO(dataSource());
     }
 
     @Bean
-    public MessageDAO messageDAO(){
-        return new JdbcTemplateMessageDAO(dataSource());
-    }
-
-	@Bean
-	public DataSource dataSource() {
+    public DataSource dataSource() {
         String url = new StringBuilder()
                 .append("jdbc:")
                 .append("postgresql")
