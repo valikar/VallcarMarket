@@ -26,6 +26,9 @@ public class User extends AbstractModel {
     @NotNull
     private String lastName;
 
+    @NotNull
+    private int phoneNumber;
+
     public String getUserName() {
         return userName;
     }
@@ -72,6 +75,14 @@ public class User extends AbstractModel {
 
     public void setPasswordValidation(String passwordValidation) {
         this.passwordValidation = passwordValidation;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Override

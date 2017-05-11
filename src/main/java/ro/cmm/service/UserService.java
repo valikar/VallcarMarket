@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import ro.cmm.dao.UserDAO;
 import ro.cmm.dao.inmemory.IMUserDAO;
 import ro.cmm.domain.User;
 
@@ -17,7 +18,7 @@ public class UserService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
-    private IMUserDAO dao;
+    private UserDAO dao;
 
     public User getById(long id) {
         LOGGER.debug("Getting user with id: " + id);
@@ -139,11 +140,11 @@ public class UserService {
         return dao.getBookmarkList(id);
     }
 
-    public void setDao(IMUserDAO dao) {
+    public void setDao(UserDAO dao) {
         this.dao = dao;
     }
 
-    public IMUserDAO getDao() {
+    public UserDAO getDao() {
         return dao;
     }
 }

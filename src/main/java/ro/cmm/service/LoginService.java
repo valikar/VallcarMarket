@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import ro.cmm.dao.UserDAO;
 import ro.cmm.dao.inmemory.IMUserDAO;
 import ro.cmm.domain.LoginUser;
 
@@ -19,7 +20,7 @@ public class LoginService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginService.class);
 
     @Autowired
-    private IMUserDAO dao;
+    private UserDAO dao;
 
     public boolean isRegistered(LoginUser loginUser){
     LOGGER.debug(loginUser.getUserName()+" tries to authenticate");
@@ -58,11 +59,11 @@ public class LoginService {
         }
     }
 
-    public void setDao(IMUserDAO dao) {
+    public void setDao(UserDAO dao) {
         this.dao = dao;
     }
 
-    public IMUserDAO getDao() {
+    public UserDAO getDao() {
         return dao;
     }
 }

@@ -57,6 +57,10 @@ public class Message {
     public void setTime() {
         this.time = df.format(dateobj);    }
 
+    public void setTime(String time){
+        this.time = time;
+    }
+
     public long getConversationId() {
         return conversationId;
     }

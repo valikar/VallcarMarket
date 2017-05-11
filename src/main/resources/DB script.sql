@@ -54,7 +54,9 @@ CREATE TABLE users(
 		last_name VARCHAR(30) NOT NULL,
 		email VARCHAR(50) NOT NULL,
 		phone_number VARCHAR(30) NOT NULL,
-		role_id int REFERENCES roles(id)
+		role_id int REFERENCES roles(id) NOT NULL,
+		password VARCHAR(50) NOT NULL,
+		password_validation VARCHAR(50) NOT NULL
 );
 
 CREATE SEQUENCE car_id_seq;
@@ -73,7 +75,9 @@ CREATE TABLE cars(
 		colour_id int REFERENCES colours(id),		
 		location_longitude DECIMAL,
 		location_latitude DECIMAL,
-		matriculation_status boolean		
+		matriculation_status boolean,
+		available_status boolean,
+		views int
 );
 
 CREATE TABLE car_pictures(
@@ -82,14 +86,30 @@ CREATE TABLE car_pictures(
 		car_id int REFERENCES cars(id)
 );
 
--- CREATE SEQUENCE bookmark_id_seq;
---
--- CREATE TABLE bookmarks(
---     id INT PRIMARY KEY DEFAULT NEXTVAL('bookmark_id_seq'),
---     car_id int REFERENCES cars(id),
---     user_id int REFERENCES users(id);
--- )
+CREATE TABLE bookmarks(
+	user_id int REFERENCES users(id) NOT NULL,
+	car_id int REFERENCES cars(id) NOT NULL
+);
 
+CREATE SEQUENCE conversation_id_seq;
+
+CREATE TABLE conversations(
+	id INT PRIMARY KEY DEFAULT NEXTVAL('conversation_id_seq'),
+	sender_id int REFERENCES users(id) NOT NULL,
+	receiver_id int REFERENCES users(id) NOT NULL,
+	title VARCHAR(50) NOT NULL,
+	sender_name VARCHAR(50) NOT NULL,
+	receiver_name VARCHAR(50) NOT NULL,
+	last_message VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE messages(
+	conversation_id INT PRIMARY KEY REFERENCES conversations(id) NOT NULL,
+	sender_id int REFERENCES users(id) NOT NULL,
+	receiver_id int REFERENCES users(id) NOT NULL,
+	message VARCHAR(200) NOT NULL,
+	time VARCHAR(50) NOT NULL
+);
 
 -- CREATE SEQUENCE car_seller_relation_id_seq;
 
@@ -156,7 +176,11 @@ INSERT INTO engine_types(engine_type) values('PETROL');
 INSERT INTO transmission_types(transmission_type) values('MANUAL');
 INSERT INTO roles(role_name) VALUES('ADMIN'), ('BUYER'), ('SELLER');
 INSERT INTO users(first_name, last_name, email, phone_number, role_id) VALUES('Pista', 'Reszeges',
-                  'pussy_destroyer_69_4u@yahoo.com', '0740 000 007', 3);
+																																							'pussy_destroyer_69_4u@yahoo.com', '0740 000 007', 3);
+INSERT INTO users(first_name, last_name, email, phone_number, role_id,password,password_validation) VALUES
+	('Conor','McGregor','conormcgregor@yahoo.com','0769696969',3,'password','password');
+INSERT INTO users(first_name, last_name, email, phone_number, role_id,password,password_validation) VALUES
+	('Gigi','Becali','gigibecali@yahoo.com','0769696969',2,'password','password');
 
 INSERT INTO cars(manufacturer_id, seller_id, type_id, price, mileage,
 				registration_year, extras, engine_type_id,

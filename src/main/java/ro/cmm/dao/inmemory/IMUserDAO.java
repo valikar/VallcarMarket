@@ -11,7 +11,6 @@ import java.util.*;
 /**
  * Created by Joseph Saturday, 15.04.2017 at 12:56.
  */
-@Component
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     private Role role;
@@ -19,7 +18,6 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     private String fullName;
     private Map<Long,Collection<Long>> bookmarks = new HashMap<>();
 
-    @Override
     public Collection<User> searchByName(String query) {
         if (StringUtils.isEmpty(query)) {
             return getAll();

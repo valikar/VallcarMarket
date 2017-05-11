@@ -126,7 +126,7 @@ public abstract class BaseMessageServiceTest {
 
         getMessageService().newConversation(conversation);
 
-        Assert.assertEquals(1,getMessageService().getAll().size());
+        Assert.assertEquals(1,getMessageService().getDao().getAll().size());
     }
 
     @Test
@@ -180,7 +180,7 @@ public abstract class BaseMessageServiceTest {
 
         getMessageService().newConversation(conversation);
         getMessageService().newConversation(conversation);
-        Assert.assertEquals(1,getMessageService().getAll().size());
+        Assert.assertEquals(1,getMessageService().getDao().getAll().size());
     }
 
     @Test

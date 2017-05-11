@@ -3,6 +3,7 @@ package ro.cmm.service;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ro.cmm.dao.MessageDAO;
 import ro.cmm.dao.inmemory.IMMessageDAO;
 import ro.cmm.domain.Conversation;
 import ro.cmm.domain.Message;
@@ -18,7 +19,7 @@ public class MessageService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MessageService.class);
 
     @Autowired
-    private IMMessageDAO dao;
+    private MessageDAO dao;
 
     public void newMessage(long id, Message message) {
         LOGGER.debug("Creating new message to conversation with id: "+id);
@@ -81,15 +82,11 @@ public class MessageService {
         return dao.getIdByConversation(conversation);
     }
 
-    public Collection<List<Message>> getAll(){
-       return dao.getAll();
-    }
-
-    public void setDao(IMMessageDAO dao) {
+    public void setDao(MessageDAO dao) {
         this.dao = dao;
     }
 
-    public IMMessageDAO getDao() {
+    public MessageDAO getDao() {
         return dao;
     }
 }

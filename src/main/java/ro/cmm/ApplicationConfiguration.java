@@ -5,7 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import ro.cmm.dao.CarDAO;
+import ro.cmm.dao.MessageDAO;
+import ro.cmm.dao.UserDAO;
 import ro.cmm.dao.db.JdbcTemplateCarDAO;
+import ro.cmm.dao.db.JdbcTemplateMessageDAO;
+import ro.cmm.dao.db.JdbcTemplateUserDAO;
 
 import javax.sql.DataSource;
 
@@ -45,6 +49,16 @@ public class ApplicationConfiguration {
 
 		return new JdbcTemplateCarDAO(dataSource());
 	}
+
+	@Bean
+    public UserDAO userDAO(){
+	    return new JdbcTemplateUserDAO(dataSource());
+    }
+
+    @Bean
+    public MessageDAO messageDAO(){
+        return new JdbcTemplateMessageDAO(dataSource());
+    }
 
 	@Bean
 	public DataSource dataSource() {

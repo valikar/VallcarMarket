@@ -28,4 +28,6 @@ public interface MessageDAO {
     Conversation getById(long id);
 
     Collection<List<Message>> getAll();
+
+    void clearMemory();
 }
