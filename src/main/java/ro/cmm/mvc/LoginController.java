@@ -82,6 +82,7 @@ public class LoginController {
 
     @RequestMapping("/logout")
     public String onLogout(HttpServletRequest request) {
+        userService.getDao().logOut();
         request.getSession().invalidate();
         return "index";
     }

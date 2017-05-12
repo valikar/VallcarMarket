@@ -51,21 +51,21 @@ public class JdbcTemplateUserDAO implements UserDAO {
     public Collection<User> getAll() {
         String query = userDetailsForQuery;
         Collection<User> users =jdbcTemplate.query(query,new UserResultSetExtractor());
-        LOGGER.info("Getting "+users.size()+ " user[s]");
+//        LOGGER.info("Getting "+users.size()+ " user[s]");
         return users;
     }
 
     @Override
     public User findById(Long id) {
-        String query = userDetailsForQuery + "WHERE id= ?";
+        String query = userDetailsForQuery + " WHERE u.id= ?";
         Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),id);
         User user;
         if (users.size()!=1){
             user=null;
-            LOGGER.info("No user found with id: "+id);
+//            LOGGER.info("No user found with id: "+id);
         }else {
             user=users.iterator().next();
-            LOGGER.info("Found user with this email: "+user.getUserName()+" under "+id+" id");
+//            LOGGER.info("Found user with this email: "+user.getUserName()+" under "+id+" id");
         }
         return user;
     }
@@ -97,9 +97,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     return resultSet.getLong(1);
                 }
             });
-            LOGGER.info("Update on user with this email: "+model.getUserName());
+//            LOGGER.info("Update on user with this email: "+model.getUserName());
         }else {
-            LOGGER.info(model.getRole().name());
             sql="INSERT INTO users (first_name, last_name, email, phone_number, role_id, password, password_validation) "+
                     "VALUES ( ?,"+
                             " ?,"+
@@ -123,7 +122,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     return resultSet.getLong(1);
                 }
             });
-            LOGGER.info("Added user with email: "+model.getUserName());
+//            LOGGER.info("Added user with email: "+model.getUserName());
         }
         model.setId(newId);
         return model;
@@ -134,10 +133,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
     public boolean delete(User model) {
         boolean delete = jdbcTemplate.update("DELETE FROM users WHERE id=?", model.getId())>0;
         if (delete){
-            LOGGER.info("Deleted user with email: "+model.getUserName());
+//            LOGGER.info("Deleted user with email: "+model.getUserName());
             return true;
         }else {
-            LOGGER.info("Failed to delete user with email: "+model.getUserName());
+//            LOGGER.info("Failed to delete user with email: "+model.getUserName());
             return false;
         }
     }
@@ -148,10 +147,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
         Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName);
         User user;
         if (users.size()!=1){
-            LOGGER.info(userName+" is free to use");
+//            LOGGER.info(userName+" is free to use");
             user=null;
         }else {
-            LOGGER.info(userName+" is taken");
+//            LOGGER.info(userName+" is taken");
             user=users.iterator().next();
 
         }
@@ -164,10 +163,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
         Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName,password);
         User user;
         if (users.size()!=1){
-            LOGGER.info(userName+" is not registered");
+//            LOGGER.info(userName+" is verified and not registered/invalid credentials");
             return false;
         }else {
-            LOGGER.info(userName+" is registered");
+//            LOGGER.info(userName+" is verified and registered");
             user=users.iterator().next();
             id=user.getId();
             role=user.getRole();
@@ -189,6 +188,13 @@ public class JdbcTemplateUserDAO implements UserDAO {
     @Override
     public String getFullName() {
         return fullName;
+    }
+
+    @Override
+    public void logOut() {
+    this.id=-1;
+    this.role=null;
+    this.fullName="";
     }
 
     @Override

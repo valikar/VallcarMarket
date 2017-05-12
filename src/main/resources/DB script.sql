@@ -104,7 +104,7 @@ CREATE TABLE conversations(
 );
 
 CREATE TABLE messages(
-	conversation_id INT PRIMARY KEY REFERENCES conversations(id) NOT NULL,
+	conversation_id int REFERENCES conversations(id) NOT NULL,
 	sender_id int REFERENCES users(id) NOT NULL,
 	receiver_id int REFERENCES users(id) NOT NULL,
 	message VARCHAR(200) NOT NULL,

@@ -95,6 +95,13 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     }
 
     @Override
+    public void logOut() {
+        this.id=-1;
+        this.role=null;
+        this.fullName="";
+    }
+
+    @Override
     public void addBookmark(long id) {
         if (bookmarks.get(this.id) != null) {
             Collection<Long> updatedList=bookmarks.get(this.id);

@@ -22,6 +22,8 @@ public interface UserDAO extends BaseDAO<User> {
 
     String getFullName();
 
+    void logOut();
+
     Collection<User> getAllSellers();
 
     Collection<User> getAllBuyers();

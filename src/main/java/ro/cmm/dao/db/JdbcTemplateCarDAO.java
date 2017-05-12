@@ -33,7 +33,9 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "tt.transmission_type, " +
                                         "co.colour, " +
                                         "c.matriculation_status, " +
-                                        "cp.picture_src " +
+                                        "cp.picture_src, " +
+                                        "c.available_status, "+
+                                        "c.views "+
 
 
                                         "from cars c join car_manufacturers cm on c.manufacturer_id = cm.id "+
@@ -41,7 +43,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "join engine_types et on c.engine_type_id = et.id "+
                                         "join transmission_types tt on c.transmission_type_id = tt.id "+
                                         "join colours co on c.colour_id = co.id " +
-                                        "join car_pictures cp on c.id = cp.car_id";
+                                        "join car_pictures cp on c.id = cp.car_id ";
 
 
     public JdbcTemplateCarDAO(DataSource dataSource) {
@@ -83,7 +85,10 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                  " engine_type_id=(SELECT id FROM engine_types WHERE engine_type =?)," +
                                  " transmission_type_id=(SELECT id FROM transmission_types WHERE transmission_type =?)," +
                                  " colour_id=(SELECT id FROM colours WHERE colour =?)," +
-                                 " matriculation_status = ? "
+                                 " matriculation_status = ?, "+
+                                 " seller_id=?,"+
+                                 " available_status=?,"+
+                                 " views=?"
                     + "where id = ? returning id";
             newId = jdbcTemplate.queryForObject(sql, new Object[]{
                     model.getManufacturer(),
@@ -96,6 +101,9 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getTransmissionType().name(),
                     model.getColour(),
                     model.getMatriculated(),
+                    model.getSellerId(),
+                    model.getAvailable(),
+                    model.getViews(),
                     model.getId()
 
                     }, new RowMapper<Long>() {
@@ -123,7 +131,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
 
         } else {
             sql = "insert into cars (manufacturer_id, type_id, price, mileage, registration_year, extras, " +
-                                    "engine_type_id, transmission_type_id, colour_id, matriculation_status) "
+                                    "engine_type_id, transmission_type_id, colour_id, matriculation_status, " +
+                                    " seller_id, available_status, views) "
                     + "values ((SELECT id FROM car_manufacturers WHERE manufacturer_name =?)," +
                              " (SELECT id FROM car_types WHERE type_name =?)," +
                              " ?," +
@@ -133,7 +142,10 @@ public class JdbcTemplateCarDAO implements CarDAO {
                              " (SELECT id FROM engine_types WHERE engine_type =?)," +
                              " (SELECT id FROM transmission_types WHERE transmission_type =?)," +
                              " (SELECT id FROM colours WHERE colour =?)," +
-                             " ?" +
+                             " ?," +
+                             " ?," +
+                             " ?," +
+                             " ? " +
                              ") returning id";
 
             newId = jdbcTemplate.queryForObject(sql, new Object[]{
@@ -146,7 +158,10 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getEngineType().name(),
                     model.getTransmissionType().name(),
                     model.getColour(),
-                    model.getMatriculated()
+                    model.getMatriculated(),
+                    model.getSellerId(),
+                    model.getAvailable(),
+                    model.getViews()
 
             }, new RowMapper<Long>() {
                 public Long mapRow(ResultSet rs, int arg1) throws SQLException {
@@ -215,7 +230,9 @@ public class JdbcTemplateCarDAO implements CarDAO {
 
     @Override
     public void countViews(long id) {
-
+        Car car = findById(id);
+        car.setViews(car.getViews()+1);
+        update(car);
     }
 //
 //    private static class CarMapper implements RowMapper<Car> {
@@ -292,6 +309,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     car.setColour(rs.getString("colour"));
                     // car.setLocation(ceva)
                     car.setMatriculated(rs.getBoolean("matriculation_status"));
+                    car.setAvailable(rs.getBoolean("available_status"));
+                    car.setViews(rs.getInt("views"));
                     car.setImgUrl(rs.getString("picture_src"));
 
                     System.out.println(car);

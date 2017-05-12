@@ -15,6 +15,9 @@ public class Conversation extends AbstractModel{
 
     private String lastMessage;
 
+    public Conversation() {
+        this.lastMessage = "";
+    }
 
     public long getSenderId() {
         return senderId;
