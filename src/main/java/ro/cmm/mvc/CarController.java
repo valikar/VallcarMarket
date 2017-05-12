@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,15 +46,40 @@ public class CarController {
     @RequestMapping("/add")
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("car/add");
+        Map<String,List<String>> map = carService.getManufacturersAndTypes();
+
+//        if (carModel.getManufacturer() == null) {
+//            carModel.setManufacturer("All");
+//        }
+//        if (carModel.getColour() == null) {
+//            carModel.setColour("All");
+//        }
+//        if (carModel.getType() == null) {
+//            carModel.setType("All");
+////        }
+//
+//        String searchModelManufacturer = carModel.getManufacturer();
+//        String searchModelType = carModel.getType();
+//
+//        List<String> typeListForManufacturer = map.get(searchModelManufacturer);
+//
+//        if(!typeListForManufacturer.contains(searchModelType)) {
+//            carModel.setType("All");
+//        }
         modelAndView.addObject("car", new Car());
+        modelAndView.addObject("map", map);
+        modelAndView.addObject("colours", carService.getAllColors());
         return modelAndView;
     }
 
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
         Car car = carService.getById(id);
+        Map<String,List<String>> map = carService.getManufacturersAndTypes();
         ModelAndView modelAndView = new ModelAndView("car/add");
         modelAndView.addObject("car", car);
+        modelAndView.addObject("map", map);
+        modelAndView.addObject("colours", carService.getAllColors());
         return modelAndView;
     }
 
@@ -110,6 +136,7 @@ public class CarController {
         }
 
         System.out.println(car);
+
 
         return modelAndView;
     }

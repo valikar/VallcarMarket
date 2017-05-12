@@ -31,10 +31,10 @@ public class ApplicationConfiguration {
     private String dbName;
 
 
-/*	@Bean
-	public CarDAO carDAO() {
-		return new IMCarDAO();
-	}*/
+//	@Bean
+//	public CarDAO carDAO() {
+//		return new IMCarDAO();
+//	}
 
     //	@Bean
 //   public EmployeeDAO employeeDAO() {

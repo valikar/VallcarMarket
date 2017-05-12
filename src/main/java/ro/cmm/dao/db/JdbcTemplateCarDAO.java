@@ -200,9 +200,6 @@ public class JdbcTemplateCarDAO implements CarDAO {
     @Override
     public Map<String, List<String>> getCarManufacturersAndTypes() {
         Map<String, List<String>> map = new LinkedHashMap<>();
-        List<String> all = new LinkedList<>();
-        all.add("All");
-        map.put("All",all);
         map.putAll(
                 jdbcTemplate.query("Select manufacturer_name, type_name FROM car_types JOIN car_manufacturers" +
                                 " ON car_types.manufacturer_id = car_manufacturers.id;",
@@ -270,7 +267,6 @@ public class JdbcTemplateCarDAO implements CarDAO {
     @Override
     public List<String> getAllColors() {
         List<String> allColours = new LinkedList<>();
-        allColours.add("All");
         allColours.addAll(
                 jdbcTemplate.query("SELECT colour FROM colours", new RowMapper<String>() {
                     @Override

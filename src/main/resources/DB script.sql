@@ -172,11 +172,14 @@ INSERT INTO colours(colour) values('Black'),
                                   ('White'),
                                   ('Yellow');
 
-INSERT INTO engine_types(engine_type) values('PETROL');
-INSERT INTO transmission_types(transmission_type) values('MANUAL');
+INSERT INTO engine_types(engine_type) values('PETROL'),
+                                            ('DIESEL'),
+                                            ('HYBRID'),
+                                            ('ELECTRIC');
+INSERT INTO transmission_types(transmission_type) values('MANUAL'),
+                                                        ('AUTOMATIC');
 INSERT INTO roles(role_name) VALUES('ADMIN'), ('BUYER'), ('SELLER');
-INSERT INTO users(first_name, last_name, email, phone_number, role_id) VALUES('Pista', 'Reszeges',
-																																							'pussy_destroyer_69_4u@yahoo.com', '0740 000 007', 3);
+
 INSERT INTO users(first_name, last_name, email, phone_number, role_id,password,password_validation) VALUES
 	('Conor','McGregor','conormcgregor@yahoo.com','0769696969',3,'password','password');
 INSERT INTO users(first_name, last_name, email, phone_number, role_id,password,password_validation) VALUES
