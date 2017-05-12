@@ -1,5 +1,5 @@
 [#ftl]
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <title>Conversation Page</title>
 <head>
 [#include '/macro/bootstrap_header.ftl']
@@ -30,63 +30,55 @@
     <div class="panel-heading" style="height: 32px;">
     [#if currentUser.id == conversation.senderId]
         <p class="align--left">You</p>
-        <p class="align--center">${conversation.receiverName}</p>
-        <p class="align--right">Time</p>
+        <p class="align--right">${conversation.receiverName}</p>
     [#else ]
         <p class="align--left">You</p>
-        <p class="align--center">${conversation.senderName}</p>
-        <p class="align--right">Time</p>
+        <p class="align--right">${conversation.senderName}</p>
     [/#if]
     </div>
 
-     <div class="panel-body"style="max-height: 320;overflow-y: scroll;">
+     <div class="panel-body"style="max-height: 285;overflow-y: scroll;">
      [#if currentUser.id == conversation.senderId]
-
-         <table class="table">
-             <tr>
-                 <th></th>
-                 <th></th>
-                 <th></th>
-             </tr>
-
+         <div class="chat">
              [#list messages as message]
-                 <tr>
                      [#if conversation.senderId==message.senderId]
-                         <td>${message.message}</td>
-                         <td> </td>
-                         <td>${message.time}</td>
+                     <li class="self">
+                     <p class="chat-message">
+                     ${message.message}
+                         <time>${message.time}</time>
+                     </p>
+                     </li>
                      [#else]
-                         <td> </td>
-                         <td>${message.message}</td>
-                         <td>${message.time}</td>
+                     <li class="other">
+                     <p class="chat-message">
+                         ${message.message}
+                        <time>${message.time}</time>
+                     </p>
+                     </li>
                      [/#if]
-                 </tr>
              [/#list]
-         </table>
-
+     </div>
      [#else ]
-
-         <table class="table">
-             <tr>
-                 <th></th>
-                 <th></th>
-                 <th></th>
-             </tr>
+            <div class="chat">
 
              [#list messages as message]
-                 <tr>
                      [#if conversation.receiverId==message.senderId]
-                         <td>${message.message}</td>
-                         <td></td>
-                         <td>${message.time}</td>
+                     <li class="other">
+                     <p class="chat-message">
+                     ${message.message}
+                         <time>${message.time}</time>
+                     </p>
+                     </li>
                      [#else]
-                             <td></td>
-                             <td>${message.message}</td>
-                             <td>${message.time}</td>
+                     <li class="self">
+                     <p class="chat-message">
+                         ${message.message}
+                             <time>${message.time}</time>
+                     </p>
+                     </li>
                      [/#if]
-                 </tr>
              [/#list]
-         </table>
+            </div>
      [/#if]
     </div>
     <div class="panel panel-footer">
@@ -94,9 +86,10 @@
 
             <div class="form-group">
                 <label for="message">Message</label>
-                <input type="text"
+                <textarea type="text"
                        class="form-control" id="message" name="message"
-                       placeHolder="Enter your message here"autofocus="true" value="${message.message}"/>
+                        autofocus="true" value="${message.message}"
+                          rows="3" cols="4"></textarea>
             </div>
             <div class="container-fluid">
                 <div class="col-lg-6 col-lg-offset-3 text-center">
