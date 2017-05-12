@@ -13,9 +13,6 @@ import java.util.*;
  */
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
-    private Role role;
-    private long id;
-    private String fullName;
     private Map<Long,Collection<Long>> bookmarks = new HashMap<>();
 
     public Collection<User> searchByName(String query) {
@@ -70,9 +67,6 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     public boolean isRegistered(String userName, String password){
         for (User user : getAll()){
             if (user.getUserName().equals(userName)&&user.getPassword().equals(password)){
-               role=user.getRole();
-               id=user.getId();
-               fullName = user.getFirstName() + " " +user.getLastName();
                 return true;
             }
         }
@@ -80,51 +74,29 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     }
 
     @Override
-    public Role getRole() {
-        return role;
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public String getFullName() {
-        return fullName;
-    }
-
-    @Override
-    public void logOut() {
-        this.id=-1;
-        this.role=null;
-        this.fullName="";
-    }
-
-    @Override
-    public void addBookmark(long id) {
-        if (bookmarks.get(this.id) != null) {
-            Collection<Long> updatedList=bookmarks.get(this.id);
+    public void addBookmark(long carId, long userId) {
+        if (bookmarks.get(userId) != null) {
+            Collection<Long> updatedList=bookmarks.get(userId);
             boolean inList = false;
             for (Long l : updatedList){
-                if (l==id){
+                if (l==carId){
                     inList=true;
                 }
             }
             if (!inList){
-            updatedList.add(id);
-            bookmarks.replace(this.id,updatedList);}
+            updatedList.add(carId);
+            bookmarks.replace(userId,updatedList);}
         }else {
             Collection<Long> list = new LinkedList<>();
-            list.add(id);
-            bookmarks.put(this.id,list);
+            list.add(carId);
+            bookmarks.put(userId,list);
         }
     }
 
     @Override
-    public void deleteBookmark(long id) {
-        if (bookmarks.get(this.id) != null) {
-            bookmarks.get(this.id).remove(id);
+    public void deleteBookmark(long carId, long userId) {
+        if (bookmarks.get(userId) != null) {
+            bookmarks.get(userId).remove(carId);
         }
     }
 

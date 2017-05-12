@@ -25,9 +25,7 @@ import java.util.Map;
 public class JdbcTemplateUserDAO implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;
-    private Role role;
-    private long id;
-    private String fullName;
+
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JdbcTemplateUserDAO.class);
 
@@ -168,33 +166,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
         }else {
 //            LOGGER.info(userName+" is verified and registered");
             user=users.iterator().next();
-            id=user.getId();
-            role=user.getRole();
-            fullName=user.getFirstName()+" "+user.getLastName();
             return true;
         }
-    }
-
-    @Override
-    public Role getRole() {
-        return role;
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public String getFullName() {
-        return fullName;
-    }
-
-    @Override
-    public void logOut() {
-    this.id=-1;
-    this.role=null;
-    this.fullName="";
     }
 
     @Override
@@ -212,27 +185,27 @@ public class JdbcTemplateUserDAO implements UserDAO {
     }
 
     @Override
-    public void addBookmark(long id) {
+    public void addBookmark(long carId, long userId) {
     String query = "SELECT * FROM bookmarks WHERE user_id= ?";
     String sql="";
-    Collection<Long> bookmarks = jdbcTemplate.query(query,new BookmarkResultSetExtractor(),this.id);
+    Collection<Long> bookmarks = jdbcTemplate.query(query,new BookmarkResultSetExtractor(),userId);
         boolean inList = false;
         for (Long l : bookmarks) {
-            if (l == id) {
+            if (l == carId) {
                 inList = true;
             }
         }
         if (!inList){
         sql= "INSERT INTO bookmarks (user_id,car_id) "+
                 "VALUES ( ? , ? )";
-        jdbcTemplate.update(sql,this.id,id);
+        jdbcTemplate.update(sql,userId,carId);
         }
     }
 
     @Override
-    public void deleteBookmark(long id) {
+    public void deleteBookmark(long carId, long userId) {
     String sql = "DELETE FROM bookmarks WHERE user_id = ? AND car_id=?";
-    jdbcTemplate.update(sql,this.id,id);
+    jdbcTemplate.update(sql,userId,carId);
     }
 
     @Override

@@ -126,14 +126,14 @@ public class UserService {
         }
     }
 
-    public void addBookmark(long id) {
-        LOGGER.debug("Adding car with id: "+id+" to bookmark list of the user with this id: "+dao.getId());
-        dao.addBookmark(id);
+    public void addBookmark(long carId, long userId) {
+        LOGGER.debug("Adding car with id: "+carId+" to bookmark list of the user with this id: "+userId);
+        dao.addBookmark(carId,userId);
     }
 
-    public void deleteBookmark(long id){
-        LOGGER.debug("Deleting car with id: "+id+" from bookmark list of the user with this id: "+dao.getId());
-        dao.deleteBookmark(id);
+    public void deleteBookmark(long carId,long userId){
+        LOGGER.debug("Deleting car with id: "+carId+" from bookmark list of the user with this id: "+userId);
+        dao.deleteBookmark(carId,userId);
     }
     public Collection<Long> getBookmarks(long id){
         LOGGER.debug("Getting bookmark list of the user with this id: "+id);

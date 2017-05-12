@@ -35,6 +35,9 @@ public class AccountController {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private SecurityService securityService;
+
     @RequestMapping("/seller")
     public ModelAndView seller() {
         ModelAndView modelAndView = new ModelAndView("/user/seller");
@@ -89,8 +92,10 @@ public class AccountController {
         ModelAndView modelAndView = new ModelAndView("/car/display");
         if (carService.getById(id)!=null) {
             Car car = carService.getById(id);
-            if (carService.getById(id).getSellerId()!=loginService.getDao().getId()) {
-                carService.countViews(id);
+            if (securityService.getCurrentUser()!=null) {
+                if (carService.getById(id).getSellerId() != securityService.getCurrentUser().getId()) {
+                    carService.countViews(id);
+                }
             }
             modelAndView.addObject("car", car);
         }
@@ -119,7 +124,7 @@ public class AccountController {
             Collection<Car> cars = carService.getCarListOfSeller(id);
             modelAndView.addObject("cars",cars);
         }else {
-            modelAndView.addObject(new RedirectView("/account/list?id="+Long.toString(loginService.getDao().getId())));
+            modelAndView.addObject(new RedirectView("/account/list?id="+Long.toString(securityService.getCurrentUser().getId())));
         }
         return modelAndView;
     }
@@ -144,13 +149,13 @@ public class AccountController {
 
     @RequestMapping("/bookmark/delete")
     public String deleteBookmark(long id){
-        userService.deleteBookmark(id);
-        return "redirect:/account/bookmark/list?id="+Long.toString(loginService.getDao().getId());
+        userService.deleteBookmark(id,securityService.getCurrentUser().getId());
+        return "redirect:/account/bookmark/list?id="+Long.toString(securityService.getCurrentUser().getId());
     }
 
     @RequestMapping("/bookmark")
     public String bookmark(long id){
-    userService.addBookmark(id);
+    userService.addBookmark(id,securityService.getCurrentUser().getId());
     return "redirect:/account/list/car?id="+Long.toString(id);
     }
 
@@ -158,7 +163,7 @@ public class AccountController {
     @RequestMapping("/message/list")
     public ModelAndView conversations(long id){
         ModelAndView modelAndView = new ModelAndView("/message/list");
-        if (loginService.getDao().getRole().equals(Role.SELLER)) {
+        if (securityService.getCurrentUser().getRole().equals(Role.SELLER)) {
             if (messageService.listAllConversationsByReceiver(id) != null) {
                 Collection<Conversation> conversations = messageService.listAllConversationsByReceiver(id);
                 modelAndView.addObject("conversations", conversations);
@@ -207,7 +212,7 @@ public class AccountController {
         Message message = new Message();
 
         conversation.setReceiverId(carService.getById(id).getSellerId());
-        conversation.setSenderId(loginService.getDao().getId());
+        conversation.setSenderId(securityService.getCurrentUser().getId());
         conversation.setTitle(carService.getById(id).getManufacturer()+" "+carService.getById(id).getType());
         conversation.setSenderName(userService.getById(conversation.getSenderId()).getFirstName()+
                 " "+userService.getById(conversation.getSenderId()).getLastName());
@@ -233,8 +238,8 @@ public class AccountController {
     @RequestMapping("/message/list/conversation/reply")
     public String reply(long id,@ModelAttribute("message") Message message){
         message.setConversationId(id);
-        message.setReceiverId(messageService.getMessageId(id,loginService.getDao().getId()));
-        message.setSenderId(loginService.getDao().getId());
+        message.setReceiverId(messageService.getMessageId(id,securityService.getCurrentUser().getId()));
+        message.setSenderId(securityService.getCurrentUser().getId());
         messageService.newMessage(id,message);
         messageService.getById(id).setLastMessage(message.getTime());
         return "redirect:/account/message/list/conversation?id="+Long.toString(id);

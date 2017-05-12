@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.Car;
 import ro.cmm.service.CarService;
 import ro.cmm.service.LoginService;
+import ro.cmm.service.SecurityService;
 import ro.cmm.service.ValidationException;
 
 import javax.validation.Valid;
@@ -35,6 +36,9 @@ public class CarController {
 
     @Autowired
     private LoginService userLoginService;
+
+    @Autowired
+    private SecurityService securityService;
 
     private final Map<Long, String> carToLastImgURL = new HashMap<>();
 
@@ -64,7 +68,7 @@ public class CarController {
 
         if (!bindingResult.hasErrors()) {
                 try {
-                    car.setSellerId(userLoginService.getDao().getId());
+                    car.setSellerId(securityService.getCurrentUser().getId());
 
                     //saving the file and setting the cars imgUrl field
                     long id = car.getId();

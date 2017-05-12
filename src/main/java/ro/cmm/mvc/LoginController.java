@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.LoginUser;
+import ro.cmm.domain.User;
 import ro.cmm.service.LoginService;
+import ro.cmm.service.SecurityService;
 import ro.cmm.service.UserService;
 import ro.cmm.service.ValidationException;
 
@@ -30,6 +32,9 @@ public class LoginController {
     @Autowired
     LoginService userLoginService;
 
+    @Autowired
+    SecurityService securityService;
+
     @RequestMapping("")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("user/login");
@@ -38,25 +43,28 @@ public class LoginController {
     }
 
     @RequestMapping(value="/onLogin",method = RequestMethod.POST)
-    public ModelAndView onLogin(@Valid @ModelAttribute("user") LoginUser user,
+    public ModelAndView onLogin(@Valid @ModelAttribute("loginUser") LoginUser loginUser,
                                 BindingResult bindingResult,
                                 HttpServletRequest request) throws ValidationException {
 
 
-        user.setUserName(request.getParameter("userName"));
-        user.setPassword(request.getParameter("password"));
+        loginUser.setUserName(request.getParameter("userName"));
+        loginUser.setPassword(request.getParameter("password"));
 
         ModelAndView modelAndView = new ModelAndView();
 
         boolean hasErrors = false;
         if (!bindingResult.hasErrors()){
             try {
-                userLoginService.save(user);
-                if (userLoginService.isRegistered(user)) {
-                    request.getSession().setAttribute("currentUser", user);
-                    user.setRole(userLoginService.getDao().getRole());
-                    user.setId(userLoginService.getDao().getId());
-                    user.setFullName(userLoginService.getDao().getFullName());
+                userLoginService.save(loginUser);
+                if (userLoginService.isRegistered(loginUser)) {
+                    User user = userLoginService.getDao().findByUsername(loginUser.getUserName());
+                    loginUser.setId(user.getId());
+                    loginUser.setFullName(user.getFirstName()+" "+user.getLastName());
+                    loginUser.setRole(user.getRole());
+                    securityService.setCurrentUser(loginUser);
+                    request.getSession().setAttribute("currentUser", loginUser);
+
                     modelAndView.setView(new RedirectView("/"));
                 }
                 return modelAndView;
@@ -72,8 +80,8 @@ public class LoginController {
         }
 
         if (hasErrors) {
-            modelAndView = new ModelAndView("user/login");
-            modelAndView.addObject("userLogin", user);
+            modelAndView = new ModelAndView("loginUser/login");
+            modelAndView.addObject("userLogin", loginUser);
             modelAndView.addObject("errors", bindingResult.getAllErrors());
         }
 
@@ -82,7 +90,6 @@ public class LoginController {
 
     @RequestMapping("/logout")
     public String onLogout(HttpServletRequest request) {
-        userService.getDao().logOut();
         request.getSession().invalidate();
         return "index";
     }

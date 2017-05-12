@@ -633,10 +633,11 @@ public abstract class BaseUserServiceTest {
         u0.setLastName("McGregor");
         u0.setRole(Role.SELLER);
         getUserService().save(u0);
+        User user =getUserService().getDao().findByUsername(u0.getUserName());
+        u0.setId(user.getId());
+        getUserService().addBookmark(1,u0.getId());
 
-        getUserService().addBookmark(1);
-
-        Assert.assertEquals(1,getUserService().getBookmarks(getUserService().getDao().getId()).size());
+        Assert.assertEquals(1,getUserService().getBookmarks(u0.getId()).size());
     }
 
     @Test
@@ -649,11 +650,13 @@ public abstract class BaseUserServiceTest {
         u0.setLastName("McGregor");
         u0.setRole(Role.SELLER);
         getUserService().save(u0);
+        User user =getUserService().getDao().findByUsername(u0.getUserName());
+        u0.setId(user.getId());
 
-        getUserService().addBookmark(1);
-        getUserService().deleteBookmark(1);
+        getUserService().addBookmark(1,u0.getId());
+        getUserService().deleteBookmark(1,u0.getId());
 
-        Assert.assertEquals(0,getUserService().getBookmarks(getUserService().getDao().getId()).size());
+        Assert.assertEquals(0,getUserService().getBookmarks(u0.getId()).size());
     }
 
     @Test
@@ -666,12 +669,13 @@ public abstract class BaseUserServiceTest {
         u0.setLastName("McGregor");
         u0.setRole(Role.SELLER);
         getUserService().save(u0);
+        User user =getUserService().getDao().findByUsername(u0.getUserName());
+        u0.setId(user.getId());
+        getUserService().addBookmark(1,u0.getId());
+        getUserService().addBookmark(2,u0.getId());
+        getUserService().deleteBookmark(1,u0.getId());
 
-        getUserService().addBookmark(1);
-        getUserService().addBookmark(2);
-        getUserService().deleteBookmark(1);
-
-        Assert.assertEquals(1,getUserService().getBookmarks(getUserService().getDao().getId()).size());
+        Assert.assertEquals(1,getUserService().getBookmarks(u0.getId()).size());
     }
 
     @Test
@@ -685,10 +689,13 @@ public abstract class BaseUserServiceTest {
         u0.setRole(Role.SELLER);
         getUserService().save(u0);
 
-        getUserService().addBookmark(1);
-        getUserService().addBookmark(1);
-        getUserService().deleteBookmark(1);
+        User user =getUserService().getDao().findByUsername(u0.getUserName());
+        u0.setId(user.getId());
 
-        Assert.assertEquals(0,getUserService().getBookmarks(getUserService().getDao().getId()).size());
+        getUserService().addBookmark(1,u0.getId());
+        getUserService().addBookmark(1,u0.getId());
+        getUserService().deleteBookmark(1,u0.getId());
+
+        Assert.assertEquals(0,getUserService().getBookmarks(u0.getId()).size());
     }
 }

@@ -16,21 +16,13 @@ public interface UserDAO extends BaseDAO<User> {
 
     boolean isRegistered(String userName, String password);
 
-    Role getRole();
-
-    long getId();
-
-    String getFullName();
-
-    void logOut();
-
     Collection<User> getAllSellers();
 
     Collection<User> getAllBuyers();
 
-    void addBookmark(long id);
+    void addBookmark(long carId, long userId);
 
-    void deleteBookmark(long id);
+    void deleteBookmark(long carId, long userId);
 
     Collection<Long> getBookmarkList(long id);
 }
