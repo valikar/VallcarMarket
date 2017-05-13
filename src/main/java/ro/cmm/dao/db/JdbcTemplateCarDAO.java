@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.domain.Car;
+import ro.cmm.domain.CarLocation;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.TransmissionType;
 
@@ -35,6 +36,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "c.matriculation_status, " +
                                         "cp.picture_src, " +
                                         "c.available_status, "+
+                                        "c.location_longitude, "+
+                                        "c.location_latitude,"+
                                         "c.views "+
 
 
@@ -88,6 +91,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                  " matriculation_status = ?, "+
                                  " seller_id=?,"+
                                  " available_status=?,"+
+                                 " location_longitude=?,"+
+                                 " location_latitude=?,"+
                                  " views=?"
                     + "where id = ? returning id";
             newId = jdbcTemplate.queryForObject(sql, new Object[]{
@@ -103,6 +108,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getMatriculated(),
                     model.getSellerId(),
                     model.getAvailable(),
+                    model.getLocation().getLongitude(),
+                    model.getLocation().getLatitude(),
                     model.getViews(),
                     model.getId()
 
@@ -307,11 +314,15 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     car.setEngineType(EngineType.valueOf(rs.getString("engine_type")));
                     car.setTransmissionType(TransmissionType.valueOf(rs.getString("transmission_type")));
                     car.setColour(rs.getString("colour"));
-                    // car.setLocation(ceva)
                     car.setMatriculated(rs.getBoolean("matriculation_status"));
                     car.setAvailable(rs.getBoolean("available_status"));
                     car.setViews(rs.getInt("views"));
                     car.setImgUrl(rs.getString("picture_src"));
+
+                    CarLocation carLocation = new CarLocation();
+                    carLocation.setLatitude(rs.getDouble("location_latitude"));
+                    carLocation.setLongitude(rs.getDouble("location_longitude"));
+                    car.setLocation(carLocation);
 
                     System.out.println(car);
                     cars.put(id, car);

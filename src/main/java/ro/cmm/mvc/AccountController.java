@@ -111,10 +111,16 @@ public class AccountController {
         if (!car.getAvailable()) {
             car.setAvailable(true);
             car.setLocation(carService.generateRandomLocationOnCarSave());
+            carService.getDao().update(car);
         }else {
             car.setAvailable(false);
+            CarLocation carLocation=new CarLocation();
+            carLocation.setLatitude(null);
+            carLocation.setLongitude(null);
+            car.setLocation(carLocation);
+            carService.getDao().update(car);
         }
-        carService.save(car);
+        //carService.save(car);
         return "redirect:/account/list?id="+Long.toString(car.getSellerId());
     }
 
