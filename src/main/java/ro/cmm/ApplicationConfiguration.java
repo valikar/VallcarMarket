@@ -11,6 +11,8 @@ import ro.cmm.dao.db.JdbcTemplateCarDAO;
 import ro.cmm.dao.db.JdbcTemplateMessageDAO;
 import ro.cmm.dao.db.JdbcTemplateUserDAO;
 import ro.cmm.dao.inmemory.IMCarDAO;
+import ro.cmm.dao.inmemory.IMMessageDAO;
+import ro.cmm.dao.inmemory.IMUserDAO;
 
 import javax.sql.DataSource;
 
@@ -32,9 +34,19 @@ public class ApplicationConfiguration {
 
 
 	@Bean
-	public CarDAO carDAO() {
-		return new IMCarDAO();
-	}
+    public CarDAO carDAO() {
+        return new IMCarDAO();
+    }
+
+    @Bean
+    public UserDAO userDAO(){
+        return new IMUserDAO();
+    }
+
+    @Bean
+    public MessageDAO messageDAO(){
+        return new IMMessageDAO();
+    }
 
     //	@Bean
 //   public EmployeeDAO employeeDAO() {
@@ -50,15 +62,15 @@ public class ApplicationConfiguration {
         return new JdbcTemplateCarDAO(dataSource());
     }*/
 
-    @Bean
+/*    @Bean
     public UserDAO userDAO(){
         return new JdbcTemplateUserDAO(dataSource());
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     public MessageDAO messageDAO(){
         return new JdbcTemplateMessageDAO(dataSource());
-    }
+    }*/
 
     @Bean
     public DataSource dataSource() {
