@@ -21,6 +21,7 @@
             <div class="g-col-6">
                 <strong align="center">${car.manufacturer} ${car.type}</strong>
             </div>
+            [#if currentUser?? && currentUser.id!= car.sellerId]
             <div class="g-col-6">
                 <h2 class="panel-title" align="right">
                     <a href="/account/bookmark?id=${car.id?c}">Bookmark
@@ -30,6 +31,7 @@
                     </a>
                 </h2>
             </div>
+            [/#if]
         </div>
 
     </div>
