@@ -10,6 +10,7 @@ import ro.cmm.service.CarService;
 import ro.cmm.service.UserService;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 /**
  * Created by Joseph Saturday, 22.04.2017 at 03:46.
@@ -19,19 +20,27 @@ import java.util.Collection;
 public class IndexController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private CarService carService;
 
     @RequestMapping("")
     public ModelAndView index() {
         ModelAndView result = new ModelAndView("index");
 
-        Collection<User> users = userService.listAll();
-        result.addObject("users", users);
-
-        Collection<Car> cars = carService.listAll();
+        Collection<Car> carList = carService.listAll();
+        int firstOne=carList.size()-2,secondOne=carList.size()-1,thirdOne=carList.size();
+        Collection<Car> cars = new LinkedList<>();
+        for (Car car : carList){
+            firstOne--;secondOne--; thirdOne--;
+            if (firstOne==0&&firstOne>=0){
+                cars.add(car);
+            }
+            if (secondOne==0&&secondOne>=0){
+                cars.add(car);
+            }
+            if (thirdOne==0&&thirdOne>=0){
+                cars.add(car);
+            }
+        }
         result.addObject("cars", cars);
 
         return result;
