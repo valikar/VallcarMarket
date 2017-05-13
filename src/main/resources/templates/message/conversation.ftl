@@ -103,5 +103,6 @@
 
 
 [#include '/macro/bootstrap_footer.ftl']
+[#include '/macro/footer-custom-scripts-for-conversation.ftl']
 </body>
 </html>
