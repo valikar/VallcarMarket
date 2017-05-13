@@ -29,9 +29,10 @@
         <form method="post" action="/account/message/list/conversation/reply?id=${conversation.id?c}" >
             <div class="form-group">
                 <label for="message">Message</label>
-                <input type="text"
-                       class="form-control" id="message" name="message"
-                       placeHolder="Enter your message here" autofocus="true" value="${message.message!''}"/>
+                <textarea type="text"
+                          class="form-control" id="message" name="message"
+                          autofocus="true" value="${message.message}"
+                          rows="3" cols="4"></textarea>
             </div>
 
 

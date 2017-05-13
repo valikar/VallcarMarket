@@ -112,6 +112,13 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
     }
 
     @Override
+    public Collection<Conversation> getAllConversations(long id){
+        String query="SELECT * FROM conversations WHERE receiver_id=? or sender_id=?";
+        Collection<Conversation> conversations = jdbcTemplate.query(query,new ConversationResultSetExtractor(),id,id);
+        return conversations;
+    }
+
+    @Override
     public long getIdByConversation(Conversation conversation) {
 //        LOGGER.info("Trying to get id of this conversation: "+conversation.toString());
         String query="SELECT * FROM conversations WHERE sender_id=? AND receiver_id=? AND title=?";

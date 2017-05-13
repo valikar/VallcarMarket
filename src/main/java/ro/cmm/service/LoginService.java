@@ -23,20 +23,20 @@ public class LoginService {
     private UserDAO dao;
 
     public boolean isRegistered(LoginUser loginUser){
-    LOGGER.debug(loginUser.getUserName()+" tries to authenticate");
+    LOGGER.info(loginUser.getUserName()+" tries to authenticate");
     boolean isRegistered = false;
     if (dao.isRegistered(loginUser.getUserName(),loginUser.getPassword())){
         isRegistered=true;
-        LOGGER.debug(loginUser.getUserName()+" is registered");
+        LOGGER.info(loginUser.getUserName()+" is registered");
     }
     if (!isRegistered){
-        LOGGER.debug(loginUser.getUserName()+" is not registered");
+        LOGGER.info(loginUser.getUserName()+" is not registered");
     }
     return isRegistered;
     }
 
     public void save(LoginUser loginUser) throws ValidationException{
-        LOGGER.debug("Validating user in login page");
+        LOGGER.info("Validating user in login page");
         validate(loginUser.getUserName(),loginUser.getPassword());
     }
 
@@ -50,10 +50,13 @@ public class LoginService {
             errors.add("Empty Password");
         }
 
-        if(!dao.isRegistered(userName, password)) {
-            errors.add("Invalid Credentials");
+        if (dao.findByUsername(userName)!=null) {
+            if (!dao.isRegistered(userName, password)) {
+                errors.add("Invalid Credentials");
+            }
+        }else {
+            errors.add("This account is not registered");
         }
-
         if (!errors.isEmpty()) {
             throw new ValidationException(errors.toArray(new String[] {}));
         }

@@ -13,6 +13,7 @@ import ro.cmm.service.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -163,23 +164,14 @@ public class AccountController {
     @RequestMapping("/message/list")
     public ModelAndView conversations(long id){
         ModelAndView modelAndView = new ModelAndView("/message/list");
-        if (securityService.getCurrentUser().getRole().equals(Role.SELLER)) {
-            if (messageService.listAllConversationsByReceiver(id) != null) {
-                Collection<Conversation> conversations = messageService.listAllConversationsByReceiver(id);
+            if (messageService.getAllConversations(id) != null) {
+
+                Collection<Conversation> conversations =messageService.getAllConversations(id);
                 modelAndView.addObject("conversations", conversations);
             } else {
                 Collection<Conversation> conversations = new LinkedList<>();
                 modelAndView.addObject("conversations", conversations);
             }
-        }else{
-            if (messageService.listAllConversationsBySender(id)!=null){
-                Collection<Conversation> conversations = messageService.listAllConversationsBySender(id);
-                modelAndView.addObject("conversations",conversations);
-            }else {
-                Collection<Conversation> conversations = new LinkedList<>();
-                modelAndView.addObject("conversations",conversations);
-            }
-        }
         return modelAndView;
     }
 

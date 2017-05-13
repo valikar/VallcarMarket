@@ -56,6 +56,12 @@ public class MessageService {
         return dao.getAllConversationsByReceiver(id);
     }
 
+    public Collection<Conversation> getAllConversations(long id){
+        LOGGER.debug("Getting all conversations with id: "+id);
+        return dao.getAllConversations(id);
+    }
+
+
     public Collection<Message> listMessages(long id){
         LOGGER.debug("Getting all messages of conversation with Id: "+id);
         return dao.getMessages(id);

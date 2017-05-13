@@ -80,7 +80,7 @@ public class LoginController {
         }
 
         if (hasErrors) {
-            modelAndView = new ModelAndView("loginUser/login");
+            modelAndView = new ModelAndView("user/login");
             modelAndView.addObject("userLogin", loginUser);
             modelAndView.addObject("errors", bindingResult.getAllErrors());
         }

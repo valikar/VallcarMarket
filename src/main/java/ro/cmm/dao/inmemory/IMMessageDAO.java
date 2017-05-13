@@ -63,6 +63,16 @@ public class IMMessageDAO implements MessageDAO {
     }
 
     @Override
+    public Collection<Conversation> getAllConversations(long id) {
+        Collection<Conversation> messages = new LinkedList<>();
+        for (Conversation conversation : messagesList.keySet()){
+            if (conversation.getReceiverId()==id||conversation.getSenderId()==id){
+                messages.add(conversation);
+            }
+        }
+        return messages;    }
+
+    @Override
     public List<Message> getMessages(long id) {
         List<Message> messages = new LinkedList<>();
         for (Conversation conversation : messagesList.keySet()) {
