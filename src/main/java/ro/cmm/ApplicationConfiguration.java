@@ -31,10 +31,10 @@ public class ApplicationConfiguration {
     private String dbName;
 
 
-/*	@Bean
+	@Bean
 	public CarDAO carDAO() {
 		return new IMCarDAO();
-	}*/
+	}
 
     //	@Bean
 //   public EmployeeDAO employeeDAO() {
@@ -44,11 +44,11 @@ public class ApplicationConfiguration {
 //				"sebi" ,
 //				"sebi");
 //   }
-    @Bean
+/*    @Bean
     public CarDAO carDAO() {
 
         return new JdbcTemplateCarDAO(dataSource());
-    }
+    }*/
 
     @Bean
     public UserDAO userDAO(){
