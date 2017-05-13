@@ -43,9 +43,9 @@
 
 <div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
-        <h3 class="panel-title">Technical data</h3>
+        <h3 class="panel-title" style="font-size: medium">Technical data</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="font-size: 16px; ">
         <div class="g-row u-margin-bottom-9">
             <div class="g-col-6">
                 <strong>Manufacturer</strong>
