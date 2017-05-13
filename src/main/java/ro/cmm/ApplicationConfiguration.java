@@ -33,20 +33,20 @@ public class ApplicationConfiguration {
     private String dbName;
 
 
-	@Bean
+/*	@Bean
     public CarDAO carDAO() {
         return new IMCarDAO();
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     public UserDAO userDAO(){
         return new IMUserDAO();
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     public MessageDAO messageDAO(){
         return new IMMessageDAO();
-    }
+    }*/
 
     //	@Bean
 //   public EmployeeDAO employeeDAO() {
@@ -56,21 +56,21 @@ public class ApplicationConfiguration {
 //				"sebi" ,
 //				"sebi");
 //   }
-/*    @Bean
+    @Bean
     public CarDAO carDAO() {
 
         return new JdbcTemplateCarDAO(dataSource());
-    }*/
+    }
 
-/*    @Bean
+    @Bean
     public UserDAO userDAO(){
         return new JdbcTemplateUserDAO(dataSource());
-    }*/
+    }
 
-/*    @Bean
+    @Bean
     public MessageDAO messageDAO(){
         return new JdbcTemplateMessageDAO(dataSource());
-    }*/
+    }
 
     @Bean
     public DataSource dataSource() {
