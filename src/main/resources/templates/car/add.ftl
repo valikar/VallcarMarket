@@ -10,7 +10,7 @@
 </head>
 <body onload="brandChanged();onLoad();">
 [#include '/macro/nav_index_bar.ftl']
-[#include '/macro/errors.ftl']
+[#--[#include '/macro/errors.ftl']--]
 
 <div class="container">
 
@@ -142,6 +142,16 @@
         <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
         <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
 
+        <div class="col-lg-12">
+        [#if errors??]
+            [#list errors as error]
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">${error}</li>
+                </ul>
+            [/#list]
+        [/#if]
+        </div>
+        <br>
         <div class="row">
             <div class="col-lg-12 button-holder">
             [#if car.id??]

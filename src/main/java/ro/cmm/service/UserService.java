@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.UserDAO;
-import ro.cmm.dao.inmemory.IMUserDAO;
 import ro.cmm.domain.User;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Joseph Saturday, 15.04.2017 at 01:57.
@@ -50,10 +51,10 @@ public class UserService {
     public boolean verifyUsername(String userName) {
         LOGGER.debug("Verifying username : "+ userName);
         if (dao.findByUsername(userName)!=null){
-        User user= dao.findByUsername(userName);
-        if (user.getUserName().equals(userName)) {
-            LOGGER.debug("This username : "+ userName+" is taken");
-            return false;
+            User user= dao.findByUsername(userName);
+            if (user.getUserName().equals(userName)) {
+                LOGGER.debug("This username : "+ userName+" is taken");
+                return false;
             }
         }
         LOGGER.debug("This username : "+ userName+" is free");

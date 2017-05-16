@@ -52,6 +52,8 @@ public class CarService {
 
         Collection<Car> allCars = new LinkedList<>(dao.getAll());
 
+//        allCars = filterByAvailability(allCars);
+
         if (manufacturer != null) {
             allCars = filterByManufacturer(manufacturer, allCars);
         }
@@ -78,6 +80,12 @@ public class CarService {
         }
 
         return allCars;
+    }
+
+    private Collection<Car> filterByAvailability(Collection<Car> cars) {
+        cars.removeIf((Car car) -> !car.getAvailable());
+
+        return cars;
     }
 
     private Collection<Car> filterByManufacturer(String manufacturer, Collection<Car> cars) {
@@ -140,10 +148,66 @@ public class CarService {
 
     }
 
-    // nu include validare pentru imgURL !!!!!!!!!!!!!!!!!!!!!!!!!
+    public void validateSearchModel(SearchModel searchModel) throws ValidationException {
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        List<String> errors = new LinkedList<String>();
+
+        if (StringUtils.isEmpty(searchModel.getManufacturer())) {
+            errors.add("Car Manufacturer is Empty");
+        }
+
+        if (StringUtils.isEmpty(searchModel.getType())) {
+            errors.add("Car Type is Empty");
+        }
+
+        if(searchModel.getFabricationYear() > currentYear) {
+            errors.add("Car fabrication date in future");
+        }
+        if (searchModel.getFabricationYear() < 1950 && searchModel.getFabricationYear() != 0) {
+            errors.add("Car is too old");
+        }
+
+        if (searchModel.getMileAge() < 0) {
+            errors.add("The cars mileage cannot be a negative value.");
+        }
+
+        if (searchModel.getPrice() < 0) {
+            errors.add("The cars price cannot be a negative value.");
+        }
+
+        if (searchModel.getTransmissionType().isEmpty()) {
+            errors.add("No transmission type selected");
+        }
+
+        if (searchModel.getEngineType().isEmpty()) {
+            errors.add("No engine type selected");
+        }
+
+        if (!Arrays.asList(EngineType.values()).containsAll(searchModel.getEngineType())) {
+            errors.add("Invalid engine type");
+        }
+
+        if (!Arrays.asList(TransmissionType.values()).containsAll(searchModel.getTransmissionType())) {
+            errors.add("Invalid transmission type");
+        }
+
+        if(searchModel.getColour() == null) {
+            errors.add("No color selected!");
+        }
+
+        if (searchModel.getMatriculationStatus().isEmpty()) {
+            errors.add("No matriculation status selected!");
+        }
+
+        if (!errors.isEmpty()) {
+            throw new ValidationException(errors.toArray(new String[] {}));
+        }
+    }
+
     private void validate(Car car) throws ValidationException {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         List<String> errors = new LinkedList<String>();
+
         if (StringUtils.isEmpty(car.getManufacturer())) {
             errors.add("Car Manufacturer is Empty");
         }
@@ -152,15 +216,12 @@ public class CarService {
             errors.add("Car Type is Empty");
         }
 
-        // Daca o sa folosim @NotNull la fielduri cred ca vom
-        // putea scoate prima verificare de aici
         if(car.getFabricationYear() == 0) {
             errors.add("Fabrication Year is Empty");
         } else {
             if(car.getFabricationYear() > currentYear) {
                 errors.add("Car fabrication date in future");
             }
-
             if (car.getFabricationYear() < 1950) {
                 errors.add("Car is too old");
             }
@@ -182,40 +243,32 @@ public class CarService {
             errors.add("Invalid transmission type");
         }
 
-        // Validare pentru color vom face mai tarziu cand ne hotaram
-        // cum sa fie input field-ul pentru culoare
-
-        if(car.getExtras() == null) {
-            errors.add("Description is missing");
+        if(car.getColour() == null) {
+            errors.add("No color selected!");
         }
 
-        // validare foarte basic, mai tarziu putem modifica sa fie mai smecher
-        // valoarea default pt CarLocation poate sa fie (0,0)
-//        if (car.getLocation() == null) {
-//            errors.add("Car location does not exist");
-//        } else {
-//            double carsLatitude = car.getLocation().getLatitude();
-//            double carsLongitude = car.getLocation().getLongitude();
-//            if (carsLatitude < 0 || carsLatitude > 90) {
-//                errors.add("Invalid latitude value for the cars coordinates");
-//            }
-//            if (carsLongitude < 0 || carsLongitude > 180) {
-//                errors.add("Invalid longitude value for the cars coordinates");
-//            }
-//        }
-//
+        if(car.getExtras() == null) {
+            errors.add("Description is missing!");
+        }
+
 //        if(car.getImgUrl() == null) {
 //            errors.add("Img url is empty.");
 //        }
 
-        // la isAvailable nu prea avem ce valida
+        if (car.getAvailable() == null) {
+            errors.add("Car availability is empty!");
+        }
 
-        // la isMatriculated la fel
+        if (car.getMatriculated() == null) {
+            errors.add("Car matriculation status is empty!");
+        }
 
         if (!errors.isEmpty()) {
             throw new ValidationException(errors.toArray(new String[] {}));
         }
     }
+
+
 
     public CarDAO getDao() {
         return dao;

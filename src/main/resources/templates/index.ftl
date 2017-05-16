@@ -15,7 +15,7 @@
             [#list cars as car]
 
             <div class="thumbnail" style="margin-right: 25px; margin-left: 25px">
-                <img src="/ext-img/${car.imgUrl}" style="height: auto; width: 250;"/>
+                <img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" style="height: auto; width: 250;"/>
             <div class="caption">
                 <h3 align="center">${car.manufacturer}  ${car.type}</h3>
                 <p>

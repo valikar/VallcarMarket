@@ -9,6 +9,7 @@ function autoEnable() {
 }
 
 function disable() {
+    // document.getElementById('type').value = "All";
     document.getElementById("type").disabled=true;
 }
 function enable() {
