@@ -16,6 +16,7 @@ public class SearchModel {
     public SearchModel() {
         engineType = new LinkedList<>();
         transmissionType = new LinkedList<>();
+        matriculationStatus = new LinkedList<>();
     }
 
     private String manufacturer;
@@ -25,6 +26,7 @@ public class SearchModel {
     private int price;
     private List<EngineType> engineType;
     private List<TransmissionType> transmissionType;
+    private List<Boolean> matriculationStatus;
     private String colour;
 
     public String getManufacturer() {
@@ -83,6 +85,14 @@ public class SearchModel {
         this.transmissionType = transmissionType;
     }
 
+    public List<Boolean> getMatriculationStatus() {
+        return matriculationStatus;
+    }
+
+    public void setMatriculationStatus(List<Boolean> matriculationStatus) {
+        this.matriculationStatus = matriculationStatus;
+    }
+
     public String getColour() {
         return colour;
     }
@@ -101,6 +111,7 @@ public class SearchModel {
                 ", price=" + price +
                 ", engineType=" + engineType +
                 ", transmissionType=" + transmissionType +
+                ", matriculationStatus=" + matriculationStatus +
                 ", colour='" + colour + '\'' +
                 '}';
     }

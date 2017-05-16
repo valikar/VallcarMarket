@@ -46,12 +46,6 @@
 			<p>Tomato tomato ching chong potato.</p>
 		</div>
         <div class="row">
-		[#if errors??]
-			[#list errors as error]
-                <span style="color:red"> ${error}</span>
-                <br>
-			[/#list]
-		[/#if]
         </div>
 		<form id="forSearch" action="/search">
 			<div class="row">
@@ -65,17 +59,13 @@
                                 <label>Manufacturer</label>
                                 <select name="manufacturer" id="manufacturer" onchange="autoEnable();brandChanged();" class="form-control">
                                     <optgroup label="Manufacturer">
+                                        <option value="All" [#if searchModel.type?? && searchModel.type == 'All']selected[/#if] >All</option>
                                        	[#list map?keys as manufacturer]
                                        	    <option value="${manufacturer}" [#if searchModel.manufacturer == manufacturer]selected[/#if]>${manufacturer}</option>
                                        	[/#list]
                                     </optgroup>
                                 </select>
 						 	</div>
-							[#--[#assign car_manufacuters = map?keys]--]
-							[#--[#assign car_types = map?values]--]
-							[#--[#list car_manufacuters as car_manufacturer]--]
-							    [#--'$${car_manufacturer}': [ [#list ]]--]
-							[#--[/#list]--]
 
 						  	<div class="form-group col-lg-6">
 						  		<label>Type</label>
@@ -83,10 +73,6 @@
 								  <optgroup label="Type">
 									  <option value="All" [#if searchModel.type?? && searchModel.type == 'All']selected[/#if] >All</option>
 
-									  [#--[#assign types = map[searchModel.manufacturer]]--]
-									      [#--[#list types as type]--]
-                                              [#--<option value="${type}" [#if searchModel.type?? && searchModel.type == type]selected[/#if]>${type}</option>--]
-									      [#--[/#list]--]
 								  </optgroup>
 								</select>
 						  	</div>
@@ -133,6 +119,7 @@
 								<br>
 								<select  name="colour" class="form-control">
 								  <optgroup label="Color">
+                                      <option value="All" [#if searchModel.colour?? && searchModel.colour == 'All']selected[/#if] >All</option>
 								    [#list colours as colour]
 								        <option value="${colour}" [#if searchModel.colour?? && searchModel.colour == colour]selected[/#if] >${colour}</option>
 								    [/#list]
@@ -169,16 +156,58 @@
 						  		</div>
 						  	</div>
 						</div>
-						<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+						<div class="row">
+                            <div class="form-group col-lg-6">
 
+								<div class="row">
+                                    <div class="col-lg-12">
+                                        <label>Matriculation status</label>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="matriculationStatus" [#if searchModel.matriculationStatus?seq_contains(true)]checked[/#if] value="true">Matriculated</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" name="matriculationStatus" [#if searchModel.matriculationStatus?seq_contains(false)]checked[/#if] value="false">Not matriculated</label>
+                                        </div>
+                                    </div>
+								</div>
+							</div>
+							<div class="form-group col-lg-6">
+								<div class="row">
+									<div class="col-lg-3">
+                                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
 				</div>
+
+
 				<div class="col-lg-6">
-					<div class="thumbnail">
-						<img src="https://ocmsites.org/news/wp-content/uploads/sites/15/2015/10/parking.jpg">
+					<div class="row">
+                        <div class="col-lg-12">
+                            <div class="thumbnail">
+                                <img src="https://ocmsites.org/news/wp-content/uploads/sites/15/2015/10/parking.jpg">
+                            </div>
+						</div>
+						<div class="col-lg-12">
+							[#if errors??]
+								[#list errors as error]
+									<ul class="list-group">
+										<li class="list-group-item list-group-item-danger">${error}</li>
+									</ul>
+								[/#list]
+							[/#if]
+						</div>
 					</div>
+
 				</div>
 			</div>
 		</form>
+
 		<hr>
 
 		<div class="row">
@@ -265,7 +294,7 @@
 		[#assign car_manufacuters = map?keys]
         var DATA = {
 		[#list car_manufacuters as car_manufacturer]
-            '${car_manufacturer}' : [ 'All', [#list map[car_manufacturer] as type]'${type}',[/#list] ],
+            '${car_manufacturer}' : [ [#list map[car_manufacturer] as type]'${type}',[/#list] ],
 		[/#list]
         };
 
@@ -276,6 +305,12 @@
             var modelSelect = document.getElementById('type');
             modelSelect.style.display = 'block';
             modelSelect.innerHTML = '';
+
+            var model = 'All';
+            var opt = document.createElement('option');
+            opt.value = model;
+            opt.innerHTML = model;
+            modelSelect.appendChild(opt);
 
             for (var i = 0; i < models.length; i++) {
                 var model = models[i];
