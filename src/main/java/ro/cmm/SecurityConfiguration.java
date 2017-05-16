@@ -17,15 +17,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(jsr250Enabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth)
-//            throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("seller").password("seller").roles("SELLER")
-//        .and()
-//                .withUser("buyer").password("buyer").roles("BUYER");
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 

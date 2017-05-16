@@ -31,9 +31,6 @@ public class AccountController {
     private CarService carService;
 
     @Autowired
-    private LoginService loginService;
-
-    @Autowired
     private MessageService messageService;
 
     @Autowired
@@ -54,11 +51,17 @@ public class AccountController {
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
         User user = userService.getById(id);
-        ModelAndView modelAndView = new ModelAndView("/user/edit");
-        modelAndView.addObject("user", user);
-        return modelAndView;
+        if (!securityService.verifyCurrentUser(id)) {
+            ModelAndView modelAndView = new ModelAndView();
+            RedirectView redirectView = new RedirectView("/denied");
+            modelAndView.setView(redirectView);
+            return modelAndView;
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/user/edit");
+            modelAndView.addObject("user", user);
+            return modelAndView;
+        }
     }
-
     @RequestMapping("/save")
     public ModelAndView save(
             @Valid @ModelAttribute("user") User user,
@@ -107,21 +110,24 @@ public class AccountController {
     @RequestMapping("/list/car/checkIn")
     public String checkIn(long id) throws ValidationException {
         Car car = carService.getById(id);
-
-        if (!car.getAvailable()) {
-            car.setAvailable(true);
-            car.setLocation(carService.generateRandomLocationOnCarSave());
-            carService.getDao().update(car);
-        }else {
-            car.setAvailable(false);
-            CarLocation carLocation=new CarLocation();
-            carLocation.setLatitude(null);
-            carLocation.setLongitude(null);
-            car.setLocation(carLocation);
-            carService.getDao().update(car);
+        if (!securityService.verifyCurrentUser(car.getSellerId())) {
+            return "redirect:/denied";
+        } else {
+            if (!car.getAvailable()) {
+                car.setAvailable(true);
+                car.setLocation(carService.generateRandomLocationOnCarSave());
+                carService.getDao().update(car);
+            } else {
+                car.setAvailable(false);
+                CarLocation carLocation = new CarLocation();
+                carLocation.setLatitude(null);
+                carLocation.setLongitude(null);
+                car.setLocation(carLocation);
+                carService.getDao().update(car);
+            }
+            //carService.save(car);
+            return "redirect:/account/list?id=" + Long.toString(car.getSellerId());
         }
-        //carService.save(car);
-        return "redirect:/account/list?id="+Long.toString(car.getSellerId());
     }
 
     @RequestMapping("/list")

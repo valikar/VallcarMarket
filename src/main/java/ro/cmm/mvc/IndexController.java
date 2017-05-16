@@ -45,4 +45,10 @@ public class IndexController {
 
         return result;
     }
+
+    @RequestMapping("denied")
+    public ModelAndView denied(){
+        ModelAndView modelAndView = new ModelAndView("denied");
+        return modelAndView;
+    }
 }

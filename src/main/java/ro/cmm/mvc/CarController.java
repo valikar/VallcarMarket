@@ -36,8 +36,6 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @Autowired
-    private LoginService userLoginService;
 
     @Autowired
     private SecurityService securityService;
@@ -76,14 +74,21 @@ public class CarController {
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
         Car car = carService.getById(id);
-        CarLocation carLocation = car.getLocation();
-        Map<String,List<String>> map = carService.getManufacturersAndTypes();
-        ModelAndView modelAndView = new ModelAndView("car/add");
-        modelAndView.addObject("car", car);
-        modelAndView.addObject("carLocation",carLocation);
-        modelAndView.addObject("map", map);
-        modelAndView.addObject("colours", carService.getAllColors());
-        return modelAndView;
+        if (!securityService.verifyCurrentUser(car.getSellerId())){
+            ModelAndView modelAndView = new ModelAndView();
+            RedirectView redirectView = new RedirectView("/denied");
+            modelAndView.setView(redirectView);
+            return modelAndView;
+        }else {
+            CarLocation carLocation = car.getLocation();
+            Map<String, List<String>> map = carService.getManufacturersAndTypes();
+            ModelAndView modelAndView = new ModelAndView("car/add");
+            modelAndView.addObject("car", car);
+            modelAndView.addObject("carLocation", carLocation);
+            modelAndView.addObject("map", map);
+            modelAndView.addObject("colours", carService.getAllColors());
+            return modelAndView;
+        }
     }
 
     @RequestMapping("/save")

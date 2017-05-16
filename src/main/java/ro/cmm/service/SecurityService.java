@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.LoginUser;
 
 /**
@@ -27,5 +29,11 @@ public class SecurityService {
 
     }
 
+    public boolean verifyCurrentUser(long id){
+        if (id==getCurrentUser().getId()){
+            return true;
+        }
+        return false;
+    }
 
 }
