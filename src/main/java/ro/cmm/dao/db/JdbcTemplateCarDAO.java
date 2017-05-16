@@ -36,8 +36,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "c.matriculation_status, " +
                                         "cp.picture_src, " +
                                         "c.available_status, "+
-                                        "c.location_longitude, "+
-                                        "c.location_latitude,"+
+//                                        "c.location_longitude, "+
+//                                        "c.location_latitude,"+
                                         "c.views "+
 
 
@@ -91,8 +91,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                  " matriculation_status = ?, "+
                                  " seller_id=?,"+
                                  " available_status=?,"+
-                                 " location_longitude=?,"+
-                                 " location_latitude=?,"+
+             //                    " location_longitude=?,"+
+             //                    " location_latitude=?,"+
                                  " views=?"
                     + "where id = ? returning id";
             newId = jdbcTemplate.queryForObject(sql, new Object[]{
@@ -108,8 +108,8 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     model.getMatriculated(),
                     model.getSellerId(),
                     model.getAvailable(),
-                    model.getLocation().getLongitude(),
-                    model.getLocation().getLatitude(),
+    //                model.getLocation().getLongitude(),
+    //                model.getLocation().getLatitude(),
                     model.getViews(),
                     model.getId()
 
@@ -315,10 +315,10 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     car.setViews(rs.getInt("views"));
                     car.setImgUrl(rs.getString("picture_src"));
 
-                    CarLocation carLocation = new CarLocation();
-                    carLocation.setLatitude(rs.getDouble("location_latitude"));
-                    carLocation.setLongitude(rs.getDouble("location_longitude"));
-                    car.setLocation(carLocation);
+//                    CarLocation carLocation = new CarLocation();
+//                    carLocation.setLatitude(rs.getDouble("location_latitude"));
+//                    carLocation.setLongitude(rs.getDouble("location_longitude"));
+//                    car.setLocation(carLocation);
 
                     System.out.println(car);
                     cars.put(id, car);

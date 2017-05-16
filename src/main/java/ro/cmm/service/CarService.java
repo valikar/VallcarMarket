@@ -251,9 +251,9 @@ public class CarService {
             errors.add("Description is missing!");
         }
 
-        if(car.getImgUrl() == null) {
-            errors.add("Img url is empty.");
-        }
+//        if(car.getImgUrl() == null) {
+//            errors.add("Img url is empty.");
+//        }
 
         if (car.getAvailable() == null) {
             errors.add("Car availability is empty!");

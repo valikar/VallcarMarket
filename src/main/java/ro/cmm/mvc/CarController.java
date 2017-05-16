@@ -91,7 +91,7 @@ public class CarController {
 
         ModelAndView modelAndView = new ModelAndView();
         boolean hasErrors = false;
-
+        Map<String,List<String>> map = carService.getManufacturersAndTypes();
         if (!bindingResult.hasErrors()) {
                 try {
                     car.setSellerId(securityService.getCurrentUser().getId());
@@ -133,6 +133,8 @@ public class CarController {
             modelAndView = new ModelAndView("car/add");
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.addObject("car", car);
+            modelAndView.addObject("map", map);
+            modelAndView.addObject("colours", carService.getAllColors());
         }
 
         System.out.println(car);
