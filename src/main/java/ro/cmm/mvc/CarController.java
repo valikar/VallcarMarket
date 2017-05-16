@@ -43,6 +43,8 @@ public class CarController {
 
     private final Map<Long, String> carToLastImgURL = new HashMap<>();
 
+    private String lastImgUrl;
+
     @RequestMapping("/add")
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("car/add");
@@ -115,10 +117,12 @@ public class CarController {
                         file.transferTo(localFile);
                         imgUrl = localFile.getName();
                         car.setImgUrl(imgUrl);
-
+                        lastImgUrl = imgUrl;
                     } else if (carToLastImgURL.containsKey(id)){
 
                         car.setImgUrl(carToLastImgURL.get(id));
+                    } else if (lastImgUrl != null) {
+                        car.setImgUrl(lastImgUrl);
                     }
                     car.setLocation(carLocation);
                     car = carService.save(car);
@@ -144,11 +148,14 @@ public class CarController {
         }
 
         if (hasErrors){
+            car.setImgUrl(lastImgUrl);
             modelAndView = new ModelAndView("car/add");
             modelAndView.addObject("errors", errors);
             modelAndView.addObject("car", car);
             modelAndView.addObject("map", map);
             modelAndView.addObject("colours", carService.getAllColors());
+        } else {
+            lastImgUrl = null;
         }
 
         System.out.println(car);
