@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.Car;
+import ro.cmm.domain.CarLocation;
 import ro.cmm.service.CarService;
 import ro.cmm.service.LoginService;
 import ro.cmm.service.SecurityService;
@@ -75,9 +76,11 @@ public class CarController {
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
         Car car = carService.getById(id);
+        CarLocation carLocation = car.getLocation();
         Map<String,List<String>> map = carService.getManufacturersAndTypes();
         ModelAndView modelAndView = new ModelAndView("car/add");
         modelAndView.addObject("car", car);
+        modelAndView.addObject("carLocation",carLocation);
         modelAndView.addObject("map", map);
         modelAndView.addObject("colours", carService.getAllColors());
         return modelAndView;
@@ -85,6 +88,7 @@ public class CarController {
 
     @RequestMapping("/save")
     public ModelAndView save(@Valid  Car car,
+                             CarLocation carLocation,
                              BindingResult bindingResult,
                              MultipartFile file) {
                             //BindingResult fileBindingResult
@@ -109,7 +113,7 @@ public class CarController {
 
                         car.setImgUrl(carToLastImgURL.get(id));
                     }
-
+                    car.setLocation(carLocation);
                     car = carService.save(car);
                     if (id == 0) {
                         carToLastImgURL.put(car.getId(),imgUrl);

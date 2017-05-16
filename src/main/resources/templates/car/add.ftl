@@ -116,7 +116,7 @@
                 [#if car.imgUrl??]
                 <div class="form-group">
                     <label>Car Image</label> <br>
-                    <img src="/ext-img/${car.imgUrl}"/> <br>
+                    <img src="/ext-img/${car.imgUrl}" style="height: auto; width: 350;"/> <br>
                     <label for="carPhoto">Choose another image</label>
                     <input type="file" id="carPhotoEdit" name="file" accept="image/*">
                 </div>
@@ -138,6 +138,9 @@
             </div>
         </div>
         <br>
+
+        <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
+        <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
 
         <div class="row">
             <div class="col-lg-12 button-holder">
