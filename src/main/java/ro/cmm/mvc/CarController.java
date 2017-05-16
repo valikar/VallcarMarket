@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -92,6 +93,7 @@ public class CarController {
         ModelAndView modelAndView = new ModelAndView();
         boolean hasErrors = false;
         Map<String,List<String>> map = carService.getManufacturersAndTypes();
+        List<String> errors = new LinkedList<>();
         if (!bindingResult.hasErrors()) {
                 try {
                     car.setSellerId(securityService.getCurrentUser().getId());
@@ -118,12 +120,15 @@ public class CarController {
                     RedirectView redirectView = new RedirectView("/");
                     modelAndView.setView(redirectView);
                 } catch (ValidationException ex) {
-                    for (String msg : ex.getCauses()) {
-                        bindingResult.addError(new ObjectError("userLogin", msg));
-                    }
+//                    for (String msg : ex.getCauses()) {
+//                        bindingResult.addError(new ObjectError("userLogin", msg));
+//                    }
+
+                    errors.add(ex.getMessage());
                     hasErrors = true;
                 } catch (IOException e) {
-                    bindingResult.addError(new ObjectError("fileUpload", e.getMessage()));
+//                    bindingResult.addError(new ObjectError("fileUpload", e.getMessage()));
+//                    errors.add(e.getMessage());
                 }
         } else {
             hasErrors = true;
@@ -131,7 +136,7 @@ public class CarController {
 
         if (hasErrors){
             modelAndView = new ModelAndView("car/add");
-            modelAndView.addObject("errors", bindingResult.getAllErrors());
+            modelAndView.addObject("errors", errors);
             modelAndView.addObject("car", car);
             modelAndView.addObject("map", map);
             modelAndView.addObject("colours", carService.getAllColors());

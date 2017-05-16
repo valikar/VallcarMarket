@@ -82,7 +82,7 @@ CREATE TABLE cars(
 
 CREATE TABLE car_pictures(
 		id int PRIMARY KEY DEFAULT NEXTVAL('picture_id_seq'),
-		picture_src VARCHAR(150) NOT NULL,
+		picture_src VARCHAR(150),
 		car_id int REFERENCES cars(id)
 );
 
