@@ -8,7 +8,7 @@
 [#include '/macro/header.ftl']
 
 </head>
-<body onload="add()">
+<body onload="brandChanged();onLoad();">
 [#include '/macro/nav_index_bar.ftl']
 [#include '/macro/errors.ftl']
 
@@ -18,12 +18,17 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Manufacturer</label>
-                <input id="manufacturer" name="manufacturer" type="input" value="${car.manufacturer!''}" class="form-control"
-                       placeholder="Manufacturer">
+                <select name="manufacturer" id="manufacturer" onchange="autoEnable();brandChanged();" class="form-control">
+                    <option disabled [#if car.manufacturer??][#else]selected[/#if]>-- Select an option --</option>
+                        [#list map?keys as manufacturer]
+                            <option value="${manufacturer}" [#if car.manufacturer?? && car.manufacturer == manufacturer]selected[/#if]>${manufacturer}</option>
+                        [/#list]
+                </select>
             </div>
             <div class="col-lg-6">
                 <label>Type</label>
-                <input id="type" name="type" type="input" value="${car.type!''}" class="form-control" placeholder="Type">
+                <select name="type" id="type"  class="form-control">
+                </select>
             </div>
         </div>
         <br>
@@ -79,7 +84,12 @@
         <div class="row">
             <div class="col-lg-6">
                 <label>Colour</label>
-                <input id="colour" name="colour" type="input" value="${car.colour!''}" class="form-control" placeholder="Color">
+                <select name="colour" id="colour" class="form-control">
+                    <option disabled [#if car.colour??][#else]selected[/#if]>-- Select an option --</option>
+                        [#list colours as colour]
+                            <option value="${colour}" [#if car.colour?? && car.colour == colour]selected[/#if]>${colour}</option>
+                        [/#list]
+                </select>
             </div>
             <div class="col-lg-6">
                 <label>Matriculation status</label>
@@ -142,9 +152,48 @@
     <br>
 
 [#if message??]${message}[/#if]
-
 </div>
+<script>
+    [#assign car_manufacuters = map?keys]
+    var DATA = {
+    [#list car_manufacuters as car_manufacturer]
+        '${car_manufacturer}' : [ [#list map[car_manufacturer] as type]'${type}',[/#list] ],
+    [/#list]
+    };
 
+    function brandChanged() {
+        var manufacturers = document.getElementById('manufacturer');
+        var brand = manufacturers.options[manufacturers.selectedIndex].value;
+        var models = DATA[brand];
+        var modelSelect = document.getElementById('type');
+        modelSelect.style.display = 'block';
+        modelSelect.innerHTML = '';
+
+        var model = '-- Select an option --';
+        var opt = document.createElement('option');
+        opt.value = model;
+        opt.innerHTML = model;
+        modelSelect.appendChild(opt);
+
+        for (var i = 0; i < models.length; i++) {
+            var model = models[i];
+            var opt = document.createElement('option');
+            opt.value = model;
+            opt.innerHTML = model;
+            modelSelect.appendChild(opt);
+        }
+        document.getElementById('type').options[0].disabled = true;
+    }
+    function onLoad() {
+        var manufacturer = document.getElementById('manufacturer').value;
+        if(manufacturer != "-- Select an option --") {
+            document.getElementById('type').value = "[#if car.type??]${car.type}[/#if]";
+        } else {
+            document.getElementById('type').value = "-- Select an option --";
+        }
+    }
+</script>
+<script src="/js/add.js"></script>
 
 [#include '/macro/bootstrap_footer.ftl']
 [#include '/macro/footer-custom-scripts-for-add-car.ftl']
