@@ -180,7 +180,7 @@ public class AccountController {
     @RequestMapping("/bookmark")
     public String bookmark(long id){
     userService.addBookmark(id,securityService.getCurrentUser().getId());
-    return "redirect:/account/list/car?id="+Long.toString(id);
+        return "redirect:/account/bookmark/list?id="+Long.toString(securityService.getCurrentUser().getId());
     }
 
 
