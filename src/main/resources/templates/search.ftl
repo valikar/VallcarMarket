@@ -3,48 +3,15 @@
 [#--<@spring.bind "manufacturer"/>--]
 
 <html lang="en">
+<title>Search Page</title>
 <head>
-	<title>Car Market Management</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/app.css">
-	<link rel="stylesheet" type="text/css" href="css/myList.css">
+[#include '/macro/bootstrap_header.ftl']
+[#include '/macro/header.ftl']
 </head>
 <body onload="autoEnable();brandChanged();onLoad();">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="container">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="index.html">Car Management System</a>
-	    </div>
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="index.html">Home</a></li>
-	        <li><a href="">About</a></li>
-	        <li><a href="">Contact</a></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="signup.html"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
-	        <li><a href="login.html"><i class="fa fa-user" aria-hidden="true"></i> Login</a></li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
+[#include '/macro/nav_index_bar.ftl']
 
 	<div class="container">
-		<div class="jumbotron">
-			<h1><i class="fa fa-car" aria-hidden="true"></i> Car Management System</h1>
-			<p>Tomato tomato ching chong potato.</p>
-		</div>
         <div class="row">
         </div>
 		<form id="forSearch" action="/search">

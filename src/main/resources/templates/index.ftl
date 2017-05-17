@@ -6,26 +6,26 @@
 [#include '/macro/header.ftl']
 </head>
 <body>
-
 [#include '/macro/nav_index_bar.ftl']
 
+
+
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:1000px">
-    [#if user??]
-        <div class="row">
-            <div class="col-lg-4 button-holder">
-                <label>Make a search</label>
-                <a class="btn btn-default" href="/search" role="button"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
-            </div>
-            <div class="col-lg-4 button-holder">
-                <label>Add a new car</label>
-                <a class="btn btn-default" href="/car/add" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add car</a>
-            </div>
-            <div class="col-lg-4 button-holder">
-                <label>View your car list</label>
-                <a class="btn btn-default" href="/account/list?id=${user.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
-            </div>
+    [#if currentUser??]
+    <div class=" panel-heading">
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <a class="btn btn-default" href="/search" role="button"><i class="fa fa-edit" aria-hidden="true"></i>  Make A Search</a>
+        [#if currentUser.role=='BUYER']
+        <a class="btn btn-default" href="/account/buyer" role="button">[#else]
+        <a class="btn btn-default" href="/account/seller" role="button">
+        [/#if]
+            <i class="fa fa-list" aria-hidden="true"></i>
+            View your account for more options
+            <span style="float: right" class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+
+        </a>
         </div>
-        <hr>
+    </div>
     [/#if]
     <b style="margin-left: 10px">Last Cars Added:</b><br>
     <div class="panel-body" style="display: flex; flex-direction: row;">

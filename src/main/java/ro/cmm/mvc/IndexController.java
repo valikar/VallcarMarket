@@ -7,6 +7,8 @@ import org.springframework.web.servlet.ModelAndView;
 import ro.cmm.domain.Car;
 import ro.cmm.service.CarService;
 import ro.cmm.service.SecurityService;
+import javax.servlet.http.HttpServletRequest;
+
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -25,7 +27,7 @@ public class IndexController {
     private SecurityService securityService;
 
     @RequestMapping("")
-    public ModelAndView index() {
+    public ModelAndView index(HttpServletRequest request) {
         ModelAndView result = new ModelAndView("index");
 
         Collection<Car> carList = carService.listAll();
@@ -44,12 +46,11 @@ public class IndexController {
             }
         }
         result.addObject("cars", cars);
-        result.addObject("user", securityService.getCurrentUser());
-
+        request.getSession().setAttribute("currentUser", securityService.getCurrentUser());
         return result;
     }
 
-    @RequestMapping("denied")
+    @RequestMapping("access-denied")
     public ModelAndView denied(){
         ModelAndView modelAndView = new ModelAndView("denied");
         return modelAndView;

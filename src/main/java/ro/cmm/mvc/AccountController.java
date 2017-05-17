@@ -155,7 +155,9 @@ public class AccountController {
             Collection<Long> bookmarks = userService.getBookmarks(id);
             Collection<Car> cars = new LinkedList<>();
             for (Long l : bookmarks){
-                cars.add(carService.getById(l));
+                Car car = carService.getById(l);
+                car.setDistance(5+(int)(Math.random()*((250-5)+1)));
+                cars.add(car);
             }
             modelAndView.addObject("cars",cars);
         }else {

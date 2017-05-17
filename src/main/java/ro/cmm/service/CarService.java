@@ -52,7 +52,7 @@ public class CarService {
 
         Collection<Car> allCars = new LinkedList<>(dao.getAll());
 
-//        allCars = filterByAvailability(allCars);
+        allCars = filterByAvailability(allCars);
 
         if (manufacturer != null) {
             allCars = filterByManufacturer(manufacturer, allCars);

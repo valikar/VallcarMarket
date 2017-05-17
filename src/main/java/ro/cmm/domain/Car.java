@@ -24,6 +24,8 @@ public class Car extends AbstractModel {
     private int views;
     private long sellerId;
 
+    private int distance;
+
     public Car(){
         this.available=false;
     }
@@ -146,6 +148,14 @@ public class Car extends AbstractModel {
 
     public void setMatriculated(Boolean matriculated) {
         this.matriculated = matriculated;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
     }
 
     @Override
