@@ -18,21 +18,25 @@
         <table class="table">
             <tr>
                 <th>Title</th>
-                <th>Sender</th>
+                <th>With</th>
                 <th></th>
-                <th>Conversation </th>
                 <th>Last Message At </th>
+                <th>Conversation </th>
             </tr>
 
         [#list conversations as conversation]
             <tr>
                 <td>${conversation.title}</td>
+            [#if currentUser.id!=conversation.senderId]
                 <td>${conversation.senderName}</td>
+            [#else]
+                <td>${conversation.receiverName}</td>
+            [/#if]
                 <td></td>
-                <td><a href="/account/message/list/conversation?id=${conversation.id?c}">
-                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span></a>
-                </td>
                 <td>${conversation.lastMessage}</td>
+                <td><a href="/account/message/list/conversation?id=${conversation.id?c}">
+                    <span style="margin-left: 40px;" class="glyphicon glyphicon-comment" aria-hidden="true"></span></a>
+                </td>
             </tr>
         [/#list]
         </table>

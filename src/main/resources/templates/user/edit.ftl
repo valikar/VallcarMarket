@@ -37,13 +37,13 @@
                 <label for="password">Password</label>
                 <input type="password"
                        class="form-control" id="password" name="password"
-                       placeHolder="Password"value="${user.password!''}"/>
+                       placeHolder="Password"/>
             </div>
             <div class="form-group">
                 <label for="passwordValidation">Password Validation</label>
                 <input type="password"
                        class="form-control" id="passwordValidation" name="passwordValidation"
-                       placeHolder="Password Validation"value="${user.passwordValidation!''}"/>
+                       placeHolder="Password Validation"/>
             </div>
             <div class="form-group" style="background-color; grey;">
                 <label for="lastName">Role</label>
