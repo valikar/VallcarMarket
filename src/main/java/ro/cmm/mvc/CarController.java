@@ -166,6 +166,10 @@ public class CarController {
 
     @RequestMapping("/delete")
     public String delete(long id) {
+        Car car = carService.getById(id);
+        if(securityService.getCurrentUser().getId() != car.getSellerId()) {
+            throw new AccessDeniedException("You are not authorized to delete this car!");
+        }
         carService.delete(id);
         return "redirect:/account/list?id="+Long.toString(securityService.getCurrentUser().getId());
     }
