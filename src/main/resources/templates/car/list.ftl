@@ -26,6 +26,7 @@
                 <th>Edit </th>
                 <th>CheckIn/Out</th>
                 <th>Status</th>
+                <th>Delete</th>
             </tr>
 
         [#list cars as car]
@@ -52,6 +53,9 @@
                 </td>
                 <td>
                     <input type="checkbox"onclick="return false;" onkeydown="return false;" [#if car.available?? && car.available==false]unchecked[#else ]checked[/#if]/>
+                </td>
+                <td> <a href="/car/delete?id=${car.id?c}">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                 </td>
             </tr>
         [/#list]
