@@ -110,7 +110,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <label for="price">Price</label>
-                <input id="price" max="2147483647" min="0" name="price" type="number" value="[#if car.price != 0]${car.price?string["0000"]}[/#if]" class="form-control" placeholder="Price">
+                <input id="price" max="2147483647" min="0" name="price" type="number" value="[#if car.price != 0]${car.price?string["0"]}[/#if]" class="form-control" placeholder="Price">
             </div>
             <div class="col-lg-6">
                 [#if car.imgUrl??]
@@ -141,6 +141,7 @@
         [#if car.id > 0]
             <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
             <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
+            <input name="available" type="hidden" value="${car.available?c}"/>
         [/#if]
 
 

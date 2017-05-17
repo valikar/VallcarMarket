@@ -162,6 +162,67 @@ INSERT INTO car_types(type_name, manufacturer_id) VALUES
 	('525', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'BMW')),
 	('530', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'BMW'));
 
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('C3', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Citroen')),
+	('C4', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Citroen')),
+	('C5', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Citroen')),
+	('DS3', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Citroen')),
+	('DS4', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Citroen'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Amarok', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volkswagen')),
+	('Golf', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volkswagen')),
+	('Scirocco', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volkswagen')),
+	('Tiguan', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volkswagen')),
+	('Touareg', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volkswagen'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Amarok', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Skoda')),
+	('Octavia', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Skoda')),
+	('Rapid', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Skoda')),
+	('Superb', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Skoda')),
+	('Yeti', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Skoda'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Escort', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford')),
+	('Explorer', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford')),
+	('F150', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford')),
+	('Mondei', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford')),
+	('Mustang', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford')),
+	('Transit', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Ford'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Logan', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Dacia')),
+	('Duster', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Dacia')),
+	('Sandero', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Dacia'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Civic', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Honda')),
+	('Accord', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Honda')),
+	('CR-V', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Honda'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Punto', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Fiat')),
+	('Bravo', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Fiat')),
+	('Stilo', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Fiat'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('RX7', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Mazda')),
+	('RX8', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Mazda')),
+	('Miata', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Mazda'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('Astra', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Opel')),
+	('Vectra', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Opel')),
+	('Corsa', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Opel'));
+
+INSERT INTO car_types(type_name, manufacturer_id) VALUES
+	('S30', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volvo')),
+	('S40', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volvo')),
+	('S60', (SELECT id FROM car_manufacturers WHERE manufacturer_name = 'Volvo'));
+
+
+
 INSERT INTO colours(colour) values('Black'),
                                   ('Blue'),
                                   ('Green'),
