@@ -46,8 +46,18 @@
             </tr>
         [/#list]
         </table>
+
     </div>
 </div>
+[#if cars?size == 0]
+<div class="panel panel-default" style="border:none;margin-left:auto; margin-right:auto; width:1000px">
+    <div class="col-lg-12">
+        <label>Looks like you haven't bookmaked any car yet...</label>
+         <br>
+        <a class="btn btn-default" href="/search" role="button"><i class="fa fa-edit" aria-hidden="true"></i>  Make A Search</a>
+    </div>
+</div>
+[/#if]
 
 [#include '/macro/bootstrap_footer.ftl']
 
