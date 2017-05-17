@@ -138,9 +138,11 @@
             </div>
         </div>
         <br>
+        [#if car.id > 0]
+            <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
+            <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
+        [/#if]
 
-        <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
-        <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
 
         <div class="col-lg-12">
         [#if errors??]
