@@ -16,6 +16,7 @@
     <div class="panel-body">
         <table class="table">
             <tr>
+                <th>Picture</th>
                 <th>Manufacturer</th>
                 <th>Type</th>
                 <th>Price</th>
@@ -23,19 +24,21 @@
                 <th>Views </th>
                 <th>View </th>
                 <th>Edit </th>
-                <th>CheckIn/CheckOut</th>
+                <th>CheckIn/Out</th>
                 <th>Status</th>
             </tr>
 
         [#list cars as car]
             <tr>
+                <td><img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" style="height: auto; width: 170;"/>
+                </td>
                 <td>${car.manufacturer}</td>
                 <td>${car.type}</td>
                 <td>${car.price}</td>
                 <td></td>
                 <td>${car.views}</td>
                 <td><a href="/account/list/car?id=${car.id?c}">
-                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true" ></span></a>
                 </td>
                 <td> <a href="/car/edit?id=${car.id?c}">
                     <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a>
