@@ -68,7 +68,7 @@
                 <strong>Fabrication Year</strong>
             </div>
             <div class="g-col-6">
-                <strong>${car.fabricationYear}</strong>
+                <strong>${car.fabricationYear?c}</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
@@ -84,7 +84,7 @@
                 <strong>Price</strong>
             </div>
             <div class="g-col-6">
-                <strong>${car.price} $</strong>
+                <strong>${car.price} €</strong>
             </div>
         </div>
         <div class="g-row u-margin-bottom-9">
