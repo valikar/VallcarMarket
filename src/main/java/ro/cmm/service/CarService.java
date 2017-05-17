@@ -1,5 +1,6 @@
 package ro.cmm.service;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,14 +16,18 @@ import java.util.*;
 @Service
 public class CarService {
 
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(CarService.class);
+
     @Autowired
     private CarDAO dao;
 
     public Collection<Car> listAll() {
+        LOGGER.debug("Returning all cars from the database.");
         return dao.getAll();
     }
 
     public Collection<Car> listAllAvailableCars(){
+        LOGGER.debug("Returning all available cars from the database.");
         Collection<Car> cars = new LinkedList<>();
         for (Car car: dao.getAll()){
             if (car.getAvailable())
@@ -32,6 +37,7 @@ public class CarService {
     }
 
     public boolean delete(Long id) {
+        LOGGER.debug("Deleteing car with id: " + id);
         Car car = dao.findById(id);
         if (car != null) {
             dao.delete(car);
@@ -41,6 +47,7 @@ public class CarService {
         return false;
     }
     public Collection<Car> search(SearchModel searchModel) {
+        LOGGER.debug("Searching for cars with the following parameters: " + searchModel.toString());
         String manufacturer = searchModel.getManufacturer();
         String type = searchModel.getType();
         int fromYear = searchModel.getFabricationYear();
@@ -92,12 +99,14 @@ public class CarService {
     }
 
     private Collection<Car> filterByAvailability(Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by availability.");
         cars.removeIf((Car car) -> !car.getAvailable());
 
         return cars;
     }
 
     private Collection<Car> filterByManufacturer(String manufacturer, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars manufacturers.");
 
         if(!manufacturer.equalsIgnoreCase("All")) {
             cars.removeIf((Car car) -> !car.getManufacturer().equalsIgnoreCase(manufacturer));
@@ -106,6 +115,7 @@ public class CarService {
     }
 
     private Collection<Car> filterByType(String type, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by type.");
         if(!type.equalsIgnoreCase("All")) {
             cars.removeIf((Car car) -> !car.getType().equalsIgnoreCase(type));
         }
@@ -113,38 +123,42 @@ public class CarService {
     }
 
     private Collection<Car> filterByFabricationYear(int fromYear, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by the year of fabrication.");
         cars.removeIf((Car car) -> car.getFabricationYear() < fromYear);
 
         return cars;
     }
 
     private Collection<Car> filterByMileAge(int maxMileAge, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by their mileage.");
         cars.removeIf((Car car) -> car.getMileAge() > maxMileAge);
 
         return cars;
     }
 
     private Collection<Car> filterByPrice(int price, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by price.");
         cars.removeIf((Car car) -> car.getPrice() > price);
 
         return cars;
     }
 
     private Collection<Car> filterByEngineType(List<EngineType> engineTypes, Collection<Car> cars) {
-
+        LOGGER.debug("Filtering cars by engine type.");
         cars.removeIf((Car car) -> !engineTypes.contains(car.getEngineType()));
 
         return cars;
     }
 
     private Collection<Car> filterByTransmissionType(List<TransmissionType> transmissionTypes, Collection<Car> cars) {
-
+        LOGGER.debug("Filtering cars by transmission type.");
         cars.removeIf((Car car) -> !transmissionTypes.contains(car.getTransmissionType()));
 
         return cars;
     }
 
     private Collection<Car> filterByColour(String colour, Collection<Car> cars) {
+        LOGGER.debug("Filtering cars by color.");
         if(!colour.equalsIgnoreCase("all")) {
             cars.removeIf((Car car) -> !car.getColour().equalsIgnoreCase(colour));
         }
@@ -153,11 +167,14 @@ public class CarService {
 
     public Car save(Car car) throws ValidationException {
         validate(car);
+        LOGGER.debug("Saving car with the following parameters: " + car.toString());
         return dao.update(car);
 
     }
 
     public void validateSearchModel(SearchModel searchModel) throws ValidationException {
+        LOGGER.debug("Validating car with the following parameters: " + searchModel.toString());
+
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         List<String> errors = new LinkedList<String>();
 
@@ -214,6 +231,7 @@ public class CarService {
     }
 
     private void validate(Car car) throws ValidationException {
+        LOGGER.debug("Validating car with the following parameters: " + car.toString());
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         List<String> errors = new LinkedList<String>();
 
@@ -311,15 +329,19 @@ public class CarService {
 //        cars.put("Ferrari", ferraris);
 //        cars.put("All", all);
 
+        LOGGER.debug("Retrieving the list of the car manufacturers and types from the database.");
         return dao.getCarManufacturersAndTypes();
+
     }
 
     // same shit as above
     public List<String> getAllColors() {
+        LOGGER.debug("Retrieving the available colors from the database.");
         return dao.getAllColors();
     }
 
     public Car getById(long id) {
+        LOGGER.debug("Retrieving car from the database with the of " + id);
         return dao.findById(id);
     }
 
@@ -328,6 +350,7 @@ public class CarService {
 //    }
 
     public Collection<Car> getCarListOfSeller (long id){
+        LOGGER.debug("Retrieving the list of cars of seller with " + id + " from the database.");
         return dao.getCarListOfSeller(id);
     }
 
@@ -379,6 +402,7 @@ public class CarService {
 
 
     public void countViews(long id) {
-    dao.countViews(id);
+        LOGGER.debug("Retrieving the number of view for car with id " + id);
+        dao.countViews(id);
     }
 }
