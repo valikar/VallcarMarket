@@ -108,6 +108,8 @@ public class AccountController {
                 }
             }
             modelAndView.addObject("car", car);
+        }else{
+            throw new AccessDeniedException("No car found.");
         }
         return modelAndView;
     }
@@ -157,6 +159,7 @@ public class AccountController {
             for (Long l : bookmarks){
                 Car car = carService.getById(l);
                 car.setDistance(5+(int)(Math.random()*((250-5)+1)));
+                if (car.getAvailable())
                 cars.add(car);
             }
             modelAndView.addObject("cars",cars);

@@ -22,6 +22,15 @@ public class CarService {
         return dao.getAll();
     }
 
+    public Collection<Car> listAllAvailableCars(){
+        Collection<Car> cars = new LinkedList<>();
+        for (Car car: dao.getAll()){
+            if (car.getAvailable())
+                cars.add(car);
+        }
+        return cars;
+    }
+
     public boolean delete(Long id) {
         Car car = dao.findById(id);
         if (car != null) {

@@ -46,7 +46,7 @@
                        placeHolder="Password Validation"/>
             </div>
             <div class="form-group" style="background-color; grey;">
-                <label for="lastName">Role</label>
+                <label for="Role">Role</label>
                 <input type="text"
                        class="form-control" id="role" name="role"
                        placeHolder="Role"value="${user.role!''}" readonly/>

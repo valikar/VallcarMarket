@@ -30,7 +30,7 @@ public class IndexController {
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView result = new ModelAndView("index");
 
-        Collection<Car> carList = carService.listAll();
+        Collection<Car> carList = carService.listAllAvailableCars();
         int firstOne=carList.size()-2,secondOne=carList.size()-1,thirdOne=carList.size();
         Collection<Car> cars = new LinkedList<>();
         for (Car car : carList){
