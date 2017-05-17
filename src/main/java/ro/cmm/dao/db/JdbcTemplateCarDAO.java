@@ -189,8 +189,9 @@ public class JdbcTemplateCarDAO implements CarDAO {
     @Override
     public boolean delete(Car model) {
         boolean flag2 = jdbcTemplate.update("delete from car_pictures where car_id=?", model.getId()) > 0;
+        boolean flag3 = jdbcTemplate.update("delete from bookmarks where car_id=?", model.getId()) > 0;
         boolean flag1 = jdbcTemplate.update("delete from cars where id=?", model.getId()) > 0;
-        if(flag1 && flag2) {
+        if(flag1 && flag2 && flag3) {
             return true;
         } else {
             return false;
