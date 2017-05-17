@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.EngineType;
 import ro.cmm.domain.SearchModel;
 import ro.cmm.domain.TransmissionType;
 import ro.cmm.service.CarService;
+import ro.cmm.service.SecurityService;
 import ro.cmm.service.ValidationException;
 
 import java.util.Collection;
@@ -25,7 +27,7 @@ import java.util.Map;
  * Created by Tamas on 4/24/2017.
  */
 @Controller
-@RequestMapping("")
+@RequestMapping("/search")
 public class ListAndSearchController {
 
     private static Logger LOGGER = LoggerFactory.getLogger("ListAndSearchController");
@@ -33,7 +35,10 @@ public class ListAndSearchController {
     @Autowired
     private CarService carService;
 
-    @RequestMapping("/search")
+    @Autowired
+    private SecurityService securityService;
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public ModelAndView showSearch(SearchModel searchModel, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("search");
 
@@ -62,7 +67,7 @@ public class ListAndSearchController {
         List<String> errors = new LinkedList<>();
         boolean hasErrors = false;
         // because the fields: fabricationYear, price, mileAge are already initialized to 0
-        // a binding error occurrence does not affect the integrity of the search algorithm
+        // a binding error occurrence does not affect the integrity of the searchByUsername algorithm
         // basically we can ignore these errors, BUT ONLY FOR THESE 3 FIELDS
         // If other kind of binding error appears it will be handled correspondingly
         if(bindingResult.hasErrors()) {
@@ -99,6 +104,7 @@ public class ListAndSearchController {
 
         modelAndView.addObject("map", map);
         modelAndView.addObject("colours", carService.getAllColors());
+        modelAndView.addObject("user", securityService.getCurrentUser());
 
         return modelAndView;
     }

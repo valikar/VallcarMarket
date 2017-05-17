@@ -10,6 +10,23 @@
 [#include '/macro/nav_index_bar.ftl']
 
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:1000px">
+    [#if user??]
+        <div class="row">
+            <div class="col-lg-4 button-holder">
+                <label>Make a search</label>
+                <a class="btn btn-default" href="/search" role="button"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
+            </div>
+            <div class="col-lg-4 button-holder">
+                <label>Add a new car</label>
+                <a class="btn btn-default" href="/car/add" role="button"><i class="fa fa-plus" aria-hidden="true"></i> Add car</a>
+            </div>
+            <div class="col-lg-4 button-holder">
+                <label>View your car list</label>
+                <a class="btn btn-default" href="/account/list?id=${user.id?c}" role="button"><i class="fa fa-list" aria-hidden="true"></i> Car list</a>
+            </div>
+        </div>
+        <hr>
+    [/#if]
     <b style="margin-left: 10px">Last Cars Added:</b><br>
     <div class="panel-body" style="display: flex; flex-direction: row;">
             [#list cars as car]

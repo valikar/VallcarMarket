@@ -2,9 +2,9 @@ package ro.cmm.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.CarLocation;
 import ro.cmm.service.CarService;
-import ro.cmm.service.LoginService;
 import ro.cmm.service.SecurityService;
 import ro.cmm.service.ValidationException;
 
@@ -36,7 +35,6 @@ public class CarController {
 
     @Autowired
     private CarService carService;
-
 
     @Autowired
     private SecurityService securityService;
@@ -77,21 +75,18 @@ public class CarController {
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
         Car car = carService.getById(id);
-        if (!securityService.verifyCurrentUser(car.getSellerId())){
-            ModelAndView modelAndView = new ModelAndView();
-            RedirectView redirectView = new RedirectView("/denied");
-            modelAndView.setView(redirectView);
-            return modelAndView;
-        }else {
-            CarLocation carLocation = car.getLocation();
-            Map<String, List<String>> map = carService.getManufacturersAndTypes();
-            ModelAndView modelAndView = new ModelAndView("car/add");
-            modelAndView.addObject("car", car);
-            modelAndView.addObject("carLocation", carLocation);
-            modelAndView.addObject("map", map);
-            modelAndView.addObject("colours", carService.getAllColors());
-            return modelAndView;
+
+        if(securityService.getCurrentUser().getId() != car.getSellerId()) {
+            throw new AccessDeniedException("You are not authorized to edit this car!");
         }
+        CarLocation carLocation = car.getLocation();
+        Map<String, List<String>> map = carService.getManufacturersAndTypes();
+        ModelAndView modelAndView = new ModelAndView("car/add");
+        modelAndView.addObject("car", car);
+        modelAndView.addObject("carLocation", carLocation);
+        modelAndView.addObject("map", map);
+        modelAndView.addObject("colours", carService.getAllColors());
+        return modelAndView;
     }
 
     @RequestMapping("/save")

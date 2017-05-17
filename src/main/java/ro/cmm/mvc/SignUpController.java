@@ -55,6 +55,7 @@ public class SignUpController {
         if (!bindingResult.hasErrors()) {
             try {
                 userService.save(user);
+                securityService.autologin(user.getUserName(), user.getPassword());
                 modelAndView.addObject("currentUser",
                         securityService.getCurrentUser());
                 RedirectView redirectView = new RedirectView("/");

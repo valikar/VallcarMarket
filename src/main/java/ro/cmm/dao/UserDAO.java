@@ -1,6 +1,5 @@
 package ro.cmm.dao;
 
-import ro.cmm.domain.Role;
 import ro.cmm.domain.User;
 
 import java.util.Collection;

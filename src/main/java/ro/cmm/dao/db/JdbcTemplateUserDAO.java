@@ -2,14 +2,15 @@ package ro.cmm.dao.db;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ro.cmm.dao.UserDAO;
 import ro.cmm.domain.Role;
 import ro.cmm.domain.User;
-import ro.cmm.service.LoginService;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -25,6 +26,9 @@ import java.util.Map;
 public class JdbcTemplateUserDAO implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JdbcTemplateUserDAO.class);
@@ -87,8 +91,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     model.getUserName(),
                     model.getPhoneNumber(),
                     model.getRole().name(),
-                    model.getPassword(),
-                    model.getPasswordValidation(),
+                    bCryptPasswordEncoder.encode(model.getPassword()),
+                    bCryptPasswordEncoder.encode(model.getPasswordValidation()),
                     model.getId()
             },new RowMapper<Long>(){
                 public Long mapRow(ResultSet resultSet, int i) throws SQLException{
@@ -97,23 +101,24 @@ public class JdbcTemplateUserDAO implements UserDAO {
             });
 //            LOGGER.info("Update on user with this email: "+model.getUserName());
         }else {
-            sql="INSERT INTO users (first_name, last_name, email, phone_number, role_id, password, password_validation) "+
+            sql="INSERT INTO users (first_name, last_name, email, phone_number, role_id, password, password_validation, enabled) "+
                     "VALUES ( ?,"+
                             " ?,"+
                             " ?,"+
                             " ?,"+
                             " (SELECT id FROM roles WHERE role_name=?),"+
                             " ?,"+
-                            " ?"+
-                            " ) returning id";
+                            " ?, "+
+                            " true"+
+                            ") returning id";
             newId = jdbcTemplate.queryForObject(sql, new Object[]{
                     model.getFirstName(),
                     model.getLastName(),
                     model.getUserName(),
                     model.getPhoneNumber(),
                     model.getRole().name(),
-                    model.getPassword(),
-                    model.getPasswordValidation()
+                    bCryptPasswordEncoder.encode(model.getPassword()),
+                    bCryptPasswordEncoder.encode(model.getPasswordValidation())
             }, new RowMapper<Long>() {
                 @Override
                 public Long mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -157,8 +162,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
 
     @Override
     public boolean isRegistered(String userName, String password) {
-        String query = userDetailsForQuery + "WHERE email= ? AND password= ?";
-        Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName,password);
+        String query = userDetailsForQuery + "WHERE email= ?";
+        Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName);
         User user;
         if (users.size()!=1){
 //            LOGGER.info(userName+" is verified and not registered/invalid credentials");

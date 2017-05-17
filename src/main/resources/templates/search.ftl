@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-	<title>Car Management System</title>
+	<title>Car Market Management</title>
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css"> -->
@@ -278,7 +278,7 @@
 						<br>
 						<div class="row">
 							<div class="col-lg-12 right-align">
-								<a class="btn btn-default" href="/list/car?id=${car.id?c}" role="button"><i class="fa fa-eye" aria-hidden="true"></i> View Car</a>
+								<a class="btn btn-default" href="/account/list/car?id=${car.id?c}" role="button"><i class="fa fa-eye" aria-hidden="true"></i> View Car</a>
 							</div>
 						</div>
 					</div>

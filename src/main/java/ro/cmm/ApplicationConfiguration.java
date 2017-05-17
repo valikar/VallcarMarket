@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ro.cmm.dao.CarDAO;
 import ro.cmm.dao.MessageDAO;
 import ro.cmm.dao.UserDAO;
 import ro.cmm.dao.db.JdbcTemplateCarDAO;
 import ro.cmm.dao.db.JdbcTemplateMessageDAO;
 import ro.cmm.dao.db.JdbcTemplateUserDAO;
-import ro.cmm.dao.inmemory.IMCarDAO;
-import ro.cmm.dao.inmemory.IMMessageDAO;
-import ro.cmm.dao.inmemory.IMUserDAO;
 
 import javax.sql.DataSource;
 
@@ -28,9 +28,14 @@ public class ApplicationConfiguration {
     @Value("${db.user}")
     private String dbUser;
 
-
     @Value("${db.name}")
     private String dbName;
+
+    @Value("${spring.queries.users-query}")
+    private String usersQuery;
+
+    @Value("${spring.queries.roles-query}")
+    private String rolesQuery;
 
 
 /*	@Bean
@@ -91,10 +96,18 @@ public class ApplicationConfiguration {
         return  new SingleConnectionDataSource(url, false);
     }
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(dataSource());
+        jdbcImpl.setUsersByUsernameQuery(usersQuery);
+        jdbcImpl.setAuthoritiesByUsernameQuery(rolesQuery);
+        return jdbcImpl;
+    }
 
-//    @Bean
-//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }

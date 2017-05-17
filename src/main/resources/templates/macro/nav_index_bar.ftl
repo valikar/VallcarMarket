@@ -22,7 +22,7 @@
             <li>[#if currentUser??] <div style="float: right">
                 <li class="active">[#if currentUser.role=='BUYER']
                      <a href="/account/buyer">[#else] <a href="/account/seller">
-                [/#if] <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  ${currentUser.fullName}</a></li>
+                [/#if] <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  ${currentUser.firstName} ${currentUser.lastName}</a></li>
                 <li class="active"><a href="/logout"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  LogOut</a></li>
             [#else]
                 <li class="active"><a href="/login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  LogIn</a></li>

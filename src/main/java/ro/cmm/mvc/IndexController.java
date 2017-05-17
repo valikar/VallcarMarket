@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ro.cmm.domain.Car;
-import ro.cmm.domain.User;
 import ro.cmm.service.CarService;
-import ro.cmm.service.UserService;
+import ro.cmm.service.SecurityService;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -21,6 +20,9 @@ public class IndexController {
 
     @Autowired
     private CarService carService;
+
+    @Autowired
+    private SecurityService securityService;
 
     @RequestMapping("")
     public ModelAndView index() {
@@ -42,6 +44,7 @@ public class IndexController {
             }
         }
         result.addObject("cars", cars);
+        result.addObject("user", securityService.getCurrentUser());
 
         return result;
     }

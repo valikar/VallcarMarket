@@ -43,9 +43,9 @@ public class UserService {
     }
 
 
-    public Collection<User> search(String query) {
+    public User searchByUsername(String query) {
         LOGGER.debug("Searching for " + query);
-        return dao.searchByName(query);
+        return dao.findByUsername(query);
     }
 
     public boolean verifyUsername(String userName) {

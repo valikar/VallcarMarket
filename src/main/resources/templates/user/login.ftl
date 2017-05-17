@@ -17,11 +17,11 @@
     <div class="panel-body">
 
 
-        <form action="/login/onLogin" method="POST">
+        <form action="/login" method="POST">
             <div class="form-group">
                 <label for="userName">Username</label>
                 <input type="text"
-                       class="form-control" id="userName" name="userName"
+                       class="form-control" id="username" name="username"
                        placeHolder="Username"
                        autofocus="true"/>
             </div>

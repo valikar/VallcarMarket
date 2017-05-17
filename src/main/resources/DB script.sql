@@ -55,8 +55,9 @@ CREATE TABLE users(
 		email VARCHAR(50) NOT NULL,
 		phone_number VARCHAR(30) NOT NULL,
 		role_id int REFERENCES roles(id) NOT NULL,
-		password VARCHAR(50) NOT NULL,
-		password_validation VARCHAR(50) NOT NULL
+		password VARCHAR(150) NOT NULL,
+		password_validation VARCHAR(150) NOT NULL,
+		enabled BOOLEAN
 );
 
 CREATE SEQUENCE car_id_seq;

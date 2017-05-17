@@ -1,6 +1,7 @@
 package ro.cmm.mvc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -13,7 +14,6 @@ import ro.cmm.service.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -22,6 +22,14 @@ import java.util.LinkedList;
 @Controller
 @RequestMapping("/account")
 public class AccountController {
+
+//    private User getCurrentUser() {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        System.out.println(auth.getAuthorities());
+//        String name = auth.getName(); //get logged in username
+//        User currentUser = userService.searchByUsername(name);
+//        return currentUser;
+//    }
 
 
     @Autowired
@@ -39,6 +47,7 @@ public class AccountController {
     @RequestMapping("/seller")
     public ModelAndView seller() {
         ModelAndView modelAndView = new ModelAndView("/user/seller");
+        modelAndView.addObject("currentUser", securityService.getCurrentUser());
         return modelAndView;
     }
 
@@ -50,15 +59,12 @@ public class AccountController {
 
     @RequestMapping("/edit")
     public ModelAndView edit(long id) {
-        User user = userService.getById(id);
-        if (!securityService.verifyCurrentUser(id)) {
-            ModelAndView modelAndView = new ModelAndView();
-            RedirectView redirectView = new RedirectView("/denied");
-            modelAndView.setView(redirectView);
-            return modelAndView;
+        User currentUser = securityService.getCurrentUser();
+        if(currentUser.getId() != id) {
+            throw new AccessDeniedException("You are not authorized to edit this account.");
         } else {
             ModelAndView modelAndView = new ModelAndView("/user/edit");
-            modelAndView.addObject("user", user);
+            modelAndView.addObject("user", currentUser);
             return modelAndView;
         }
     }
@@ -110,8 +116,8 @@ public class AccountController {
     @RequestMapping("/list/car/checkIn")
     public String checkIn(long id) throws ValidationException {
         Car car = carService.getById(id);
-        if (!securityService.verifyCurrentUser(car.getSellerId())) {
-            return "redirect:/denied";
+        if (securityService.getCurrentUser().getId() != (car.getSellerId())) {
+            throw new AccessDeniedException("You are not authorized to access this resource");
         } else {
             if (!car.getAvailable()) {
                 car.setAvailable(true);

@@ -43,6 +43,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 //        return localeResolver;
 //    }
 
+
     @Bean
     public ReloadableResourceBundleMessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
@@ -57,5 +58,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
                 .addResourceLocations("file:" + localFilesDir)
                 .setCachePeriod(0);
     }
+
+
 
 }
