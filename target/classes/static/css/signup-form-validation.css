@@ -1,0 +1,17 @@
+.interacted:invalid {
+     background-image: url("https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/cancel-25.png");
+     z-index: 100;
+     background-position: right center;
+     background-repeat: no-repeat;
+     -moz-box-shadow: none;
+
+ }
+.interacted:valid {
+    background-image: url("https://maxcdn.icons8.com/iOS7/PNG/25/Very_Basic/checked-25.png");
+    z-index: 100;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+.interacted:focus:invalid {
+    background-image: none;
+}
