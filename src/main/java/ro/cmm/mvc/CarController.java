@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import ro.cmm.domain.Car;
 import ro.cmm.domain.CarLocation;
 import ro.cmm.service.CarService;
-import ro.cmm.service.LoginService;
 import ro.cmm.service.SecurityService;
 import ro.cmm.service.ValidationException;
 
@@ -157,9 +155,6 @@ public class CarController {
         } else {
             lastImgUrl = null;
         }
-
-        System.out.println(car);
-
 
         return modelAndView;
     }

@@ -26,7 +26,7 @@ public class SecurityService {
     @Autowired
     private UserService userService;
 
-    public void autologin(String username, String password) {
+    public void autoLogin(String username, String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
 
@@ -39,7 +39,6 @@ public class SecurityService {
 
     public User getCurrentUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth.getAuthorities());
         String name = auth.getName(); //get logged in username
         User currentUser = userService.searchByUsername(name);
         return currentUser;

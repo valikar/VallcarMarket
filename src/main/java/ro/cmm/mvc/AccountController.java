@@ -23,15 +23,6 @@ import java.util.LinkedList;
 @RequestMapping("/account")
 public class AccountController {
 
-//    private User getCurrentUser() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        System.out.println(auth.getAuthorities());
-//        String name = auth.getName(); //get logged in username
-//        User currentUser = userService.searchByUsername(name);
-//        return currentUser;
-//    }
-
-
     @Autowired
     private UserService userService;
 
