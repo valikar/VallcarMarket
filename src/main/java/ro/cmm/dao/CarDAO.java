@@ -1,6 +1,7 @@
 package ro.cmm.dao;
 
 import ro.cmm.domain.Car;
+import ro.cmm.domain.SearchModel;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,5 +23,9 @@ public interface CarDAO extends BaseDAO<Car>{
     Collection<Car> getCarListOfSeller(long sellerId);
 
     void countViews(long id);
+
+    Collection<Car> search(SearchModel searchModel);
+
+    Collection<Car> getLatestCars();
 }
 

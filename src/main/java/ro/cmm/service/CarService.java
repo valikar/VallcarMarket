@@ -26,16 +26,6 @@ public class CarService {
         return dao.getAll();
     }
 
-    public Collection<Car> listAllAvailableCars(){
-        LOGGER.debug("Returning all available cars from the database.");
-        Collection<Car> cars = new LinkedList<>();
-        for (Car car: dao.getAll()){
-            if (car.getAvailable())
-                cars.add(car);
-        }
-        return cars;
-    }
-
     public boolean delete(Long id) {
         LOGGER.debug("Deleteing car with id: " + id);
         Car car = dao.findById(id);
@@ -46,123 +36,21 @@ public class CarService {
 
         return false;
     }
+
     public Collection<Car> search(SearchModel searchModel) {
-        LOGGER.debug("Searching for cars with the following parameters: " + searchModel.toString());
-        String manufacturer = searchModel.getManufacturer();
-        String type = searchModel.getType();
-        int fromYear = searchModel.getFabricationYear();
-        int mileAge = searchModel.getMileAge();
-        int price = searchModel.getPrice();
-        List<EngineType> engineTypes = searchModel.getEngineType();
-        List<TransmissionType> transmissionTypes = searchModel.getTransmissionType();
-        String color = searchModel.getColour();
-        Collection<Car> cars = search(manufacturer, type, fromYear,
-                                    mileAge, price, engineTypes, transmissionTypes, color);
-        return cars;
-
-    }
-
-    public Collection<Car> search(String manufacturer, String type, int fromYear,
-                                  int mileAge, int price, List<EngineType> engineTypes,
-                                  List<TransmissionType> transmissionTypes, String colour) {
-
-        Collection<Car> allCars = new LinkedList<>(dao.getAll());
-
-        allCars = filterByAvailability(allCars);
-
-        if (manufacturer != null) {
-            allCars = filterByManufacturer(manufacturer, allCars);
-        }
-        if (type != null) {
-            allCars = filterByType(type, allCars);
-        }
-        if (fromYear != 0) {
-            allCars = filterByFabricationYear(fromYear, allCars);
-        }
-        if (mileAge != 0) {
-            allCars = filterByMileAge(mileAge, allCars);
-        }
-        if (price != 0) {
-            allCars = filterByPrice(price, allCars);
-        }
-        if (EngineType.values().length != engineTypes.size()) {
-            allCars = filterByEngineType(engineTypes, allCars);
-        }
-        if (TransmissionType.values().length != transmissionTypes.size()) {
-            allCars = filterByTransmissionType(transmissionTypes, allCars);
-        }
-        if (colour != null) {
-            allCars = filterByColour(colour, allCars);
-        }
-
-        return allCars;
-    }
-
-    private Collection<Car> filterByAvailability(Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by availability.");
-        cars.removeIf((Car car) -> !car.getAvailable());
-
-        return cars;
-    }
-
-    private Collection<Car> filterByManufacturer(String manufacturer, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars manufacturers.");
-
-        if(!manufacturer.equalsIgnoreCase("All")) {
-            cars.removeIf((Car car) -> !car.getManufacturer().equalsIgnoreCase(manufacturer));
-        }
-        return cars;
-    }
-
-    private Collection<Car> filterByType(String type, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by type.");
-        if(!type.equalsIgnoreCase("All")) {
-            cars.removeIf((Car car) -> !car.getType().equalsIgnoreCase(type));
-        }
-        return cars;
-    }
-
-    private Collection<Car> filterByFabricationYear(int fromYear, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by the year of fabrication.");
-        cars.removeIf((Car car) -> car.getFabricationYear() < fromYear);
-
-        return cars;
-    }
-
-    private Collection<Car> filterByMileAge(int maxMileAge, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by their mileage.");
-        cars.removeIf((Car car) -> car.getMileAge() > maxMileAge);
-
-        return cars;
-    }
-
-    private Collection<Car> filterByPrice(int price, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by price.");
-        cars.removeIf((Car car) -> car.getPrice() > price);
-
-        return cars;
-    }
-
-    private Collection<Car> filterByEngineType(List<EngineType> engineTypes, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by engine type.");
-        cars.removeIf((Car car) -> !engineTypes.contains(car.getEngineType()));
-
-        return cars;
-    }
-
-    private Collection<Car> filterByTransmissionType(List<TransmissionType> transmissionTypes, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by transmission type.");
-        cars.removeIf((Car car) -> !transmissionTypes.contains(car.getTransmissionType()));
-
-        return cars;
-    }
-
-    private Collection<Car> filterByColour(String colour, Collection<Car> cars) {
-        LOGGER.debug("Filtering cars by color.");
-        if(!colour.equalsIgnoreCase("all")) {
-            cars.removeIf((Car car) -> !car.getColour().equalsIgnoreCase(colour));
-        }
-        return cars;
+//        LOGGER.debug("Searching for cars with the following parameters: " + searchModel.toString());
+//        String manufacturer = searchModel.getManufacturer();
+//        String type = searchModel.getType();
+//        int fromYear = searchModel.getFabricationYear();
+//        int mileAge = searchModel.getMileAge();
+//        int price = searchModel.getPrice();
+//        List<EngineType> engineTypes = searchModel.getEngineType();
+//        List<TransmissionType> transmissionTypes = searchModel.getTransmissionType();
+//        String color = searchModel.getColour();
+//        Collection<Car> cars = search(manufacturer, type, fromYear,
+//                                    mileAge, price, engineTypes, transmissionTypes, color);
+//        return cars;
+        return dao.search(searchModel);
     }
 
     public Car save(Car car) throws ValidationException {
@@ -305,36 +193,11 @@ public class CarService {
         this.dao = dao;
     }
 
-    // am folosit-o in ListAndSearchController pentru a incarca
-    // marcile si tipurile disponibile
-    // dupa ce trecem la DB real vom putea sterge/modifica metoda asta
     public Map<String, List<String>> getManufacturersAndTypes() {
-//        Map<String,List<String>> cars = new TreeMap<>();
-//        List<String> audis = new LinkedList<>();
-//        audis.add("A4");
-//        audis.add("A5");
-//        List<String> vw = new LinkedList<>();
-//        vw.add("Golf");
-//        vw.add("Polo");
-//
-//        List<String> ferraris = new LinkedList<>();
-//        ferraris.add("Laferrari");
-//        ferraris.add("458 Italia");
-//
-//        List<String> all = new LinkedList<>();
-//        all.add("All");
-//
-//        cars.put("Audi",audis);
-//        cars.put("Vw", vw);
-//        cars.put("Ferrari", ferraris);
-//        cars.put("All", all);
-
         LOGGER.debug("Retrieving the list of the car manufacturers and types from the database.");
         return dao.getCarManufacturersAndTypes();
-
     }
 
-    // same shit as above
     public List<String> getAllColors() {
         LOGGER.debug("Retrieving the available colors from the database.");
         return dao.getAllColors();
@@ -344,10 +207,6 @@ public class CarService {
         LOGGER.debug("Retrieving car from the database with the of " + id);
         return dao.findById(id);
     }
-
-//    public Car getBySellerId(long id){
-//        return dao.findBySellerId(id);
-//    }
 
     public Collection<Car> getCarListOfSeller (long id){
         LOGGER.debug("Retrieving the list of cars of seller with " + id + " from the database.");

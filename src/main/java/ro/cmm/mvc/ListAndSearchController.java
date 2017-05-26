@@ -84,7 +84,7 @@ public class ListAndSearchController {
         if(!hasErrors) {
             try {
                 carService.validateSearchModel(searchModel);
-                Collection<Car> results = carService.search(searchModel);
+                Collection<Car> results = carService.getDao().search(searchModel);
                 modelAndView.addObject("results", results);
 
             } catch (ValidationException e) {
