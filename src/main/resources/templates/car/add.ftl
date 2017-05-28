@@ -2,21 +2,21 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>[#if car.id > 0]Edit car page[#else]Add car page[/#if]</title>
-<head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
 
+<head>
+    <title>[#if car.id > 0]Edit car page[#else]Add car page[/#if]</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body onload="brandChanged();onLoad();">
 [#include '/macro/nav_index_bar.ftl']
-[#--[#include '/macro/errors.ftl']--]
 
 <div class="container">
 
     <form method="post" action="/car/save" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <label>Manufacturer</label>
                 <select name="manufacturer" id="manufacturer" onchange="autoEnable();brandChanged();" class="form-control">
                     <option disabled [#if car.manufacturer??][#else]selected[/#if]>-- Select an option --</option>
@@ -25,7 +25,7 @@
                         [/#list]
                 </select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <label>Type</label>
                 <select name="type" id="type"  class="form-control">
                 </select>
@@ -33,56 +33,56 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <label>Fabrication Year</label>
                 <input id="fabricationYear" name="fabricationYear" type="number" value="[#if car.fabricationYear != 0]${car.fabricationYear?string["0000"]}[/#if]" class="form-control"
                        placeholder="From 1900 to present">
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <label>Mileage</label>
                 <input id="mileAge" max="2147483647" min="0" name="mileAge" type="number" value="[#if car.mileAge != 0]${car.mileAge?string["0"]}[/#if]" class="form-control" placeholder="In Kilometers">
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <label>Engine Type</label>
                 <div class="input-group">
-                      <span class="input-group-addon">
+                    <span class="input-group-addon">
                         <input id="radioPETROL" type="radio" name="engineType" value="PETROL"
                                [#if car.engineType?? && car.engineType == 'PETROL']checked[/#if]>Petrol</input>
-					  </span>
+                    </span>
                     <span class="input-group-addon">
-                          <input id="radioDIESEL" type="radio" name="engineType" value="DIESEL"
-                                 [#if car.engineType?? && car.engineType == 'DIESEL']checked[/#if]>Diesel</input>
+                        <input id="radioDIESEL" type="radio" name="engineType" value="DIESEL"
+                               [#if car.engineType?? && car.engineType == 'DIESEL']checked[/#if]>Diesel</input>
                       	</span>
                     <span class="input-group-addon">
-                         	 <input id="radioHYBRID" type="radio" name="engineType" value="HYBRID"
-                                    [#if car.engineType?? && car.engineType == 'HYBRID']checked[/#if]>Hybrid</input>
-                      		</span>
+                        <input id="radioHYBRID" type="radio" name="engineType" value="HYBRID"
+                               [#if car.engineType?? && car.engineType == 'HYBRID']checked[/#if]>Hybrid</input>
+                    </span>
                     <span class="input-group-addon">
-                      		 	   <input id="radioELECTRIC" type="radio" name="engineType" value="ELECTRIC"
-                                          [#if car.engineType?? && car.engineType == 'ELECTRIC']checked[/#if]>Electric</input>
-								</span>
+                        <input id="radioELECTRIC" type="radio" name="engineType" value="ELECTRIC"
+                               [#if car.engineType?? && car.engineType == 'ELECTRIC']checked[/#if]>Electric</input>
+                    </span>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <label>Transmission Type</label>
                 <div class="input-group">
-                      <span class="input-group-addon">
+                    <span class="input-group-addon">
                         <input id="radioMANUAL" type="radio" name="transmissionType" value="MANUAL"
                                [#if car.transmissionType?? && car.transmissionType == 'MANUAL']checked[/#if]>Manual</input>
-					  </span>
+                    </span>
                     <span class="input-group-addon">
-                          <input id="radioAUTOMATIC" type="radio" name="transmissionType" value="AUTOMATIC"
-                                 [#if car.transmissionType?? && car.transmissionType == 'AUTOMATIC']checked[/#if]>Automatic</input>
-                      	</span>
+                        <input id="radioAUTOMATIC" type="radio" name="transmissionType" value="AUTOMATIC"
+                               [#if car.transmissionType?? && car.transmissionType == 'AUTOMATIC']checked[/#if]>Automatic</input>
+                    </span>
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <label>Colour</label>
                 <select name="colour" id="colour" class="form-control">
                     <option disabled [#if car.colour??][#else]selected[/#if]>-- Select an option --</option>
@@ -91,28 +91,28 @@
                         [/#list]
                 </select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
                 <label>Matriculation status</label>
                 <div class="input-group">
-                                <span class="input-group-addon">
-									<input id="radioMATRICULATIONtrue" type="radio" name="matriculated"
-                                           value="true"[#if car.matriculated?? && car.matriculated == true]checked[/#if]>Yes, the car is matriculated</input>
-                                </span>
                     <span class="input-group-addon">
-                       				<input id="radioMATRICULATIONfalse" type="radio" name="matriculated"
-                                           value="false"[#if car.matriculated?? && car.matriculated == false]checked[/#if]>No, the car isn't matriculated</input>
-									 </span>
+                        <input id="radioMATRICULATIONtrue" type="radio" name="matriculated"
+                               value="true"[#if car.matriculated?? && car.matriculated == true]checked[/#if]>Yes, the car is matriculated</input>
+                    </span>
+                    <span class="input-group-addon">
+                        <input id="radioMATRICULATIONfalse" type="radio" name="matriculated"
+                               value="false"[#if car.matriculated?? && car.matriculated == false]checked[/#if]>No, the car isn't matriculated</input>
+                    </span>
                 </div>
 
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 <label for="price">Price</label>
                 <input id="price" max="2147483647" min="0" name="price" type="number" value="[#if car.price != 0]${car.price?string["0"]}[/#if]" class="form-control" placeholder="Price">
             </div>
-            <div class="col-lg-6">
+            <div class="col-sm-6 col-md-6">
                 [#if car.imgUrl??]
                 <div class="form-group">
                     <label>Car Image</label> <br>
@@ -131,7 +131,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
                 <label for="extras">Description</label>
                 <textarea id="extras"  type="text" class="form-control" rows="3" cols="4" name="extras"
                           placeholder="Description">[#if car.extras??]${car.extras}[/#if]</textarea>
@@ -145,7 +145,7 @@
         [/#if]
 
 
-        <div class="col-lg-12">
+        <div class="col-md-12">
         [#if errors??]
             [#list errors as error]
                 <ul class="list-group">
@@ -156,7 +156,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-12 button-holder">
+            <div class="col-md-12 button-holder">
             [#if car.id??]
                 <input name="id" type="hidden" value="${car.id?c}"/>
             [/#if]

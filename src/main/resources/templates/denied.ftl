@@ -1,10 +1,12 @@
 [#ftl]
 <html lang="en">
-<title>Access Denied Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>Access Denied Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
 
 [#include '/macro/nav_index_bar.ftl']

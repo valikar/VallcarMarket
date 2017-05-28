@@ -1,10 +1,12 @@
 [#ftl]
 <html lang="en">
-<title>SignUp Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>SignUp Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
 [#include '/macro/nav_index_bar.ftl']
 
@@ -33,18 +35,18 @@
                        class="form-control" id="userName" name="userName"
                        placeHolder="Username"value="${user.userName!''}" readonly/>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password"
-                       class="form-control" id="password" name="password"
-                       placeHolder="Password"/>
-            </div>
-            <div class="form-group">
-                <label for="passwordValidation">Password Validation</label>
-                <input type="password"
-                       class="form-control" id="passwordValidation" name="passwordValidation"
-                       placeHolder="Password Validation"/>
-            </div>
+            [#--<div class="form-group">--]
+                [#--<label for="password">Password</label>--]
+                [#--<input type="password"--]
+                       [#--class="form-control" id="password" name="password"--]
+                       [#--placeHolder="Password"/>--]
+            [#--</div>--]
+            [#--<div class="form-group">--]
+                [#--<label for="passwordValidation">Password Validation</label>--]
+                [#--<input type="password"--]
+                       [#--class="form-control" id="passwordValidation" name="passwordValidation"--]
+                       [#--placeHolder="Password Validation"/>--]
+            [#--</div>--]
             <div class="form-group" style="background-color; grey;">
                 <label for="Role">Role</label>
                 <input type="text"

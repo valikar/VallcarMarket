@@ -1,14 +1,15 @@
 [#ftl]
 <html lang="en">
-<title>Login Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
-
+    <title>Login Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
-<body>
 
-[#include '/macro/nav_login_bar.ftl']
+<body>
+[#assign page = 'login']
+[#include '/macro/nav_index_bar.ftl']
 
 
 [#include '/macro/errors.ftl']

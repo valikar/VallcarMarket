@@ -1,10 +1,12 @@
 [#ftl]
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<title>Conversation Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>Conversation Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
 [#include '/macro/nav_index_bar.ftl']
 

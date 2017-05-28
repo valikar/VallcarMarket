@@ -2,12 +2,13 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Display Car Page</title>
-<head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
 
+<head>
+    <title>Display Car Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 [#if (car.location.latitude)??]
 <body onload="displayCarPosition(${car.location.latitude?c!''},${car.location.longitude?c!''});">
 [#else ]

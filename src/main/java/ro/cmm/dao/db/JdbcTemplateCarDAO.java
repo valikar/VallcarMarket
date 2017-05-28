@@ -5,10 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import ro.cmm.dao.CarDAO;
-import ro.cmm.domain.Car;
-import ro.cmm.domain.CarLocation;
-import ro.cmm.domain.EngineType;
-import ro.cmm.domain.TransmissionType;
+import ro.cmm.domain.*;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -22,7 +19,11 @@ public class JdbcTemplateCarDAO implements CarDAO {
 
     private JdbcTemplate jdbcTemplate;
 
-    private String carDetailsForQuery = "Select c.id, " +
+    public JdbcTemplateCarDAO(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    private String columnsToSelect =    "Select c.id, " +
                                         "c.seller_id, " +
                                         "cm.manufacturer_name, " +
                                         "ct.type_name, " +
@@ -35,22 +36,79 @@ public class JdbcTemplateCarDAO implements CarDAO {
                                         "co.colour, " +
                                         "c.matriculation_status, " +
                                         "cp.picture_src, " +
-                                        "c.available_status, "+
-                                        "c.location_longitude, "+
-                                        "c.location_latitude,"+
-                                        "c.views "+
+                                        "c.available_status ";
+
+    private String tablesToJoin =   "from cars c join car_manufacturers cm on c.manufacturer_id = cm.id "+
+                                    "join car_types ct on c.type_id = ct.id "+
+                                    "join engine_types et on c.engine_type_id = et.id "+
+                                    "join transmission_types tt on c.transmission_type_id = tt.id "+
+                                    "join colours co on c.colour_id = co.id " +
+                                    "join car_pictures cp on c.id = cp.car_id ";
+
+    private String carDetailsForQuery =  columnsToSelect +
+                                        ", c.location_longitude, "+
+                                        "c.location_latitude, "+
+                                        "c.views " +
+                                         tablesToJoin;
+
+    private String queryForSearch = columnsToSelect + tablesToJoin;
 
 
-                                        "from cars c join car_manufacturers cm on c.manufacturer_id = cm.id "+
-                                        "join car_types ct on c.type_id = ct.id "+
-                                        "join engine_types et on c.engine_type_id = et.id "+
-                                        "join transmission_types tt on c.transmission_type_id = tt.id "+
-                                        "join colours co on c.colour_id = co.id " +
-                                        "join car_pictures cp on c.id = cp.car_id ";
+    public Collection<Car> search(SearchModel searchModel) {
+        StringBuilder queryBuilder = new StringBuilder();
 
+        queryBuilder.append(queryForSearch);
+        queryBuilder.append("WHERE available_status = true ");
 
-    public JdbcTemplateCarDAO(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        if(!searchModel.getManufacturer().equalsIgnoreCase("All")) {
+            queryBuilder.append(" AND manufacturer_name = '" + searchModel.getManufacturer() + "'");
+        }
+        if(!searchModel.getType().equalsIgnoreCase("All")) {
+            queryBuilder.append(" AND type_name = '" + searchModel.getType() + "'");
+        }
+        if(searchModel.getFabricationYear() != 0) {
+            queryBuilder.append(" AND registration_year >= " + searchModel.getFabricationYear());
+        }
+        if(searchModel.getMileAge() != 0) {
+            queryBuilder.append(" AND mileage <= " + searchModel.getMileAge());
+        }
+        if(searchModel.getPrice() != 0) {
+            queryBuilder.append(" AND price <= " + searchModel.getPrice());
+        }
+
+        Iterator<EngineType> engineTypeIterator = searchModel.getEngineType().iterator();
+        queryBuilder.append(" AND (engine_type = '" + engineTypeIterator.next().name() + "'");
+        while (engineTypeIterator.hasNext()) {
+            queryBuilder.append(" OR engine_type = '" + engineTypeIterator.next().name() + "'");
+        }
+        queryBuilder.append(")");
+
+        Iterator<TransmissionType> transmissionTypeIterator = searchModel.getTransmissionType().iterator();
+        queryBuilder.append(" AND (transmission_type = '" + transmissionTypeIterator.next().name() + "'");
+        while (transmissionTypeIterator.hasNext()) {
+            queryBuilder.append(" OR transmission_type = '" + transmissionTypeIterator.next().name() + "'");
+        }
+        queryBuilder.append(")");
+
+        Iterator<Boolean> matriculatedIterator = searchModel.getMatriculationStatus().iterator();
+        queryBuilder.append(" AND (matriculation_status = '" + matriculatedIterator.next() + "'");
+        while (matriculatedIterator.hasNext()) {
+            queryBuilder.append(" OR matriculation_status = '" + matriculatedIterator.next() + "'");
+        }
+        queryBuilder.append(")");
+
+        if(!searchModel.getColour().equalsIgnoreCase("All")) {
+            queryBuilder.append(" AND colour = '" + searchModel.getColour() + "'");
+        }
+
+        Collection<Car> result = jdbcTemplate.query(queryBuilder.toString(), new CarMapper());
+
+        return result;
+    }
+
+    @Override
+    public Collection<Car> getLatestCars() {
+        return jdbcTemplate.query(queryForSearch + "WHERE available_status = true ORDER BY id DESC LIMIT 3", new CarMapper());
     }
 
     @Override
@@ -231,46 +289,34 @@ public class JdbcTemplateCarDAO implements CarDAO {
         return map;
     }
 
-//    SELECT type_name from car_types where manufacturer_id = (SELECT id FROM car_manufacturers WHERE manufacturer_name = ?)
-
     @Override
     public void countViews(long id) {
         Car car = findById(id);
         car.setViews(car.getViews()+1);
         update(car);
     }
-//
-//    private static class CarMapper implements RowMapper<Car> {
-//        @Override
-//        public Car mapRow(ResultSet rs, int rowNum) throws SQLException {
-//            Car car = new Car();
-//            car.setId(rs.getLong("id"));
-//            car.setManufacturer(rs.getString("manufacturer_name"));
-//            car.setType(rs.getString("type_name"));
-//            car.setPrice(rs.getInt("price"));
-//            car.setMileAge(rs.getInt("mileage"));
-//            car.setFabricationYear(rs.getInt("registration_year"));
-//            car.setExtras(rs.getString("extras"));
-//            car.setEngineType(EngineType.valueOf(rs.getString("engine_type")));
-//            car.setTransmissionType(TransmissionType.valueOf(rs.getString("transmission_type")));
-//            car.setColour(rs.getString("colour"));
-//            // car.setLocation(ceva)
-//            car.setMatriculated(rs.getBoolean("matriculation_status"));
-//            car.setImgUrl(rs.getString("picture_src"));
-//
-//            return car;
-//        }
-//    }
 
-//    private static class CarRowMapper implements RowMapper<Car> {
-//        @Override
-//        public Car mapRow(ResultSet rs, int rowNum) throws SQLException {
-//            CarResultSetExtractor carResultSetExtractor = new CarResultSetExtractor();
-//            Collection<Car> cars = carResultSetExtractor.extractData(rs);
-//            return cars.iterator().next();
-//        }
-//    }
+    // It's used by the search() method for creating car objects.
+    private static class CarMapper implements RowMapper<Car> {
+        @Override
+        public Car mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Car car = new Car();
+            car.setId(rs.getLong("id"));
+            car.setManufacturer(rs.getString("manufacturer_name"));
+            car.setType(rs.getString("type_name"));
+            car.setPrice(rs.getInt("price"));
+            car.setMileAge(rs.getInt("mileage"));
+            car.setFabricationYear(rs.getInt("registration_year"));
+            car.setExtras(rs.getString("extras"));
+            car.setEngineType(EngineType.valueOf(rs.getString("engine_type")));
+            car.setTransmissionType(TransmissionType.valueOf(rs.getString("transmission_type")));
+            car.setColour(rs.getString("colour"));
+            car.setMatriculated(rs.getBoolean("matriculation_status"));
+            car.setImgUrl(rs.getString("picture_src"));
 
+            return car;
+        }
+    }
 
     @Override
     public List<String> getAllColors() {
@@ -291,9 +337,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
         @Override
         public Collection<Car> extractData(ResultSet rs) throws SQLException, DataAccessException {
             Map<Long,Car> cars = new HashMap<>();
-            System.out.println("valami");
             while (rs.next()) {
-                System.out.println("Itt vajon megy?");
                 long id = rs.getLong("id");
                 if(cars.keySet().contains(id)) {
                     // in acest caz trebuie doar adaugata imaginea fara sa cream un nou car
@@ -321,7 +365,6 @@ public class JdbcTemplateCarDAO implements CarDAO {
                     carLocation.setLongitude(rs.getDouble("location_longitude"));
                     car.setLocation(carLocation);
 
-                    System.out.println(car);
                     cars.put(id, car);
                 }
             }

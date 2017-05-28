@@ -1,12 +1,14 @@
 [#ftl]
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<title>Buyer Account</title>
-<head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
-</head>
-<body>
 
+<head>
+    <title>Buyer Account</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
+</head>
+
+<body>
+[#assign page = 'user']
 [#include '/macro/nav_index_bar.ftl']
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:700px">
     <div class="panel-body">

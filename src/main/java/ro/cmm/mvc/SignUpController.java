@@ -26,7 +26,6 @@ public class SignUpController {
 
     private static Logger LOGGER = LoggerFactory.getLogger("SignUpController");
 
-
     @Autowired
     private UserService userService;
 
@@ -55,7 +54,7 @@ public class SignUpController {
         if (!bindingResult.hasErrors()) {
             try {
                 userService.save(user);
-                securityService.autologin(user.getUserName(), user.getPassword());
+                securityService.autoLogin(user.getUserName(), user.getPassword());
                 modelAndView.addObject("currentUser",
                         securityService.getCurrentUser());
                 RedirectView redirectView = new RedirectView("/");
