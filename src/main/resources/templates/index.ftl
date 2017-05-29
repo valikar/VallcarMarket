@@ -35,8 +35,8 @@
                         <p>
                             <a href="/account/list/car?id=${car.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View car</a>
                             [#if currentUser?? && currentUser.id!= car.sellerId]
-                                <a href="/account/list/car?id=${car.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-heart" aria-hidden="true" ></span> Bookmark</a>
-                                <a href="/account/list/car?id=${car.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Contact</a>
+                                <a href="/account/bookmark?id=${car.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-heart" aria-hidden="true" ></span> Bookmark</a>
+                                <a href="/account/list/car/conversation?id=${car.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Contact</a>
                             [/#if]
                         </p>
                         [#--<p>--]

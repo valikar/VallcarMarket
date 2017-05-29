@@ -40,7 +40,7 @@
 
 
 [#include '/macro/errors.ftl']
-    <img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" style="float: right;margin-top: 10px;margin-right: 10px; height: 400px;" />
+    <img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" style="float: right;margin-top: 10px;margin-right: 10px; height: 400px; width:auto;" />
 
 
 <div class="panel panel-default" style=" margin-left:15px;  width:550px">
