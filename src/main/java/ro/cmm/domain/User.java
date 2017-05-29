@@ -13,9 +13,9 @@ public class User extends AbstractModel {
     @Length(min = 6, max = 30)
     private String userName;//email
     @NotNull
-    @Length(min = 6, max = 12)
+    @Length(min = 6)
     private String password;
-    @Length(min = 6, max = 12)
+    @Length(min = 6)
     private String passwordValidation;
 
     @NotNull

@@ -32,6 +32,12 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
     }
 
     @Override
+    public User changePassword(User user) {
+        update(user);
+        return user;
+    }
+
+    @Override
     public Collection<User> getAllSellers(){
         Collection<User> sellers = new LinkedList<>();
         for (User user : getAll()){

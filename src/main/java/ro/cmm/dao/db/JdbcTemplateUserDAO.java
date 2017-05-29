@@ -81,9 +81,9 @@ public class JdbcTemplateUserDAO implements UserDAO {
                                     "last_name=?,"+
                                     "email=?,"+
                                     "phone_number=?,"+
-                                    "role_id=(SELECT id FROM roles WHERE role_name =?),"+
-                                    "password=?,"+
-                                    "password_validation=?"+
+                                    "role_id=(SELECT id FROM roles WHERE role_name =?)"+
+//                                    "password=?,"+
+//                                    "password_validation=?"+
                                     "WHERE id=? returning id";
             newId = jdbcTemplate.queryForObject(sql,new Object[]{
                     model.getFirstName(),
@@ -91,8 +91,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     model.getUserName(),
                     model.getPhoneNumber(),
                     model.getRole().name(),
-                    bCryptPasswordEncoder.encode(model.getPassword()),
-                    bCryptPasswordEncoder.encode(model.getPasswordValidation()),
+//                    bCryptPasswordEncoder.encode(model.getPassword()),
+//                    bCryptPasswordEncoder.encode(model.getPasswordValidation()),
                     model.getId()
             },new RowMapper<Long>(){
                 public Long mapRow(ResultSet resultSet, int i) throws SQLException{
@@ -131,6 +131,22 @@ public class JdbcTemplateUserDAO implements UserDAO {
         return model;
     }
 
+    @Override
+    public User changePassword(User user) {
+        String sql = "UPDATE users SET password=?,password_validation=? WHERE id=? returning id";
+        Long newId=null;
+        newId = jdbcTemplate.queryForObject(sql,new Object[]{
+                    bCryptPasswordEncoder.encode(user.getPassword()),
+                    bCryptPasswordEncoder.encode(user.getPasswordValidation()),
+                user.getId()
+        },new RowMapper<Long>(){
+            public Long mapRow(ResultSet resultSet, int i) throws SQLException{
+                return resultSet.getLong(1);
+            }
+        });
+        user.setId(newId);
+        return user;
+    }
 
     @Override
     public boolean delete(User model) {

@@ -32,6 +32,12 @@ public class UserService {
         dao.update(user);
     }
 
+    public void changePassword(User user) throws ValidationException{
+        LOGGER.debug("Changing password for user with username: "+user.getUserName());
+        validatePassword(user);
+        dao.changePassword(user);
+    }
+
     public boolean delete(long id) {
         LOGGER.debug("Deleting user with id: " + id);
         User u = dao.findById(id);
@@ -107,6 +113,14 @@ public class UserService {
         if (StringUtils.isEmpty(user.getRole())) {
             errors.add("Empty Role");
         }
+
+        if (!errors.isEmpty()) {
+            throw new ValidationException(errors.toArray(new String[]{}));
+        }
+    }
+
+    private void validatePassword(User user) throws ValidationException {
+        List<String> errors = new LinkedList<String>();
 
         if (StringUtils.isEmpty(user.getPassword())) {
             errors.add("Empty password");

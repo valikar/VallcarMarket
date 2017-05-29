@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>SignUp Page</title>
+    <title>Edit Account Page</title>
     [#include '/macro/bootstrap_header.ftl']
     [#include '/macro/header.ftl']
 </head>
@@ -35,18 +35,6 @@
                        class="form-control" id="userName" name="userName"
                        placeHolder="Username"value="${user.userName!''}" readonly/>
             </div>
-            [#--<div class="form-group">--]
-                [#--<label for="password">Password</label>--]
-                [#--<input type="password"--]
-                       [#--class="form-control" id="password" name="password"--]
-                       [#--placeHolder="Password"/>--]
-            [#--</div>--]
-            [#--<div class="form-group">--]
-                [#--<label for="passwordValidation">Password Validation</label>--]
-                [#--<input type="password"--]
-                       [#--class="form-control" id="passwordValidation" name="passwordValidation"--]
-                       [#--placeHolder="Password Validation"/>--]
-            [#--</div>--]
             <div class="form-group" style="background-color; grey;">
                 <label for="Role">Role</label>
                 <input type="text"
@@ -57,6 +45,8 @@
 
         [#if user.id??]
             <input name="id" type="hidden" value="${user.id?c}"/>
+            <input name="password" type="hidden" value="${user.password!''}"/>
+            <input name="passwordValidation" type="hidden" value="${user.passwordValidation!''}"/>
         [/#if]
 
             <div class="container-fluid">
@@ -67,7 +57,12 @@
         <br>
     </form>
 
+</div>
+<div class="container-fluid">
+    <div class="col-lg-6 col-lg-offset-3 text-center">
+        <a href="/account/edit/password?id=${currentUser.id?c}" class="btn btn-default"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>Change your password</a>
     </div>
+</div>
 </div>
 
 

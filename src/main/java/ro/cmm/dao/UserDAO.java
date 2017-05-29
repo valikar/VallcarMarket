@@ -15,6 +15,8 @@ public interface UserDAO extends BaseDAO<User> {
 
     boolean isRegistered(String userName, String password);
 
+    User changePassword(User user);
+
     Collection<User> getAllSellers();
 
     Collection<User> getAllBuyers();

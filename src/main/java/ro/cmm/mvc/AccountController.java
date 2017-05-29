@@ -1,5 +1,6 @@
 package ro.cmm.mvc;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
@@ -59,6 +60,19 @@ public class AccountController {
             return modelAndView;
         }
     }
+
+    @RequestMapping("/edit/password")
+    public ModelAndView password(long id){
+        User currentUser = securityService.getCurrentUser();
+        if(currentUser.getId() != id) {
+            throw new AccessDeniedException("You are not authorized to change password of this account.");
+        } else {
+            ModelAndView modelAndView = new ModelAndView("/user/password");
+            modelAndView.addObject("user", currentUser);
+            return modelAndView;
+        }
+    }
+
     @RequestMapping("/save")
     public ModelAndView save(
             @Valid @ModelAttribute("user") User user,
@@ -82,6 +96,35 @@ public class AccountController {
         }
         if (hasErrors){
             modelAndView = new ModelAndView("user/signup");
+            modelAndView.addObject("errors", bindingResult.getAllErrors());
+            modelAndView.addObject("user", user);
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping("savePassword")
+    public ModelAndView savePassword(
+            @Valid @ModelAttribute("user") User user,
+            BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        boolean hasErrors = false;
+
+        if (!bindingResult.hasErrors()) {
+            try {
+                userService.changePassword(user);
+                RedirectView redirectView = new RedirectView("/");
+                modelAndView.setView(redirectView);
+            }catch (ValidationException e) {
+                for (String msg : e.getCauses()) {
+                    bindingResult.addError(new ObjectError("userLogin", msg));
+                }
+                hasErrors = true;
+            }
+        } else {
+            hasErrors = true;
+        }
+        if (hasErrors){
+            modelAndView = new ModelAndView("user/password");
             modelAndView.addObject("errors", bindingResult.getAllErrors());
             modelAndView.addObject("user", user);
         }
