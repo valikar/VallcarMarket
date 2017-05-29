@@ -302,6 +302,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
         public Car mapRow(ResultSet rs, int rowNum) throws SQLException {
             Car car = new Car();
             car.setId(rs.getLong("id"));
+            car.setSellerId(rs.getLong("seller_id"));
             car.setManufacturer(rs.getString("manufacturer_name"));
             car.setType(rs.getString("type_name"));
             car.setPrice(rs.getInt("price"));
