@@ -1,0 +1,65 @@
+body {
+	/*background: url(https://images.unsplash.com/photo-1415369629372-26f2fe60c467?dpr=2&fit=crop&fm=jpg&h=775&q=50&w=1450); */
+	/*https://ocmsites.org/news/wp-content/uploads/sites/15/2015/10/parking.jpg*/
+	/*https://images.unsplash.com/photo-1415369629372-26f2fe60c467?dpr=2&fit=crop&fm=jpg&h=775&q=50&w=1450*/
+/*	background-size: cover;
+	background-position: center;*/
+	font-family: Lato;
+	padding-top: 70px;
+	/*color: white;*/
+}
+
+.navbar-inverse {
+	background: #2c3e50;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	color: white;
+}
+
+.navbar-inverse .navbar-brand {
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>.active>a {
+	background: #19293a;
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover {
+	background: #47627c;
+}
+
+#searchText {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.car-header {
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.description {
+	font-size: 1.5rem;
+}
+
+.col-car-view {
+	text-align: right;
+}
+
+.button-holder {
+	text-align: center;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.col-lg-12 .btn {
+	width: 70%;
+}
+
+.car-header {
+	font-weight: bold;
+	font-size: 2rem;
+}
