@@ -8,18 +8,16 @@ import ro.cmm.domain.Message;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Created by Joseph Friday, 05.05.2017 at 14:16.
- */
+
 public class IMMessageDAO implements MessageDAO {
 
     private static AtomicLong ID = new AtomicLong(System.currentTimeMillis());
 
-    private Map<Conversation,List<Message>> messagesList = new HashMap<>();
+    private Map<Conversation,List<Message>> messagesList = new HashMap();
 
     @Override
     public void newConversation(Conversation conversation) {
-        List<Message> messages = new LinkedList<>();
+        List<Message> messages = new LinkedList();
         conversation.setId(ID.getAndIncrement());
         messagesList.put(conversation, messages);
     }
@@ -42,7 +40,7 @@ public class IMMessageDAO implements MessageDAO {
 
     @Override
     public Collection<Conversation> getAllConversationsBySender(long id) {
-    Collection<Conversation> messages = new LinkedList<>();
+    Collection<Conversation> messages = new LinkedList();
         for (Conversation conversation : messagesList.keySet()){
             if (conversation.getSenderId()==id){
                 messages.add(conversation);
@@ -53,7 +51,7 @@ public class IMMessageDAO implements MessageDAO {
 
     @Override
     public Collection<Conversation> getAllConversationsByReceiver(long id) {
-        Collection<Conversation> messages = new LinkedList<>();
+        Collection<Conversation> messages = new LinkedList();
         for (Conversation conversation : messagesList.keySet()){
             if (conversation.getReceiverId()==id){
                 messages.add(conversation);
@@ -64,7 +62,7 @@ public class IMMessageDAO implements MessageDAO {
 
     @Override
     public Collection<Conversation> getAllConversations(long id) {
-        Collection<Conversation> messages = new LinkedList<>();
+        Collection<Conversation> messages = new LinkedList();
         for (Conversation conversation : messagesList.keySet()){
             if (conversation.getReceiverId()==id||conversation.getSenderId()==id){
                 messages.add(conversation);
@@ -74,7 +72,7 @@ public class IMMessageDAO implements MessageDAO {
 
     @Override
     public List<Message> getMessages(long id) {
-        List<Message> messages = new LinkedList<>();
+        List<Message> messages = new LinkedList();
         for (Conversation conversation : messagesList.keySet()) {
             if (conversation.getId() == id) {
                 messages= messagesList.get(conversation);

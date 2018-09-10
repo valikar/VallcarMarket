@@ -2,12 +2,14 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Your Bookmarks Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
-[#include '/macro/header-custom-scripts-for-bookmarks.ftl']
+    <title>Your Bookmarks Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
+    [#include '/macro/header-custom-scripts-for-bookmarks.ftl']
 </head>
+
 <body>
 
 [#include '/macro/nav_index_bar.ftl']

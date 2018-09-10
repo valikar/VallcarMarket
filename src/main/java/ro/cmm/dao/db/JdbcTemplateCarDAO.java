@@ -265,20 +265,20 @@ public class JdbcTemplateCarDAO implements CarDAO {
 
     @Override
     public Map<String, List<String>> getCarManufacturersAndTypes() {
-        Map<String, List<String>> map = new LinkedHashMap<>();
+        Map<String, List<String>> map = new LinkedHashMap();
         map.putAll(
                 jdbcTemplate.query("Select manufacturer_name, type_name FROM car_types JOIN car_manufacturers" +
                                 " ON car_types.manufacturer_id = car_manufacturers.id;",
                         new ResultSetExtractor<Map<String, List<String>>>() {
                             @Override
                             public Map<String, List<String>> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                                Map<String, List<String>> manufacturersAndTypes = new LinkedHashMap<>();
+                                Map<String, List<String>> manufacturersAndTypes = new LinkedHashMap();
                                 while (rs.next()) {
                                     String manufacturerName = rs.getString("manufacturer_name");
                                     String typeName = rs.getString("type_name");
 
                                     if (!manufacturersAndTypes.keySet().contains(manufacturerName)) {
-                                        manufacturersAndTypes.put(manufacturerName, new LinkedList<>());
+                                        manufacturersAndTypes.put(manufacturerName, new LinkedList());
                                     }
                                     manufacturersAndTypes.get(manufacturerName).add(typeName);
                                 }
@@ -321,7 +321,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
 
     @Override
     public List<String> getAllColors() {
-        List<String> allColours = new LinkedList<>();
+        List<String> allColours = new LinkedList();
         allColours.addAll(
                 jdbcTemplate.query("SELECT colour FROM colours", new RowMapper<String>() {
                     @Override
@@ -337,7 +337,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
     private static class CarResultSetExtractor implements ResultSetExtractor<Collection<Car>> {
         @Override
         public Collection<Car> extractData(ResultSet rs) throws SQLException, DataAccessException {
-            Map<Long,Car> cars = new HashMap<>();
+            Map<Long,Car> cars = new HashMap();
             while (rs.next()) {
                 long id = rs.getLong("id");
                 if(cars.keySet().contains(id)) {

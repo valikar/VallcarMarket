@@ -245,7 +245,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
 
         @Override
         public Collection<User> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-            Map<Long,User> users = new HashMap<>();
+            Map<Long,User> users = new HashMap();
 
             while (resultSet.next()){
                 if (!users.keySet().contains(resultSet.getLong("id"))) {
@@ -270,7 +270,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
 
         @Override
         public Collection<Long> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-            Collection<Long> bookmarks = new LinkedList<>();
+            Collection<Long> bookmarks = new LinkedList();
             while (resultSet.next()){
                 bookmarks.add(resultSet.getLong("car_id"));
             }

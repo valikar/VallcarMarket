@@ -1,6 +1,5 @@
-package ro.cmm.mvc;
+package ro.cmm.Controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
@@ -189,7 +188,7 @@ public class AccountController {
         ModelAndView modelAndView = new ModelAndView("/car/bookmarks");
         if (userService.getBookmarks(id)!=null){
             Collection<Long> bookmarks = userService.getBookmarks(id);
-            Collection<Car> cars = new LinkedList<>();
+            Collection<Car> cars = new LinkedList();
             for (Long l : bookmarks){
                 Car car = carService.getById(l);
                 car.setDistance(5+(int)(Math.random()*((250-5)+1)));
@@ -198,7 +197,7 @@ public class AccountController {
             }
             modelAndView.addObject("cars",cars);
         }else {
-            Collection<Car> cars = new LinkedList<>();
+            Collection<Car> cars = new LinkedList();
             modelAndView.addObject("cars",cars);
             modelAndView.addObject(new RedirectView("/"));
         }
@@ -226,7 +225,7 @@ public class AccountController {
                 Collection<Conversation> conversations =messageService.getAllConversations(id);
                 modelAndView.addObject("conversations", conversations);
             } else {
-                Collection<Conversation> conversations = new LinkedList<>();
+                Collection<Conversation> conversations = new LinkedList();
                 modelAndView.addObject("conversations", conversations);
             }
         return modelAndView;

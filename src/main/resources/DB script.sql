@@ -257,5 +257,6 @@ INSERT INTO car_pictures(picture_src, car_id) VALUES('1493835101567_egoista.jpg'
 -- SELECT manufacturer_name, type_name FROM car_manufacturers JOIN car_types ON car_manufacturers.id = car_types.manufacturer_id;
 
 Select manufacturer_name, type_name FROM car_manufacturers JOIN car_types ON car_types.manufacturer_id = car_manufacturers.id;
+-- Select c.id, c.seller_id, cm.manufacturer_name, ct.type_name, c.price, c.mileage, c.registration_year, c.extras, et.engine_type, tt.transmission_type, co.colour, c.matriculation_status, cp.picture_src, c.available_status from cars c join car_manufacturers cm on c.manufacturer_id = cm.id join car_types ct on c.type_id = ct.id join engine_types et on c.engine_type_id = et.id join transmission_types tt on c.transmission_type_id = tt.id join colours co on c.colour_id = co.id join car_pictures cp on c.id = cp.car_id
 
-
+ 

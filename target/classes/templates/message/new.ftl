@@ -1,10 +1,12 @@
 [#ftl]
 <html lang="en">
-<title>New Message Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>New Message Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
 [#include '/macro/nav_index_bar.ftl']
 

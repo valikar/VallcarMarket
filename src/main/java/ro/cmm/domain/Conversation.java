@@ -3,6 +3,7 @@ package ro.cmm.domain;
 /**
  * Created by Joseph Friday, 05.05.2017 at 11:54.
  */
+
 public class Conversation extends AbstractModel{
 
     private long senderId;

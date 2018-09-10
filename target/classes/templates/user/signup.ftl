@@ -1,12 +1,15 @@
 [#ftl]
 <html lang="en">
-<title>SignUp Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>SignUp Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
-[#include '/macro/nav_signup_bar.ftl']
+[#assign page = 'signup']
+[#include '/macro/nav_index_bar.ftl']
 
 [#include '/macro/errors.ftl']
 <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:500px">
@@ -65,8 +68,6 @@
 
     </div>
 </div>
-
-
 
 [#include '/macro/bootstrap_footer.ftl']
 [#include '/macro/footer-custom-scripts-for-signup.ftl']

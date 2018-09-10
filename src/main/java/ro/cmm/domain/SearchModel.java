@@ -14,9 +14,9 @@ import java.util.List;
 public class SearchModel {
 
     public SearchModel() {
-        engineType = new LinkedList<>();
-        transmissionType = new LinkedList<>();
-        matriculationStatus = new LinkedList<>();
+        engineType = new LinkedList();
+        transmissionType = new LinkedList();
+        matriculationStatus = new LinkedList();
     }
 
     private String manufacturer;

@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
-    private Map<Long,Collection<Long>> bookmarks = new HashMap<>();
+    private Map<Long,Collection<Long>> bookmarks = new HashMap();
 
     public Collection<User> searchByName(String query) {
         if (StringUtils.isEmpty(query)) {
@@ -39,7 +39,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     @Override
     public Collection<User> getAllSellers(){
-        Collection<User> sellers = new LinkedList<>();
+        Collection<User> sellers = new LinkedList();
         for (User user : getAll()){
             if (user.getRole().equals(Role.SELLER)){
                 sellers.add(user);
@@ -50,7 +50,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     @Override
     public Collection<User> getAllBuyers(){
-        Collection<User> buyers = new LinkedList<>();
+        Collection<User> buyers = new LinkedList();
         for (User user : getAll()){
             if (user.getRole().equals(Role.BUYER)){
                 buyers.add(user);
@@ -93,7 +93,7 @@ public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
             updatedList.add(carId);
             bookmarks.replace(userId,updatedList);}
         }else {
-            Collection<Long> list = new LinkedList<>();
+            Collection<Long> list = new LinkedList();
             list.add(carId);
             bookmarks.put(userId,list);
         }

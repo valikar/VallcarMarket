@@ -1,4 +1,4 @@
-package ro.cmm.mvc;
+package ro.cmm.Controllers;
 
 
 import org.slf4j.Logger;
@@ -64,7 +64,7 @@ public class ListAndSearchController {
             searchModel.getEngineType().add(EngineType.PETROL);
         }
 
-        List<String> errors = new LinkedList<>();
+        List<String> errors = new LinkedList();
         boolean hasErrors = false;
         // because the fields: fabricationYear, price, mileAge are already initialized to 0
         // a binding error occurrence does not affect the integrity of the searchByUsername algorithm
@@ -88,7 +88,7 @@ public class ListAndSearchController {
                 modelAndView.addObject("results", results);
 
             } catch (ValidationException e) {
-                errors = new LinkedList<>();
+                errors = new LinkedList();
                 errors.add(e.getMessage());
                 modelAndView.addObject("results", new LinkedList<Car>());
                 modelAndView.addObject("errors", errors);

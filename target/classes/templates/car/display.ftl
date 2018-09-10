@@ -2,12 +2,15 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Display Car Page</title>
+
 <head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
+    <title>Display Car Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
+    <link rel="stylesheet" type="text/css" href="/css/display.css">
 
 </head>
+
 [#if (car.location.latitude)??]
 <body onload="displayCarPosition(${car.location.latitude?c!''},${car.location.longitude?c!''});">
 [#else ]
@@ -36,18 +39,19 @@
 
     </div>
     <div class="panel-body">
-
+        <div class="thumbnail"  style=" flex-grow: 1; float: right;">
+            <img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" class="img-fluid" alt="">
+        </div>
 
 [#include '/macro/errors.ftl']
-    <img src="[#if car.imgUrl??]/ext-img/${car.imgUrl}[#else]/images/car-placeholder.jpg[/#if]" style="float: right;margin-top: 10px;margin-right: 10px; height: 400px;" />
 
+<div class="panel panel-default" style=" margin-left:15px;  width:500px">
 
-<div class="panel panel-default" style=" margin-left:15px;  width:550px">
     <div class="panel-heading">
         <h3 class="panel-title" style="font-size: medium">Technical data</h3>
     </div>
     <div class="panel-body" style="font-size: 16px; ">
-        <div class="g-row u-margin-bottom-9">
+        <div class="g-row u-margin-bottom-9 ">
             <div class="g-col-6">
                 <strong>Manufacturer</strong>
             </div>
@@ -125,8 +129,10 @@
             </div>
         </div>
         <strong>${car.extras}</strong>
+        </div>
     </div>
-    </div>
+
+
     </div>
 
     <div class="panel panel-default" style="margin-left:auto; margin-right:auto; width:800px">

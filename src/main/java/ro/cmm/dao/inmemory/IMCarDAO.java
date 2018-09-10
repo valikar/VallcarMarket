@@ -100,7 +100,7 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
 
     @Override
     public Collection<Car> getCarListOfSeller(long sellerId) {
-        Collection<Car> cars = new LinkedList<>();
+        Collection<Car> cars = new LinkedList();
 
         for (Car car : getAll()){
             if (car.getSellerId()== sellerId){
@@ -124,19 +124,19 @@ public class IMCarDAO extends IMBaseDAO<Car> implements CarDAO {
 
     @Override
     public Map<String, List<String>> getCarManufacturersAndTypes() {
-        Map<String,List<String>> cars = new TreeMap<>();
-        List<String> audis = new LinkedList<>();
+        Map<String,List<String>> cars = new TreeMap();
+        List<String> audis = new LinkedList();
         audis.add("A4");
         audis.add("A5");
-        List<String> vw = new LinkedList<>();
+        List<String> vw = new LinkedList();
         vw.add("Golf");
         vw.add("Polo");
 
-        List<String> ferraris = new LinkedList<>();
+        List<String> ferraris = new LinkedList();
         ferraris.add("Laferrari");
         ferraris.add("458 Italia");
 
-        List<String> all = new LinkedList<>();
+        List<String> all = new LinkedList();
         all.add("All");
 
         cars.put("Audi",audis);

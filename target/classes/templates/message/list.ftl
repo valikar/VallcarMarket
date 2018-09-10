@@ -2,12 +2,13 @@
 [#import "/spring.ftl" as spring /]
 
 <html lang="en">
-<title>Your Conversations Page</title>
-<head>
-[#include '/macro/bootstrap_header.ftl']
-[#include '/macro/header.ftl']
 
+<head>
+    <title>Your Conversations Page</title>
+    [#include '/macro/bootstrap_header.ftl']
+    [#include '/macro/header.ftl']
 </head>
+
 <body>
 [#include '/macro/nav_index_bar.ftl']
 

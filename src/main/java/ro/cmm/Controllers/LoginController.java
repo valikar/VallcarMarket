@@ -1,4 +1,4 @@
-package ro.cmm.mvc;
+package ro.cmm.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

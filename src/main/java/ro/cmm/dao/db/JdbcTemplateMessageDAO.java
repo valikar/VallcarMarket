@@ -169,7 +169,7 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
     private static class ConversationResultSetExtractor implements ResultSetExtractor<Collection<Conversation>>{
         @Override
         public Collection<Conversation> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-            Collection<Conversation> conversations = new LinkedList<>();
+            Collection<Conversation> conversations = new LinkedList();
             while (resultSet.next()){
                 Conversation c = new Conversation();
                 c.setId(resultSet.getLong("id"));
@@ -189,7 +189,7 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
     private static class MessageResultSetExtractor implements  ResultSetExtractor<List<Message>>{
         @Override
         public List<Message> extractData(ResultSet resultSet) throws SQLException, DataAccessException {
-        List<Message> messages = new LinkedList<>();
+        List<Message> messages = new LinkedList();
             while(resultSet.next()){
                 Message m = new Message();
                 m.setConversationId(resultSet.getLong("conversation_id"));

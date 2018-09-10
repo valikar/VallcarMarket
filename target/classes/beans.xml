@@ -13,10 +13,6 @@
         <property name="dao" ref="IMUserDAO" />
     </bean>
 
-    <bean id="loginService" class="ro.cmm.service.LoginService">
-        <property name="dao" ref="IMUserDAO" />
-    </bean>
-
     <bean id="IMMessageDAO" class="ro.cmm.dao.inmemory.IMMessageDAO"/>
     <bean id="messageService" class="ro.cmm.service.MessageService">
         <property name="dao" ref="IMMessageDAO" />
