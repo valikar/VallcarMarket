@@ -1,147 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9cadb456-78e3-4383-b45e-346f38db26da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_25_incubating.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_4_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_0_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_24.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_freemarker_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_4_2_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_4_2_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_4_2_2_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_7_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/car_img_changes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/car_img_changes.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/car_img_changes2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/car_img_changes2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/commit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/commit.xml" afterDir="false" />
+    <list default="true" id="9cadb456-78e3-4383-b45e-346f38db26da" name="Default" comment="car img changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMarketManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CarMarketManagement.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/CarMarketManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/CarMarketManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateCarDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateCarDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateMessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateMessageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMCarDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMCarDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMMessageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMMessageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/domain/Conversation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/domain/Conversation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/domain/SearchModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/domain/SearchModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/ListAndSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/ListAndSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/MvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/MvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/DB script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/DB script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DB script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DB script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/beans.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/beans.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/CarMarketManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/CarMarketManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/SecurityConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/CarDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/CarDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/UserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/UserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$CarResultSetExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO$CarResultSetExtractor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateCarDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO$BookmarkResultSetExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO$BookmarkResultSetExtractor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO$UserResultSetExtractor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO$UserResultSetExtractor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/db/JdbcTemplateUserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMCarDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMCarDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMMessageDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMMessageDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMUserDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/dao/inmemory/IMUserDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/domain/Conversation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/domain/Conversation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/domain/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/domain/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/AccountController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/CarController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/IndexController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/ListAndSearchController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/MvcConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/mvc/SignUpController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/service/CarService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/service/CarService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/service/LoginService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/service/SecurityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/service/SecurityService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ro/cmm/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ro/cmm/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/add.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/add.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/bookmarks.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/bookmarks.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/display.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/display.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/car/list.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/car/list.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/denied.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/denied.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/index.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/index.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/macro/bootstrap_header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/macro/bootstrap_header.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/macro/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/macro/header.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/macro/nav_index_bar.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/macro/nav_index_bar.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/macro/nav_login_bar.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/macro/nav_signup_bar.ftl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/message/conversation.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/message/conversation.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/message/list.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/message/list.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/message/new.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/message/new.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/search.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/search.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/buyer.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/buyer.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/edit.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/edit.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/login.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/seller.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/seller.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/user/signup.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/user/signup.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ro/cmm/service/BaseCarServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ro/cmm/service/BaseCarServiceTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ro/cmm/service/BaseLoginServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ro/cmm/service/LoginServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/car/add.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/car/add.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="C:\dev\CarMarketManagement\.idea\shelf/" />
@@ -156,7 +19,7 @@
     <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/VallcarMarket$CarMarketManagementApplication.ic" NAME="CarMarketManagementApplication Coverage Results" MODIFIED="1536354791128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/VallcarMarket$CarMarketManagementApplication.ic" NAME="CarMarketManagementApplication Coverage Results" MODIFIED="1536604619161" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ro.cmm.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/CarMarketManagement$CarMarketManagementApplication.coverage" NAME="CarMarketManagementApplication Coverage Results" MODIFIED="1493978536840" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -217,16 +80,6 @@
         <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="postgres: database" type="6d9b600a:PostgresImplModel$Database" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
-        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="cars: table" type="a93d6ac6:PostgresImplModel$LocalTable" />
-      </path>
     </expand>
     <select />
   </component>
@@ -234,25 +87,28 @@
     <session id="-1872905492">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.112" value="1" />
+          <entry key="project.open.time.121" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.72" value="1" />
           <entry key="project.open.time.76" value="1" />
           <entry key="project.open.time.84" value="1" />
           <entry key="project.open.time.86" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cars" value="2" />
+          <entry key="car_pictures" value="1" />
+          <entry key="car_types" value="1" />
+          <entry key="cars" value="4" />
           <entry key="class" value="1" />
           <entry key="cmd" value="1" />
-          <entry key="ftl" value="1" />
+          <entry key="ftl" value="4" />
           <entry key="gitignore" value="1" />
-          <entry key="java" value="56" />
+          <entry key="java" value="62" />
           <entry key="md" value="1" />
           <entry key="mvnw" value="1" />
           <entry key="pg_am" value="1" />
@@ -269,9 +125,9 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="Database Element" value="8" />
-          <entry key="FTL" value="1" />
-          <entry key="JAVA" value="56" />
+          <entry key="Database Element" value="12" />
+          <entry key="FTL" value="4" />
+          <entry key="JAVA" value="62" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="3" />
@@ -283,7 +139,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="cell" value="49" />
-          <entry key="java" value="236" />
+          <entry key="ftl" value="41" />
+          <entry key="java" value="763" />
           <entry key="properties" value="24" />
           <entry key="sql" value="1" />
           <entry key="txt" value="9" />
@@ -292,7 +149,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="236" />
+          <entry key="FTL" value="41" />
+          <entry key="JAVA" value="763" />
           <entry key="PLAIN_TEXT" value="9" />
           <entry key="Properties" value="24" />
           <entry key="SQL" value="1" />
@@ -307,32 +165,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
+            <state relative-caret-position="227">
+              <caret line="97" column="42" lean-forward="true" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1279#1299#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/domain/Role.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="22" selection-start-column="22" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/domain/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="das://e71ed6ad-0400-4170-a54d-dd48793f7711/database/postgres/schema/public/table/cars">
+        <entry file="das://e71ed6ad-0400-4170-a54d-dd48793f7711/database/postgres/schema/public/table/car_pictures">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
               <filtering enabled="true" />
@@ -341,46 +185,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/MvcConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="136">
+              <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+              <folding>
+                <element signature="e#445#465#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        <entry file="das://e71ed6ad-0400-4170-a54d-dd48793f7711/database/postgres/schema/public/table/cars">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/CarMarketManagementApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/ApplicationConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1564">
-              <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/add.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="82">
+              <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/denied.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/bookmarks.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="66" column="7" lean-forward="true" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/display.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1717">
+              <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -403,6 +259,9 @@
       <find>src</find>
       <find>carService.save(car)</find>
       <find>carService.save(car</find>
+      <find>${local.files.dir}</find>
+      <find>im</find>
+      <find>carPhotoSave</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -433,7 +292,6 @@
         <option value="$PROJECT_DIR$/src/test/java/ro/cmm/service/CarServiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/SignUpController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/dao/CarDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/cmm/ApplicationConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/add.js" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/domain/Car.java" />
@@ -441,7 +299,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/car/display.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/car/list.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/user/edit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/car/add.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/car/bookmarks.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMMessageDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/mvc/AccountController.java" />
@@ -457,10 +314,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/domain/Conversation.java" />
         <option value="$PROJECT_DIR$/src/main/resources/DB script.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/CarMarketManagementApplication.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/cmm/ApplicationConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/car/add.ftl" />
       </list>
     </option>
   </component>
@@ -512,9 +371,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -547,6 +406,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cmm" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VallcarMarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VallcarMarket" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cmm" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VallcarMarket" type="b2602c69:ProjectViewProjectNode" />
@@ -595,7 +463,7 @@
     <property name="SearchEverywhereHistoryKey" value="car.jpg&#9;FILE&#9;file://C:/dev/CarMarketManagement/src/main/resources/static/images/car.jpg&#10;?string[&quot;0000&quot;]&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536402128199" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536611033825" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -851,7 +719,8 @@
       <workItem from="1536322623925" duration="21843000" />
       <workItem from="1536493009733" duration="1858000" />
       <workItem from="1536556000845" duration="251000" />
-      <workItem from="1536562353975" duration="1756000" />
+      <workItem from="1536562353975" duration="4691000" />
+      <workItem from="1536598851400" duration="9157000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <created>1494967921622</created>
@@ -874,7 +743,21 @@
       <option name="project" value="LOCAL" />
       <updated>1495008082378</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="car img changes">
+      <created>1536584405791</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1536584405791</updated>
+    </task>
+    <task id="LOCAL-00005" summary="car img changes">
+      <created>1536585184268</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1536585184268</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -889,7 +772,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153067000" />
+    <option name="totallyTimeSpent" value="165159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -909,15 +792,15 @@
       <window_info anchor="bottom" id="Spring" order="0" weight="0.3287483" />
       <window_info anchor="bottom" id="Problems" order="1" weight="0.3287483" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.61426765" weight="0.31361762" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.6720779" weight="0.3704918" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" sideWeight="0.6720779" visible="true" weight="0.38196722" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3287483" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="9" sideWeight="0.4896104" visible="true" weight="0.40983605" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4896104" weight="0.40983605" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3397524" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33934426" />
       <window_info anchor="bottom" id="MaxCompute Console" order="12" />
       <window_info anchor="bottom" id="Running Info" order="13" />
       <window_info anchor="bottom" id="Running Result" order="14" side_tool="true" />
@@ -926,7 +809,7 @@
       <window_info anchor="bottom" id="Database Changes" order="17" />
       <window_info anchor="bottom" id="Java Enterprise" order="18" />
       <window_info anchor="bottom" id="Database Console" order="19" weight="0.3295082" />
-      <window_info anchor="right" id="Database" order="0" visible="true" weight="0.32980332" />
+      <window_info anchor="right" id="Database" order="0" weight="0.32980332" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Bean Validation" order="2" />
       <window_info anchor="right" id="Commander" order="3" weight="0.4" />
@@ -940,7 +823,7 @@
       <window_info anchor="right" id="Coverage" order="11" side_tool="true" visible="true" weight="0.32922077" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22617246" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22617246" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Nl-Palette" order="2" />
       <window_info id="Designer" order="3" />
@@ -952,27 +835,27 @@
       <window_info id="Favorites" order="9" side_tool="true" />
       <window_info id="Capture Tool" order="10" />
       <window_info id="Web" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="0" weight="0.3295082" />
-      <window_info anchor="bottom" id="Spring" order="1" weight="0.3287483" />
-      <window_info anchor="bottom" id="Problems" order="2" weight="0.3287483" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.61426765" weight="0.31361762" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.6720779" visible="true" weight="0.3704918" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.3287483" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4896104" weight="0.411315" />
-      <window_info anchor="bottom" id="DB Execution Console" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3397524" />
-      <window_info anchor="bottom" id="MaxCompute Console" order="13" />
-      <window_info anchor="bottom" id="Running Info" order="14" />
-      <window_info anchor="bottom" id="Running Result" order="15" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="16" weight="0.352459" />
-      <window_info anchor="bottom" id="Event Log" order="17" sideWeight="0.32792208" side_tool="true" weight="0.22283356" />
-      <window_info anchor="bottom" id="Database Changes" order="18" />
-      <window_info anchor="bottom" id="Java Enterprise" order="19" />
-      <window_info anchor="right" id="Database" order="0" weight="0.32980332" />
+      <window_info anchor="bottom" id="Spring" order="0" weight="0.3287483" />
+      <window_info anchor="bottom" id="Problems" order="1" weight="0.3287483" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.61426765" weight="0.31361762" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.6720779" visible="true" weight="0.38196722" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.3287483" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4896104" weight="0.40983605" />
+      <window_info anchor="bottom" id="DB Execution Console" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33934426" />
+      <window_info anchor="bottom" id="MaxCompute Console" order="12" />
+      <window_info anchor="bottom" id="Running Info" order="13" />
+      <window_info anchor="bottom" id="Running Result" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.352459" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.32792208" side_tool="true" weight="0.22283356" />
+      <window_info anchor="bottom" id="Database Changes" order="17" />
+      <window_info anchor="bottom" id="Java Enterprise" order="18" />
+      <window_info anchor="bottom" id="Database Console" order="19" weight="0.3295082" />
+      <window_info anchor="right" id="Database" order="0" visible="true" weight="0.32980332" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Bean Validation" order="2" />
       <window_info anchor="right" id="Commander" order="3" weight="0.4" />
@@ -1041,44 +924,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/index.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/bookmarks.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMMessageDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="74" column="47" selection-start-line="74" selection-start-column="47" selection-end-line="74" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateUserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4250">
-          <caret line="272" column="55" selection-start-line="272" selection-start-column="55" selection-end-line="272" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/dao/db/JdbcTemplateMessageDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/dao/inmemory/IMUserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1513">
@@ -1165,13 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-89">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/SignUpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1318,13 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/domain/Car.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="59" lean-forward="true" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/service/SecurityService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1332,24 +1163,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/service/CarService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -1364,13 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1615">
           <caret line="125" selection-start-line="125" selection-end-line="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
@@ -1390,15 +1200,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/ApplicationConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+        <state relative-caret-position="429">
+          <caret line="111" column="4" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/add.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/SecurityConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="41" />
+        <state relative-caret-position="613">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/SignUpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/denied.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/bookmarks.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="66" column="7" lean-forward="true" selection-start-line="66" selection-start-column="7" selection-end-line="66" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://e71ed6ad-0400-4170-a54d-dd48793f7711/database/postgres/schema/public/table/car_types">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/display.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="101" column="36" selection-start-line="101" selection-start-column="36" selection-end-line="101" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/domain/Car.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="174" column="30" lean-forward="true" selection-start-line="174" selection-start-column="30" selection-end-line="174" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://e71ed6ad-0400-4170-a54d-dd48793f7711/database/postgres/schema/public/table/car_pictures">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1406,6 +1272,34 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/MvcConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="32" lean-forward="true" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding>
+            <element signature="e#445#465#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ro/cmm/Controllers/CarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="97" column="42" lean-forward="true" selection-start-line="97" selection-start-column="42" selection-end-line="97" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1279#1299#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/car/add.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="124" column="52" selection-start-line="124" selection-start-column="52" selection-end-line="124" selection-end-column="52" />
         </state>
       </provider>
     </entry>

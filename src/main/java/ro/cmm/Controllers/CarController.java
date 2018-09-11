@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -31,6 +32,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/car")
 public class CarController {
+
 
     private final Map<Long, String> carToLastImgURL = new HashMap();
     @Value("${local.files.dir}")
@@ -89,16 +91,15 @@ public class CarController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
-
+    @RequestMapping("/save")
     public ModelAndView save(@Valid Car car,
                              CarLocation carLocation,
                              BindingResult bindingResult,
-                             MultipartFile file) {
+                             @RequestParam MultipartFile file) {
         //BindingResult fileBindingResult
-
-        ModelAndView modelAndView = new ModelAndView();
+         ModelAndView modelAndView = new ModelAndView();
         boolean hasErrors = false;
+        System.out.println(localFilesDir);
         Map<String, List<String>> map = carService.getManufacturersAndTypes();
         List<String> errors = new LinkedList();
         if (!bindingResult.hasErrors()) {
@@ -109,7 +110,9 @@ public class CarController {
                 long id = car.getId();
                 String imgUrl = null;
                 if (file != null && !file.getOriginalFilename().isEmpty()) {
+                    System.out.println(file.getOriginalFilename());
                     File localFile = new File(localFilesDir, System.currentTimeMillis() + "_" + file.getOriginalFilename());
+                    System.out.println(localFile);
                     file.transferTo(localFile);
                     imgUrl = localFile.getName();
                     car.setImgUrl(imgUrl);
@@ -120,6 +123,7 @@ public class CarController {
                 } else if (lastImgUrl != null) {
                     car.setImgUrl(lastImgUrl);
                 }
+                car.setImgUrl(imgUrl);
                 car.setLocation(carLocation);
                 car = carService.save(car);
                 if (imgUrl != null) {
@@ -158,7 +162,7 @@ public class CarController {
         } else {
             lastImgUrl = null;
         }
-
+        System.out.println(car.toString());
         return modelAndView;
     }
 

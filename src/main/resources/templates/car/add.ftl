@@ -14,7 +14,7 @@
 
 <div class="container">
 
-    <form method="post" action="/car/save" enctype="multipart/form-data">
+    <form method="get" action="/car/save" enctype="multipart/form-data">
         <div class="row">
             <div class="col-sm-6 col-md-6">
                 <label>Manufacturer</label>
@@ -122,8 +122,8 @@
                 </div>
                     [#else]
                         <div class="form-group">
-                            <label for="carPhoto">Car Image</label>
-                            <input type="file" id="carPhotoSave" name="file" accept="image/*">
+                            <label for="carPhotoSave">Car Image</label>
+                            <input type="file"  name="file" id="carPhotoSave" accept="image/*" >
                             <p class="help-block">Insert an image of the car here.</p>
                         </div>
                 [/#if]
