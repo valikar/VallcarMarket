@@ -1,13 +1,12 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.NotNull;
 
-/**
- * Created by Joseph Saturday, 15.04.2017 at 01:13.
- */
-public class User extends AbstractModel {
+
+public class User extends AbstractModel  {
 
     @NotNull
     @Length(min = 6, max = 30)

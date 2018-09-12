@@ -7,17 +7,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import ro.cmm.dao.MessageDAO;
-import ro.cmm.domain.Conversation;
-import ro.cmm.domain.Message;
+import ro.cmm.Models.Conversation;
+import ro.cmm.Models.Message;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-/**
- * Created by Joseph Thursday, 11.05.2017 at 15:57.
- */
+
 public class JdbcTemplateMessageDAO implements MessageDAO {
 
     private JdbcTemplate jdbcTemplate;

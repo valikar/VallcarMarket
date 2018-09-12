@@ -5,16 +5,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import ro.cmm.dao.CarDAO;
-import ro.cmm.domain.*;
+import ro.cmm.Models.*;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-/**
- * Created by Tamas on 5/4/2017.
- */
+
 public class JdbcTemplateCarDAO implements CarDAO {
 
     private JdbcTemplate jdbcTemplate;

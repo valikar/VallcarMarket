@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ro.cmm.domain.Car;
+import ro.cmm.Models.Car;
 import ro.cmm.service.CarService;
 import ro.cmm.service.SecurityService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
-/**
- * Created by Joseph Saturday, 22.04.2017 at 03:46.
- */
 @Controller
 @RequestMapping("/")
 public class IndexController {

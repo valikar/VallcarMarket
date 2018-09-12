@@ -9,16 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import ro.cmm.domain.*;
+import ro.cmm.Models.*;
 import ro.cmm.service.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
 import java.util.LinkedList;
 
-/**
- * Created by Joseph Monday, 24.04.2017 at 20:51.
- */
+
 @Controller
 @RequestMapping("/account")
 public class AccountController {
@@ -41,7 +39,11 @@ public class AccountController {
         modelAndView.addObject("currentUser", securityService.getCurrentUser());
         return modelAndView;
     }
-
+ @RequestMapping("/activate/user/{id}")
+ public ModelAndView login() {
+     ModelAndView modelAndView = new ModelAndView("/login");
+     return modelAndView;
+ }
     @RequestMapping("/buyer")
     public ModelAndView buyer() {
         ModelAndView modelAndView = new ModelAndView("/user/buyer");

@@ -4,18 +4,16 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ro.cmm.domain.Car;
-import ro.cmm.domain.CarLocation;
-import ro.cmm.domain.EngineType;
-import ro.cmm.domain.TransmissionType;
+import ro.cmm.Models.Car;
+import ro.cmm.Models.CarLocation;
+import ro.cmm.Models.EngineType;
+import ro.cmm.Models.TransmissionType;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-/**
- * Created by Tamas on 4/22/2017.
- */
+
 
 public abstract class BaseCarServiceTest {
     

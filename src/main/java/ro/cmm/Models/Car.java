@@ -1,10 +1,7 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
 
 
-/**
- * @author Emanuel Pruker
- */
 public class Car extends AbstractModel {
 
     private String imgUrl;

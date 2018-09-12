@@ -1,14 +1,12 @@
 package ro.cmm.dao;
 
-import ro.cmm.domain.Conversation;
-import ro.cmm.domain.Message;
+import ro.cmm.Models.Conversation;
+import ro.cmm.Models.Message;
 
 import java.util.Collection;
 import java.util.List;
 
-/**
- * Created by Joseph Friday, 05.05.2017 at 14:18.
- */
+
 public interface MessageDAO {
 
     void newConversation(Conversation conversation);

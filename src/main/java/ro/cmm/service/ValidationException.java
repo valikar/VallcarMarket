@@ -2,9 +2,7 @@ package ro.cmm.service;
 
 import java.util.Arrays;
 
-/**
- * Created by Joseph Saturday, 15.04.2017 at 12:37.
- */
+
 public class ValidationException extends Exception {
     private String[] causes;
 

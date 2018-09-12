@@ -1,16 +1,9 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Represents a command object used for the search form.
- * The Car object has only one field for engine type and because
- * of this it can't be used as command object for the search form.
- * Instances of this class will have the role of command object
- * for the applications search algorithm.
- * Created by Tamas on 4/25/2017.
- */
+
 public class SearchModel {
 
     public SearchModel() {

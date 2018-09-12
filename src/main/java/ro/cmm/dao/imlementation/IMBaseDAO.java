@@ -1,16 +1,14 @@
-package ro.cmm.dao.inmemory;
+package ro.cmm.dao.imlementation;
 
 import ro.cmm.dao.BaseDAO;
-import ro.cmm.domain.AbstractModel;
+import ro.cmm.Models.AbstractModel;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * @author Emanuel Pruker
- */
+
 public class IMBaseDAO<T extends AbstractModel> implements BaseDAO<T> {
     private Map<Long, T> models = new HashMap<Long, T>();
 

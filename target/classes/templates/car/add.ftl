@@ -1,5 +1,5 @@
 [#ftl]
-[#import "/spring.ftl" as spring /]
+
 
 <html lang="en">
 
@@ -114,16 +114,16 @@
             </div>
             <div class="col-sm-6 col-md-6">
                 [#if car.imgUrl??]
-                <div class="form-group">
-                    <label>Car Image</label> <br>
-                    <img src="/ext-img/${car.imgUrl}" style="height: auto; width: 350;"/> <br>
-                    <label for="carPhoto">Choose another image</label>
-                    <input type="file" id="carPhotoEdit" name="file" accept="image/*">
-                </div>
-                    [#else]
+                    <div class="form-group">
+                        <label>Car Image</label> <br>
+                        <img src="/ext-img/${car.imgUrl}" style="height: auto; width: 350;"/> <br>
+                        <label>Choose another image</label>
+                        <input type="file"  name="file" accept="image/*">
+                    </div>
+                [#else]
                         <div class="form-group">
-                            <label for="carPhoto">Car Image</label>
-                            <input type="file" id="carPhotoSave" name="file" accept="image/*">
+                            <label>Car Image</label>
+                            <input type="file"   name="file"  accept="image/*" >
                             <p class="help-block">Insert an image of the car here.</p>
                         </div>
                 [/#if]
@@ -139,8 +139,11 @@
         </div>
         <br>
         [#if car.id > 0]
+
             <input name="longitude" type="hidden" value="${carLocation.longitude?c}"/>
+            [#----] hidden
             <input name="latitude" type="hidden" value="${carLocation.latitude?c}"/>
+        [#----]
             <input name="available" type="hidden" value="${car.available?c}"/>
         [/#if]
 

@@ -4,16 +4,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.cmm.dao.MessageDAO;
-import ro.cmm.dao.inmemory.IMMessageDAO;
-import ro.cmm.domain.Conversation;
-import ro.cmm.domain.Message;
+import ro.cmm.Models.Conversation;
+import ro.cmm.Models.Message;
 
 import java.util.*;
 
 
-/**
- * Created by Joseph Friday, 05.05.2017 at 11:59.
- */
 @Service
 public class MessageService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(MessageService.class);

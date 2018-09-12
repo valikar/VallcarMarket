@@ -1,12 +1,10 @@
 package ro.cmm.dao;
 
-import ro.cmm.domain.AbstractModel;
+import ro.cmm.Models.AbstractModel;
 
 import java.util.Collection;
 
-/**
- * @author Emanuel Pruker
- */
+
 public interface BaseDAO<T extends AbstractModel> {
 
     Collection<T> getAll();

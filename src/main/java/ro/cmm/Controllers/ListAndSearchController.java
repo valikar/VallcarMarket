@@ -10,10 +10,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import ro.cmm.domain.Car;
-import ro.cmm.domain.EngineType;
-import ro.cmm.domain.SearchModel;
-import ro.cmm.domain.TransmissionType;
+import ro.cmm.Models.Car;
+import ro.cmm.Models.EngineType;
+import ro.cmm.Models.SearchModel;
+import ro.cmm.Models.TransmissionType;
 import ro.cmm.service.CarService;
 import ro.cmm.service.SecurityService;
 import ro.cmm.service.ValidationException;
@@ -23,9 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Tamas on 4/24/2017.
- */
+
 @Controller
 @RequestMapping("/search")
 public class ListAndSearchController {

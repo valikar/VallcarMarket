@@ -1,16 +1,13 @@
-package ro.cmm.dao.inmemory;
+package ro.cmm.dao.imlementation;
 
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.UserDAO;
-import ro.cmm.domain.User;
-import ro.cmm.domain.Role;
+import ro.cmm.Models.User;
+import ro.cmm.Models.Role;
 
 import java.util.*;
 
-/**
- * Created by Joseph Saturday, 15.04.2017 at 12:56.
- */
+
 public class IMUserDAO extends IMBaseDAO<User> implements UserDAO {
 
     private Map<Long,Collection<Long>> bookmarks = new HashMap();

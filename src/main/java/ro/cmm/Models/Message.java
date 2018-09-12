@@ -1,12 +1,10 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Joseph Friday, 05.05.2017 at 20:28.
- */
+
 public class Message {
 
     private long conversationId;

@@ -3,14 +3,12 @@ package ro.cmm.service;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-import ro.cmm.domain.*;
+import ro.cmm.Models.*;
 
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Joseph Monday, 08.05.2017 at 20:47.
- */
+
 public abstract class BaseMessageServiceTest {
 
     protected abstract MessageService getMessageService();

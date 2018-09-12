@@ -1,15 +1,13 @@
 package ro.cmm.dao;
 
-import ro.cmm.domain.Car;
-import ro.cmm.domain.SearchModel;
+import ro.cmm.Models.Car;
+import ro.cmm.Models.SearchModel;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author Emanuel Pruker
- */
+
 public interface CarDAO extends BaseDAO<Car>{
 
 //    Collection<Car> searchByName(String query);

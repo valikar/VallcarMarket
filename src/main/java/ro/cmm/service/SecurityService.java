@@ -8,11 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
-import ro.cmm.domain.User;
+import ro.cmm.Models.User;
 
-/**
- * Created by Joseph Sunday, 23.04.2017 at 01:25.
- */
 @Component
 
 public class SecurityService {

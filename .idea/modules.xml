@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CarMarketManagement.iml" filepath="$PROJECT_DIR$/CarMarketManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ValicarMarket.iml" filepath="$PROJECT_DIR$/ValicarMarket.iml" />
     </modules>
   </component>
 </project>

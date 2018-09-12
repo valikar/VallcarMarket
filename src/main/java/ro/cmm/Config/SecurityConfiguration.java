@@ -1,4 +1,4 @@
-package ro.cmm;
+package ro.cmm.Config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-/**
- * Created by Joseph Sunday, 23.04.2017 at 01:27.
- */
+
 @Configuration
 @EnableWebSecurity
 //@EnableGlobalMethodSecurity(jsr250Enabled = true)

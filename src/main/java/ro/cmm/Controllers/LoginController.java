@@ -7,9 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by Joseph Thursday, 20.04.2017 at 22:44.
- */
+
 @Controller
 @RequestMapping("/login")
 public class LoginController {

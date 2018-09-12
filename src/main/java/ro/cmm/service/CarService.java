@@ -5,14 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.CarDAO;
-import ro.cmm.domain.*;
+import ro.cmm.Models.*;
 
 import java.math.BigDecimal;
 import java.util.*;
 
-/**
- * Created by Tamas on 4/22/2017.
- */
+
 @Service
 public class CarService {
 

@@ -1,9 +1,8 @@
-package ro.cmm.dao.inmemory;
+package ro.cmm.dao.imlementation;
 
-import org.springframework.stereotype.Component;
 import ro.cmm.dao.MessageDAO;
-import ro.cmm.domain.Conversation;
-import ro.cmm.domain.Message;
+import ro.cmm.Models.Conversation;
+import ro.cmm.Models.Message;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;

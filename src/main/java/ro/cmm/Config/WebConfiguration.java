@@ -1,15 +1,13 @@
-package ro.cmm.Controllers;
+package ro.cmm.Config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created by sebi on 4/19/17.
- */
+
 @Configuration
-public class MvcConfiguration extends WebMvcConfigurerAdapter {
+public class WebConfiguration extends WebMvcConfigurerAdapter {
 
 
     @Value("${local.files.dir}")

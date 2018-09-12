@@ -1,8 +1,6 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
-/**
- * @author Emanuel Pruker
- */
+
 public class CarLocation {
 
     private Double latitude;

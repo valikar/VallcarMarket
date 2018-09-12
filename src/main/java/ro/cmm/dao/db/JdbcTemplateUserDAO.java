@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import ro.cmm.dao.UserDAO;
-import ro.cmm.domain.Role;
-import ro.cmm.domain.User;
+import ro.cmm.Models.Role;
+import ro.cmm.Models.User;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -20,9 +20,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-/**
- * Created by Joseph Wednesday, 10.05.2017 at 21:22.
- */
+
 public class JdbcTemplateUserDAO implements UserDAO {
 
     private JdbcTemplate jdbcTemplate;

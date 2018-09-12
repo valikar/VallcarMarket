@@ -5,15 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import ro.cmm.dao.UserDAO;
-import ro.cmm.domain.User;
+import ro.cmm.Models.User;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Joseph Saturday, 15.04.2017 at 01:57.
- */
+
 @Service
 public class UserService {
     private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(UserService.class);

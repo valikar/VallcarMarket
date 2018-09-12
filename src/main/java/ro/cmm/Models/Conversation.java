@@ -1,8 +1,5 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
-/**
- * Created by Joseph Friday, 05.05.2017 at 11:54.
- */
 
 public class Conversation extends AbstractModel{
 

@@ -1,8 +1,6 @@
-package ro.cmm.domain;
+package ro.cmm.Models;
 
-/**
- * Created by Joseph Sunday, 23.04.2017 at 17:59.
- */
+
 public class LoginUser extends AbstractModel {
     private String userName;
     private String password;
