@@ -27,7 +27,7 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
 
     @Override
     public void newConversation(Conversation conversation) {
-//        LOGGER.info("Trying to create a new conversation between users: "+conversation.getSenderName()+" and "+conversation.getReceiverName());
+
     String sql = "INSERT INTO conversations (sender_id, receiver_id, title, sender_name, receiver_name, last_message)"
             +"VALUES ( ?,"+
                      " ?,"+
@@ -54,27 +54,22 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
 
     @Override
     public boolean verifyConversation(Conversation conversation) {
-//        LOGGER.info("Verifying if there is a conversation between users: "+conversation.getSenderName()+" and "+conversation.getReceiverName()+" with title: "+conversation.getTitle());
         String query="SELECT * FROM conversations ";
         Collection<Conversation> conversations = jdbcTemplate.query(query,new ConversationResultSetExtractor());
         if (conversations.size()==0){
-//            LOGGER.info("Here is no conversation");
             return true;
         }else {
             for (Conversation c : conversations) {
                 if (c.equals(conversation)) {
-//                    LOGGER.info("Here is already a conversation");
                     return false;
                 }
             }
         }
-//        LOGGER.info("Here is no conversation");
         return true;
     }
 
     @Override
     public void newMessage(long id, Message message) {
-//        LOGGER.info("Trying to create a new message betwen users: "+message.getSenderId()+" and "+message.getReceiverId());
     String sql = "INSERT INTO messages (conversation_id, sender_id, receiver_id, message, time) "+
             "VALUES (?, ?, ?, ?, ?)";
     jdbcTemplate.update(sql,
@@ -95,7 +90,6 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
 
     @Override
     public Collection<Conversation> getAllConversationsBySender(long id) {
-//        LOGGER.info("Getting all conversations under sender id: "+id);
         String query="SELECT * FROM conversations WHERE sender_id=?";
         Collection<Conversation> conversations = jdbcTemplate.query(query,new ConversationResultSetExtractor(),id);
         return conversations;
@@ -103,7 +97,6 @@ public class JdbcTemplateMessageDAO implements MessageDAO {
 
     @Override
     public Collection<Conversation> getAllConversationsByReceiver(long id) {
-//        LOGGER.info("Getting all conversations under receiver id: "+id);
         String query="SELECT * FROM conversations WHERE receiver_id=?";
         Collection<Conversation> conversations = jdbcTemplate.query(query,new ConversationResultSetExtractor(),id);
         return conversations;

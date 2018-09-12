@@ -36,18 +36,7 @@ public class CarService {
     }
 
     public Collection<Car> search(SearchModel searchModel) {
-//        LOGGER.debug("Searching for cars with the following parameters: " + searchModel.toString());
-//        String manufacturer = searchModel.getManufacturer();
-//        String type = searchModel.getType();
-//        int fromYear = searchModel.getFabricationYear();
-//        int mileAge = searchModel.getMileAge();
-//        int price = searchModel.getPrice();
-//        List<EngineType> engineTypes = searchModel.getEngineType();
-//        List<TransmissionType> transmissionTypes = searchModel.getTransmissionType();
-//        String color = searchModel.getColour();
-//        Collection<Car> cars = search(manufacturer, type, fromYear,
-//                                    mileAge, price, engineTypes, transmissionTypes, color);
-//        return cars;
+
         return dao.search(searchModel);
     }
 
@@ -164,9 +153,7 @@ public class CarService {
             errors.add("Description is missing!");
         }
 
-//        if(car.getImgUrl() == null) {
-//            errors.add("Img url is empty.");
-//        }
+
 
         if (car.getAvailable() == null) {
             errors.add("Car availability is empty!");

@@ -64,11 +64,7 @@ public class ListAndSearchController {
 
         List<String> errors = new LinkedList();
         boolean hasErrors = false;
-        // because the fields: fabricationYear, price, mileAge are already initialized to 0
-        // a binding error occurrence does not affect the integrity of the searchByUsername algorithm
-        // basically we can ignore these errors, BUT ONLY FOR THESE 3 FIELDS
-        // If other kind of binding error appears it will be handled correspondingly
-        if(bindingResult.hasErrors()) {
+               if(bindingResult.hasErrors()) {
             for (FieldError error: bindingResult.getFieldErrors()) {
                 if (!(error.getField().equalsIgnoreCase("fabricationYear") ||
                         error.getField().equalsIgnoreCase("price") ||

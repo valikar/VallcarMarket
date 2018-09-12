@@ -168,7 +168,6 @@ public class AccountController {
                 car.setLocation(carLocation);
                 carService.getDao().update(car);
             }
-            //carService.save(car);
             return "redirect:/account/list?id=" + Long.toString(car.getSellerId());
         }
     }

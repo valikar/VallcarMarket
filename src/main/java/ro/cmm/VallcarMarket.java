@@ -6,9 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"ro.cmm"})
-public class CarMarketManagementApplication {
+public class VallcarMarket {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CarMarketManagementApplication.class, args);
+		SpringApplication.run(VallcarMarket.class, args);
 	}
 }

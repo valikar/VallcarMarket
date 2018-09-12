@@ -175,19 +175,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
                         }
                     });
 
-//            cand vom avea mai multe poze la o masina va trebui sa facem update la ele in felul urmator
-//            List<Long> imageIds = jdbcTemplate.query("SELECT id from car_pictures WHERE car_id = ?",
-//                    new RowMapper<Long>() {
-//                        @Override
-//                        public Long mapRow(ResultSet rs, int rowNum) throws SQLException {
-//                            return rs.getLong(1);
-//                        }
-//                    });
-//            for (Long id : imageIds) {
-//                jdbcTemplate.update("UPDATE car_pictures SET picture_src = ? WHERE id=?",
-//                        model.getImgUrl(),
-//                        id);
-//            }
+
             jdbcTemplate.update("UPDATE car_pictures SET picture_src = ? WHERE car_id=?",
                                 model.getImgUrl(),
                                 newId);
@@ -339,8 +327,7 @@ public class JdbcTemplateCarDAO implements CarDAO {
             while (rs.next()) {
                 long id = rs.getLong("id");
                 if(cars.keySet().contains(id)) {
-                    // in acest caz trebuie doar adaugata imaginea fara sa cream un nou car
-                    // cars.get(id).addImgurl(rs.getString("picture_src"));
+
                 } else {
                     Car car = new Car();
                     car.setId(id);

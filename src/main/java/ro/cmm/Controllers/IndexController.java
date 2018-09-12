@@ -27,21 +27,6 @@ public class IndexController {
 
         Collection<Car> cars = carService.getDao().getLatestCars();
 
-//        Collection<Car> carList = carService.listAllAvailableCars();
-//        int firstOne=carList.size()-2,secondOne=carList.size()-1,thirdOne=carList.size();
-//        Collection<Car> cars = new LinkedList<>();
-//        for (Car car : carList){
-//            firstOne--;secondOne--; thirdOne--;
-//            if (firstOne==0&&firstOne>=0){
-//                cars.add(car);
-//            }
-//            if (secondOne==0&&secondOne>=0){
-//                cars.add(car);
-//            }
-//            if (thirdOne==0&&thirdOne>=0){
-//                cars.add(car);
-//            }
-//        }
         result.addObject("cars", cars);
         request.getSession().setAttribute("currentUser", securityService.getCurrentUser());
         return result;

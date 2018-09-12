@@ -85,7 +85,7 @@ public class SignUpController {
         MimeMessage message = sender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setText("<h1>Hello!</h1> this is <a href='http://localhost:8080'>VallcarNarket</a>", true);
+        helper.setText("<h1>Hello!</h1> this is <a href='http://localhost:8080'>VallcarNarket</a><br><h2>Your login is"+email +"</h2>", true);
         helper.setSubject("Mail from VallcarMarket");
         helper.setTo(email);
 

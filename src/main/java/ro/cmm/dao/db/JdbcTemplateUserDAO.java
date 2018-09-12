@@ -29,7 +29,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JdbcTemplateUserDAO.class);
+   // private static final Logger LOGGER = LoggerFactory.getLogger(JdbcTemplateUserDAO.class);
 
 
     private String userDetailsForQuery ="SELECT u.id, " +
@@ -51,7 +51,6 @@ public class JdbcTemplateUserDAO implements UserDAO {
     public Collection<User> getAll() {
         String query = userDetailsForQuery;
         Collection<User> users =jdbcTemplate.query(query,new UserResultSetExtractor());
-//        LOGGER.info("Getting "+users.size()+ " user[s]");
         return users;
     }
 
@@ -62,10 +61,8 @@ public class JdbcTemplateUserDAO implements UserDAO {
         User user;
         if (users.size()!=1){
             user=null;
-//            LOGGER.info("No user found with id: "+id);
         }else {
             user=users.iterator().next();
-//            LOGGER.info("Found user with this email: "+user.getUserName()+" under "+id+" id");
         }
         return user;
     }
@@ -80,8 +77,7 @@ public class JdbcTemplateUserDAO implements UserDAO {
                                     "email=?,"+
                                     "phone_number=?,"+
                                     "role_id=(SELECT id FROM roles WHERE role_name =?)"+
-//                                    "password=?,"+
-//                                    "password_validation=?"+
+
                                     "WHERE id=? returning id";
             newId = jdbcTemplate.queryForObject(sql,new Object[]{
                     model.getFirstName(),
@@ -89,15 +85,12 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     model.getUserName(),
                     model.getPhoneNumber(),
                     model.getRole().name(),
-//                    bCryptPasswordEncoder.encode(model.getPassword()),
-//                    bCryptPasswordEncoder.encode(model.getPasswordValidation()),
                     model.getId()
             },new RowMapper<Long>(){
                 public Long mapRow(ResultSet resultSet, int i) throws SQLException{
                     return resultSet.getLong(1);
                 }
             });
-//            LOGGER.info("Update on user with this email: "+model.getUserName());
         }else {
             sql="INSERT INTO users (first_name, last_name, email, phone_number, role_id, password, password_validation, enabled) "+
                     "VALUES ( ?,"+
@@ -123,7 +116,6 @@ public class JdbcTemplateUserDAO implements UserDAO {
                     return resultSet.getLong(1);
                 }
             });
-//            LOGGER.info("Added user with email: "+model.getUserName());
         }
         model.setId(newId);
         return model;
@@ -150,10 +142,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
     public boolean delete(User model) {
         boolean delete = jdbcTemplate.update("DELETE FROM users WHERE id=?", model.getId())>0;
         if (delete){
-//            LOGGER.info("Deleted user with email: "+model.getUserName());
+
             return true;
         }else {
-//            LOGGER.info("Failed to delete user with email: "+model.getUserName());
+
             return false;
         }
     }
@@ -164,10 +156,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
         Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName);
         User user;
         if (users.size()!=1){
-//            LOGGER.info(userName+" is free to use");
+
             user=null;
         }else {
-//            LOGGER.info(userName+" is taken");
+
             user=users.iterator().next();
 
         }
@@ -180,10 +172,10 @@ public class JdbcTemplateUserDAO implements UserDAO {
         Collection<User> users = jdbcTemplate.query(query,new UserResultSetExtractor(),userName);
         User user;
         if (users.size()!=1){
-//            LOGGER.info(userName+" is verified and not registered/invalid credentials");
+
             return false;
         }else {
-//            LOGGER.info(userName+" is verified and registered");
+
             user=users.iterator().next();
             return true;
         }

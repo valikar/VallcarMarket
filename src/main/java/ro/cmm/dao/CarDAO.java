@@ -10,9 +10,7 @@ import java.util.Map;
 
 public interface CarDAO extends BaseDAO<Car>{
 
-//    Collection<Car> searchByName(String query);
-//
-//    Car findBySellerId(long id);
+
 
     Map<String, List<String>> getCarManufacturersAndTypes();
 

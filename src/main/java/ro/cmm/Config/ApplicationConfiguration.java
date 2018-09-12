@@ -37,30 +37,6 @@ public class ApplicationConfiguration {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-
-/*	@Bean
-    public CarDAO carDAO() {
-        return new IMCarDAO();
-    }*/
-
-/*    @Bean
-    public UserDAO userDAO(){
-        return new IMUserDAO();
-    }*/
-
-/*    @Bean
-    public MessageDAO messageDAO(){
-        return new IMMessageDAO();
-    }*/
-
-    //	@Bean
-//   public EmployeeDAO employeeDAO() {
-//		return new JDBCEmployeeDAO("localhost",
-//				"5432",
-//				"ems",
-//				"sebi" ,
-//				"sebi");
-//   }
     @Bean
     public CarDAO carDAO() {
 
@@ -109,5 +85,5 @@ public class ApplicationConfiguration {
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-/**/
+
 }

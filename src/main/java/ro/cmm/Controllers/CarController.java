@@ -43,25 +43,6 @@ public class CarController {
     public ModelAndView add() {
         ModelAndView modelAndView = new ModelAndView("car/add");
         Map<String, List<String>> map = carService.getManufacturersAndTypes();
-
-//        if (carModel.getManufacturer() == null) {
-//            carModel.setManufacturer("All");
-//        }
-//        if (carModel.getColour() == null) {
-//            carModel.setColour("All");
-//        }
-//        if (carModel.getType() == null) {
-//            carModel.setType("All");
-////        }
-//
-//        String searchModelManufacturer = carModel.getManufacturer();
-//        String searchModelType = carModel.getType();
-//
-//        List<String> typeListForManufacturer = map.get(searchModelManufacturer);
-//
-//        if(!typeListForManufacturer.contains(searchModelType)) {
-//            carModel.setType("All");
-//        }
         modelAndView.addObject("car", new Car());
         modelAndView.addObject("map", map);
         modelAndView.addObject("colours", carService.getAllColors());
@@ -91,8 +72,7 @@ public class CarController {
                              CarLocation carLocation,
                              BindingResult bindingResult
     ) {
-        //BindingResult fileBindingResult
-        System.out.println(file.getOriginalFilename());
+                System.out.println(file.getOriginalFilename());
         ModelAndView modelAndView = new ModelAndView();
         boolean hasErrors = false;
         Map<String, List<String>> map = carService.getManufacturersAndTypes();
@@ -100,18 +80,13 @@ public class CarController {
         if (!bindingResult.hasErrors()) {
             try {
                 car.setSellerId(securityService.getCurrentUser().getId());
-
                 //saving the file and setting the cars imgUrl field
                 long id = car.getId();
                 String imgUrl = null;
                 if (file != null && !file.getOriginalFilename().isEmpty()) {
                     File localFile = new File(localFilesDir, System.currentTimeMillis() + "_" + file.getOriginalFilename());
-                    System.out.println(localFile.getName());
-                    System.out.println(localFile.getAbsoluteFile());
                     file.transferTo(localFile);
-                    System.out.println(localFile.getName());
-                    System.out.println(localFile.getAbsoluteFile());
-                    imgUrl = localFile.getName();
+                   imgUrl = localFile.getName();
                     car.setImgUrl(imgUrl);
                     lastImgUrl = imgUrl;
                 } else if (carToLastImgURL.containsKey(id)) {
@@ -129,15 +104,10 @@ public class CarController {
                 RedirectView redirectView = new RedirectView("/");
                 modelAndView.setView(redirectView);
             } catch (ValidationException ex) {
-//                    for (String msg : ex.getCauses()) {
-//                        bindingResult.addError(new ObjectError("userLogin", msg));
-//                    }
 
                 errors.add(ex.getMessage());
                 hasErrors = true;
             } catch (IOException e) {
-//                    bindingResult.addError(new ObjectError("fileUpload", e.getMessage()));
-//                    errors.add(e.getMessage());
             }
         } else {
             hasErrors = true;
