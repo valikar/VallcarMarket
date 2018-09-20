@@ -55,20 +55,7 @@ public class ApplicationConfiguration {
 
     @Bean
     public DataSource dataSource() {
-        String url = new StringBuilder()
-                .append("jdbc:")
-                .append("postgresql")
-                .append("://")
-                .append(dbHost)
-                .append(":")
-                .append("5432")
-                .append("/")
-                .append(dbName)
-                .append("?user=")
-                .append(dbUser)
-                .append("&password=")
-                .append(dbPassword).toString();
-
+        String url = "postgres://aaxeadkvhfddxl:13ee3140809d99629682f19252fbd30040c4e299413e062a7f2bbcf10b29a12e@ec2-54-217-205-90.eu-west-1.compute.amazonaws.com:5432/d7ji2n7t0lq3e?ssslmode=require";
         return  new SingleConnectionDataSource(url, false);
     }
 

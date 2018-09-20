@@ -14,7 +14,7 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h1><i class="fa fa-car" aria-hidden="true"></i> Car Market Management</h1>
+        <h1><i class="fa fa-car" aria-hidden="true"></i> Vallcar Market</h1>
         <p>Find a car you like. Locate it or contact the seller. Buy it.</p>
     </div>
 

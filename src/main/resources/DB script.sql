@@ -1,4 +1,4 @@
-CREATE DATABASE cmm;
+
 
 CREATE SEQUENCE manufacturer_id_seq;
 
